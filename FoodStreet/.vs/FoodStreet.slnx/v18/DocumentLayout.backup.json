@@ -1,0 +1,118 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\DO_AN_C#\\FoodStreet\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\pages\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:pages\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\pages\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:pages\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\models\\poi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:models\\poi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\services\\poirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:services\\poirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\pagemodels\\mainpagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:pagemodels\\mainpagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Poi.cs",
+              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Models\\Poi.cs",
+              "RelativeDocumentMoniker": "Models\\Poi.cs",
+              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Models\\Poi.cs",
+              "RelativeToolTip": "Models\\Poi.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T13:49:06.166Z",
+              "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c64b9c2-e352-428e-a56d-0ace190b99a6}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MainPageModel.cs",
+              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\PageModels\\MainPageModel.cs",
+              "RelativeDocumentMoniker": "PageModels\\MainPageModel.cs",
+              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\PageModels\\MainPageModel.cs",
+              "RelativeToolTip": "PageModels\\MainPageModel.cs",
+              "ViewState": "AgIAALMAAAAAAAAAAAAiwL4AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-16T08:04:01.549Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MainPage.xaml",
+              "RelativeDocumentMoniker": "Pages\\MainPage.xaml",
+              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MainPage.xaml",
+              "RelativeToolTip": "Pages\\MainPage.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-16T08:00:55.826Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\MainPage.xaml.cs",
+              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MainPage.xaml.cs",
+              "RelativeToolTip": "Pages\\MainPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-16T07:54:44.454Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PoiRepository.cs",
+              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Services\\PoiRepository.cs",
+              "RelativeDocumentMoniker": "Services\\PoiRepository.cs",
+              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Services\\PoiRepository.cs",
+              "RelativeToolTip": "Services\\PoiRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T13:49:58.572Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

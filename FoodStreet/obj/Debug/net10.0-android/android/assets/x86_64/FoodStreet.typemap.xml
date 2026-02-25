@@ -1,0 +1,10 @@
+<api type="debug" assembly-name="FoodStreet" mvid="1a8df7b1d0d047d7a930fb2045e41996">
+  <java-to-managed>
+    <entry java-name="crc644576c7880bd8dced/MainActivity" managed-name="FoodStreet.MainActivity, FoodStreet" managed-type-token-id="33554456" />
+    <entry java-name="crc644576c7880bd8dced/MainApplication" managed-name="FoodStreet.MainApplication, FoodStreet" managed-type-token-id="33554457" />
+  </java-to-managed>
+  <managed-to-java>
+    <entry java-name="crc644576c7880bd8dced/MainActivity" managed-name="FoodStreet.MainActivity, FoodStreet" managed-type-token-id="33554456" />
+    <entry java-name="crc644576c7880bd8dced/MainApplication" managed-name="FoodStreet.MainApplication, FoodStreet" managed-type-token-id="33554457" />
+  </managed-to-java>
+</api>
