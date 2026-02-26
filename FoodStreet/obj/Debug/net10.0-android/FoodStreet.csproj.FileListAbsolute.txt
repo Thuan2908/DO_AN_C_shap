@@ -1,3 +1,15 @@
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\FoodStreet.runtimeconfig.json
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\FoodStreet.dll
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\FoodStreet.pdb
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\com.companyname.foodstreet.apk
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\com.companyname.foodstreet.aab
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\com.companyname.foodstreet-Signed.aab
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\com.companyname.foodstreet-Signed.apk
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\com.companyname.foodstreet-Signed.apk.idsig
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\Microsoft.Maui.Controls.HotReload.Forms.dll
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\Microsoft.VisualStudio.DesignTools.TapContract.dll
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\Microsoft.VisualStudio.DesignTools.XamlTapContract.dll
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\.NETCoreApp,Version=v10.0.AssemblyAttributes.cs
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\build.props
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\adb.props
@@ -116,18 +128,7 @@ D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\FoodStreet.GeneratedMSBuildEdit
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\FoodStreet.AssemblyInfoInputs.cache
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\FoodStreet.AssemblyInfo.cs
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\FoodStreet.csproj.CoreCompileInputs.cache
-D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\FoodStreet.runtimeconfig.json
-D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\FoodStreet.dll
-D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\FoodStreet.pdb
-D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\com.companyname.foodstreet.apk
-D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\com.companyname.foodstreet.aab
-D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\com.companyname.foodstreet-Signed.aab
-D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\com.companyname.foodstreet-Signed.apk
-D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\com.companyname.foodstreet-Signed.apk.idsig
-D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\Microsoft.Maui.Controls.HotReload.Forms.dll
-D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\Microsoft.VisualStudio.DesignTools.MobileTapContracts.dll
-D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\Microsoft.VisualStudio.DesignTools.TapContract.dll
-D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-android\Microsoft.VisualStudio.DesignTools.XamlTapContract.dll
+D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\FoodStreet.sourcelink.json
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\XamlC.stamp
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\FoodStreet.csproj.Up2Date
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\FoodStreet.dll
@@ -2514,7 +2515,6 @@ D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\ContainerView.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\ContentViewGroup.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\FragmentManagerExtensions_CallBacks.java
-D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\GlobalWindowInsetListener.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\LayoutViewGroup.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\LocalizedDigitsKeyListener.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiAccessibilityDelegateCompat.java
@@ -2527,6 +2527,7 @@ D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiLayerDrawable.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiMaterialButton.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiMaterialButton_MauiResizableDrawable.java
+D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiMaterialContextThemeWrapper.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiPageControl.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiPageControl_TEditClickListener.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiPicker.java
@@ -2543,6 +2544,7 @@ D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiWebChromeClient.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiWebView.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiWebViewClient.java
+D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\MauiWindowInsetListener.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\NavigationRootManager_ElementBasedFragment.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\NavigationViewFragment.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6452ffdc5b34af3a0f\PlatformTouchGraphicsView.java
@@ -2594,6 +2596,7 @@ D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6488302ad6e9e4df
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6488302ad6e9e4df1a\ImageLoaderCallbackBase_1.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6488302ad6e9e4df1a\ImageLoaderResultCallback.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6488302ad6e9e4df1a\MauiAppCompatActivity.java
+D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6488302ad6e9e4df1a\MauiAppCompatActivity_PredictiveBackCallback.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6488302ad6e9e4df1a\MauiApplication.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc6488302ad6e9e4df1a\MauiApplication_ActivityLifecycleCallbacks.java
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\src\crc648fc34c62be8fbbff\Snackbar_SnackbarCallback.java

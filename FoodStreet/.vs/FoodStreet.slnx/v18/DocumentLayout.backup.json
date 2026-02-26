@@ -3,24 +3,44 @@
   "WorkspaceRootPath": "D:\\DO_AN_C#\\FoodStreet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\pages\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:pages\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\services\\locationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:services\\locationservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\platforms\\android\\androidmanifest.xml||{4E01A4BC-CFCF-452C-8C08-51352512D197}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:platforms\\android\\androidmanifest.xml||{4E01A4BC-CFCF-452C-8C08-51352512D197}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\pages\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:pages\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\pagemodels\\mainpagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:pagemodels\\mainpagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:mauiprogram.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\models\\poi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:models\\poi.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\services\\poirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:services\\poirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\pages\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:pages\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\pagemodels\\mainpagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:pagemodels\\mainpagemodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\services\\poirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:services\\poirepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,22 +50,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 4,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Poi.cs",
-              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Models\\Poi.cs",
-              "RelativeDocumentMoniker": "Models\\Poi.cs",
-              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Models\\Poi.cs",
-              "RelativeToolTip": "Models\\Poi.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T13:49:06.166Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
@@ -60,55 +66,127 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AndroidManifest.xml",
+              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Platforms\\Android\\AndroidManifest.xml",
+              "RelativeDocumentMoniker": "Platforms\\Android\\AndroidManifest.xml",
+              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Platforms\\Android\\AndroidManifest.xml",
+              "RelativeToolTip": "Platforms\\Android\\AndroidManifest.xml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003576|",
+              "WhenOpened": "2026-02-26T09:03:49.768Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LocationService.cs",
+              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Services\\LocationService.cs",
+              "RelativeDocumentMoniker": "Services\\LocationService.cs",
+              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Services\\LocationService.cs",
+              "RelativeToolTip": "Services\\LocationService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-26T08:16:01.281Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "AppShell.xaml",
+              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\AppShell.xaml",
+              "RelativeDocumentMoniker": "AppShell.xaml",
+              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\AppShell.xaml",
+              "RelativeToolTip": "AppShell.xaml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-02-25T11:45:47.272Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\App.xaml.cs",
+              "RelativeDocumentMoniker": "App.xaml.cs",
+              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\App.xaml.cs",
+              "RelativeToolTip": "App.xaml.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAgAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T11:33:27.807Z"
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 4,
+              "Title": "MauiProgram.cs",
+              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\MauiProgram.cs",
+              "RelativeDocumentMoniker": "MauiProgram.cs",
+              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\MauiProgram.cs",
+              "RelativeToolTip": "MauiProgram.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAQwAoAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-25T10:00:12.238Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Poi.cs",
+              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Models\\Poi.cs",
+              "RelativeDocumentMoniker": "Models\\Poi.cs",
+              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Models\\Poi.cs",
+              "RelativeToolTip": "Models\\Poi.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-10T13:49:06.166Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MainPageModel.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\PageModels\\MainPageModel.cs",
               "RelativeDocumentMoniker": "PageModels\\MainPageModel.cs",
               "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\PageModels\\MainPageModel.cs",
               "RelativeToolTip": "PageModels\\MainPageModel.cs",
-              "ViewState": "AgIAALMAAAAAAAAAAAAiwL4AAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAzwBgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-02-16T08:04:01.549Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "MainPage.xaml",
               "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MainPage.xaml",
               "RelativeDocumentMoniker": "Pages\\MainPage.xaml",
               "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MainPage.xaml",
               "RelativeToolTip": "Pages\\MainPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAABIAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2026-02-16T08:00:55.826Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
               "Title": "MainPage.xaml.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MainPage.xaml.cs",
               "RelativeDocumentMoniker": "Pages\\MainPage.xaml.cs",
               "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MainPage.xaml.cs",
               "RelativeToolTip": "Pages\\MainPage.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-16T07:54:44.454Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-16T07:54:44.454Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 9,
               "Title": "PoiRepository.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Services\\PoiRepository.cs",
               "RelativeDocumentMoniker": "Services\\PoiRepository.cs",
               "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Services\\PoiRepository.cs",
               "RelativeToolTip": "Services\\PoiRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwAYAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-02-10T13:49:58.572Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-02-10T13:49:58.572Z"
             }
           ]
         }

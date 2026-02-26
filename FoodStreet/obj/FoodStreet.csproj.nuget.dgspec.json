@@ -38,11 +38,11 @@
             "targetAlias": "net10.0-android",
             "projectReferences": {}
           },
-          "net10.0-ios26.1": {
+          "net10.0-ios26.2": {
             "targetAlias": "net10.0-ios",
             "projectReferences": {}
           },
-          "net10.0-maccatalyst26.1": {
+          "net10.0-maccatalyst26.2": {
             "targetAlias": "net10.0-maccatalyst",
             "projectReferences": {}
           },
@@ -85,12 +85,12 @@
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.20, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.2, )",
+              "version": "[10.0.3, )",
               "autoReferenced": true
             },
             "SQLitePCLRaw.bundle_green": {
@@ -128,7 +128,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -404,7 +404,7 @@
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
         },
-        "net10.0-ios26.1": {
+        "net10.0-ios26.2": {
           "targetAlias": "net10.0-ios",
           "dependencies": {
             "CommunityToolkit.Maui": {
@@ -425,12 +425,12 @@
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.20, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.2, )",
+              "version": "[10.0.3, )",
               "autoReferenced": true
             },
             "SQLitePCLRaw.bundle_green": {
@@ -468,7 +468,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -744,7 +744,7 @@
             "System.Xml.XPath.XDocument": "(,5.0.32767]"
           }
         },
-        "net10.0-maccatalyst26.1": {
+        "net10.0-maccatalyst26.2": {
           "targetAlias": "net10.0-maccatalyst",
           "dependencies": {
             "CommunityToolkit.Maui": {
@@ -765,12 +765,12 @@
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.20, )"
             },
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[10.0.2, )",
+              "version": "[10.0.3, )",
               "autoReferenced": true
             },
             "SQLitePCLRaw.bundle_green": {
@@ -809,7 +809,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
@@ -1106,7 +1106,7 @@
             },
             "Microsoft.Maui.Controls": {
               "target": "Package",
-              "version": "[10.0.1, )"
+              "version": "[10.0.20, )"
             },
             "SQLitePCLRaw.bundle_green": {
               "target": "Package",
@@ -1146,7 +1146,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.102/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",

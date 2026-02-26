@@ -49,13 +49,14 @@ namespace FoodStreet
             builder.Services.AddSingleton<TagRepository>();
             builder.Services.AddSingleton<SeedDataService>();
             builder.Services.AddSingleton<ModalErrorHandler>();
-            builder.Services.AddSingleton<MainPageModel>();
+           ;
             builder.Services.AddSingleton<ProjectListPageModel>();
             builder.Services.AddSingleton<ManageMetaPageModel>();
 
             builder.Services.AddTransientWithShellRoute<ProjectDetailPage, ProjectDetailPageModel>("project");
             builder.Services.AddTransientWithShellRoute<TaskDetailPage, TaskDetailPageModel>("task");
-
+            builder.Services.AddTransient<MainPageModel>();
+            builder.Services.AddTransient<MainPage>();
             return builder.Build();
         }
     }

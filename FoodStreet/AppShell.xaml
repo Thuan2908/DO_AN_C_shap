@@ -7,12 +7,16 @@
     xmlns:pages="clr-namespace:FoodStreet.Pages"
     Shell.FlyoutBehavior="Flyout"
     Title="FoodStreet">
-
+    
     <ShellContent
-        Title="Dashboard"
-        Icon="{StaticResource IconDashboard}"
-        ContentTemplate="{DataTemplate pages:MainPage}"
-        Route="main" />
+    Title="Dashboard"
+    Icon="{StaticResource IconDashboard}">
+
+        <pages:MainPage />
+
+    </ShellContent>
+    
+   
 
     <ShellContent
         Title="Projects"

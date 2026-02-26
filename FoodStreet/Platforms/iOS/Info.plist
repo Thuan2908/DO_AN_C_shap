@@ -28,5 +28,7 @@
 	</array>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/appicon.appiconset</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+<string>Ứng dụng cần GPS để kích hoạt thuyết minh tự động</string>
 </dict>
 </plist>

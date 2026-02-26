@@ -3,12 +3,14 @@ using FoodStreet.PageModels;
 
 namespace FoodStreet.Pages
 {
+   
     public partial class MainPage : ContentPage
     {
-        public MainPage(MainPageModel model)
+        public MainPage()
         {
             InitializeComponent();
-            BindingContext = model;
+            BindingContext = new MainPageModel();
         }
     }
+
 }

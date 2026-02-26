@@ -1,7 +1,7 @@
 package crc6452ffdc5b34af3a0f;
 
 
-public class GlobalWindowInsetListener
+public class MauiWindowInsetListener
 	extends androidx.core.view.WindowInsetsAnimationCompat.Callback
 	implements
 		mono.android.IGCUserPeer,
@@ -17,14 +17,14 @@ public class GlobalWindowInsetListener
 			"n_onEnd:(Landroidx/core/view/WindowInsetsAnimationCompat;)V:GetOnEnd_Landroidx_core_view_WindowInsetsAnimationCompat_Handler\n" +
 			"n_onApplyWindowInsets:(Landroid/view/View;Landroidx/core/view/WindowInsetsCompat;)Landroidx/core/view/WindowInsetsCompat;:GetOnApplyWindowInsets_Landroid_view_View_Landroidx_core_view_WindowInsetsCompat_Handler:AndroidX.Core.View.IOnApplyWindowInsetsListenerInvoker, Xamarin.AndroidX.Core\n" +
 			"";
-		mono.android.Runtime.register ("Microsoft.Maui.Platform.GlobalWindowInsetListener, Microsoft.Maui", GlobalWindowInsetListener.class, __md_methods);
+		mono.android.Runtime.register ("Microsoft.Maui.Platform.MauiWindowInsetListener, Microsoft.Maui", MauiWindowInsetListener.class, __md_methods);
 	}
 
-	public GlobalWindowInsetListener (int p0)
+	public MauiWindowInsetListener (int p0)
 	{
 		super (p0);
-		if (getClass () == GlobalWindowInsetListener.class) {
-			mono.android.TypeManager.Activate ("Microsoft.Maui.Platform.GlobalWindowInsetListener, Microsoft.Maui", "System.Int32, System.Private.CoreLib", this, new java.lang.Object[] { p0 });
+		if (getClass () == MauiWindowInsetListener.class) {
+			mono.android.TypeManager.Activate ("Microsoft.Maui.Platform.MauiWindowInsetListener, Microsoft.Maui", "System.Int32, System.Private.CoreLib", this, new java.lang.Object[] { p0 });
 		}
 	}
 

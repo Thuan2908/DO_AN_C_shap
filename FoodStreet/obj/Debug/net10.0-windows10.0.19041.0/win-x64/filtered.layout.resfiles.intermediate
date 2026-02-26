@@ -1,9 +1,3 @@
-FluentSystemIcons-Regular.ttf
-FluentUI.cs
-MauiMaterialAssets.ttf
-OpenSans-Regular.ttf
-OpenSans-Semibold.ttf
-SegoeUI-Semibold.ttf
 appicon.ico
 appiconLargeTile.scale-100.png
 appiconLargeTile.scale-125.png
@@ -50,10 +44,5 @@ appiconWideTile.scale-125.png
 appiconWideTile.scale-150.png
 appiconWideTile.scale-200.png
 appiconWideTile.scale-400.png
-splashSplashScreen.scale-100.png
-splashSplashScreen.scale-125.png
-splashSplashScreen.scale-150.png
-splashSplashScreen.scale-200.png
-splashSplashScreen.scale-400.png
 AboutAssets.txt
 SeedData.json

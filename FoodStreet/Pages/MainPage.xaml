@@ -5,7 +5,6 @@
     xmlns:pageModels="clr-namespace:FoodStreet.PageModels"
     xmlns:models="clr-namespace:FoodStreet.Models"
     x:Class="FoodStreet.Pages.MainPage"
-    x:DataType="pageModels:MainPageModel"
     Title="Food POI">
 
     <VerticalStackLayout Padding="20" Spacing="10">
