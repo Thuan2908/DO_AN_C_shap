@@ -1,0 +1,21 @@
+﻿using FoodStreet.Models;
+namespace FoodStreet.Services;
+
+public class GeofenceService
+{
+    public Poi? CheckNearby(Location userLocation, List<Poi> pois)
+    {
+        foreach (var poi in pois)
+        {
+            var distance = Location.CalculateDistance(
+                userLocation,
+                new Location(poi.Latitude, poi.Longitude),
+               DistanceUnits.Kilometers);
+
+            if (distance <= poi.Radius)
+                return poi;
+        }
+
+        return null;
+    }
+}

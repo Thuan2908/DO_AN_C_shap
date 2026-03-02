@@ -10,16 +10,29 @@ namespace FoodStreet.PageModels
     {
         private readonly PoiRepository repo = new();
         private readonly LocationService locationService = new();
-
+        GeofenceService geofenceService = new();
+        List<Poi> poiCache = new();
+       
         public ObservableCollection<Poi> Pois { get; set; } = new();
 
         public MainPageModel()
         {
-            _ = Load();
+            Init();
+        }
+        private async void Init()
+        {
+            await Load();   // Load POI trước
 
             locationService.OnLocationChanged += OnLocationChanged;
-            _ = locationService.StartAsync();
+            await locationService.StartAsync();  // Start GPS sau
         }
+        //public MainPageModel()
+        //{
+        //    _ = Load();
+
+        //    locationService.OnLocationChanged += OnLocationChanged;
+        //    _ = locationService.StartAsync();
+        //}
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -33,9 +46,29 @@ namespace FoodStreet.PageModels
         {
             Console.WriteLine($"Lat: {loc.Latitude}");
             Console.WriteLine($"Lng: {loc.Longitude}");
+
+            var poi = geofenceService.CheckNearby(loc, poiCache);
+
+            if (poi != null)
+            {
+                Console.WriteLine($" Đã vào POI: {poi.Name}");
+            }
         }
 
-        private async Task Load()
+
+        //void OnLocationChanged(Location loc)
+        //{
+        //    var fakeLocation = new Location(10.764221, 106.701187);
+
+        //    var poi = geofenceService.CheckNearby(fakeLocation, poiCache);
+        //    Console.WriteLine($"Số POI: {poiCache.Count}");
+        //    if (poi != null)
+        //    {
+        //        Console.WriteLine($"🔥 Đã vào POI: {poi.Name}");
+        //    }
+        //}
+
+        async Task Load()
         {
             await repo.Init();
 
@@ -46,9 +79,10 @@ namespace FoodStreet.PageModels
                 await repo.Insert(new Poi
                 {
                     Name = "Bánh tráng Vĩnh Khánh",
-                    Latitude = 10.755,
-                    Longitude = 106.705,
-                    Radius = 30,
+                    Latitude = 10.764221,
+                    
+                    Longitude = 106.701187,
+                    Radius = 1,
                     Priority = 1,
                     Description = "Quán nổi tiếng",
                     TtsScript = "Bạn đang đến khu bánh tráng Vĩnh Khánh"
@@ -66,6 +100,7 @@ namespace FoodStreet.PageModels
             });
 
             Console.WriteLine("POI loaded: " + list.Count);
+            poiCache = list;
         }
     }
 }
