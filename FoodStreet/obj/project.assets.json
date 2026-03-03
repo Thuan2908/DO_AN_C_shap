@@ -52,6 +52,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "GoogleGson/2.13.1.1": {
         "type": "package",
         "dependencies": {
@@ -558,6 +571,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -2688,6 +2717,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "GoogleGson/2.13.1.1": {
         "type": "package",
         "dependencies": {
@@ -3194,6 +3236,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -5324,6 +5382,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "GoogleGson/2.13.1.1": {
         "type": "package",
         "dependencies": {
@@ -5830,6 +5901,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -7960,6 +8047,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "GoogleGson/2.13.1.1": {
         "type": "package",
         "dependencies": {
@@ -8466,6 +8566,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -10596,6 +10712,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "GoogleGson/2.13.1.1": {
         "type": "package",
         "dependencies": {
@@ -11102,6 +11231,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -13232,6 +13377,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "GoogleGson/2.13.1.1": {
         "type": "package",
         "dependencies": {
@@ -13738,6 +13896,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -15868,6 +16042,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -16345,6 +16532,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -16475,6 +16678,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -16952,6 +17168,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -17082,6 +17314,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -17559,6 +17804,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -17689,6 +17950,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -18166,6 +18440,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -18296,6 +18586,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -18773,6 +19076,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -18903,6 +19222,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -19382,6 +19714,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "sqlite-net-pcl/1.9.172": {
         "type": "package",
         "dependencies": {
@@ -19508,6 +19856,19 @@
         },
         "build": {
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
+        }
+      },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
@@ -19987,6 +20348,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -20207,6 +20584,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -20684,6 +21074,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -20821,6 +21227,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -21298,6 +21717,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -21435,6 +21870,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -21912,6 +22360,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -22046,6 +22510,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -22523,6 +23000,22 @@
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -22660,6 +23153,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -23139,6 +23645,22 @@
           "build/Microsoft.NET.ILLink.Tasks.props": {}
         }
       },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "sqlite-net-pcl/1.9.172": {
         "type": "package",
         "dependencies": {
@@ -23273,6 +23795,19 @@
         },
         "build": {
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
+        }
+      },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
@@ -24005,6 +24540,22 @@
           }
         }
       },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "sqlite-net-pcl/1.9.172": {
         "type": "package",
         "dependencies": {
@@ -24249,6 +24800,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -24915,6 +25479,22 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -25072,6 +25652,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -25738,6 +26331,22 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -25895,6 +26504,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -26561,6 +27183,22 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -26715,6 +27353,19 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
         "type": "package",
         "dependencies": {
@@ -27381,6 +28032,22 @@
         "build": {
           "buildTransitive/Microsoft.WindowsAppSDK.props": {},
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
+        }
+      },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "sqlite-net-pcl/1.9.172": {
@@ -27536,6 +28203,19 @@
         },
         "build": {
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
+        }
+      },
+      "Elasticsearch.Net/7.17.5": {
+        "type": "package",
+        "compile": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/Elasticsearch.Net.dll": {
+            "related": ".pdb;.xml"
+          }
         }
       },
       "Microsoft.Data.Sqlite.Core/8.0.8": {
@@ -28216,6 +28896,22 @@
           "buildTransitive/Microsoft.WindowsAppSDK.targets": {}
         }
       },
+      "NEST/7.17.5": {
+        "type": "package",
+        "dependencies": {
+          "Elasticsearch.Net": "7.17.5"
+        },
+        "compile": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.0/Nest.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      },
       "sqlite-net-pcl/1.9.172": {
         "type": "package",
         "dependencies": {
@@ -28413,6 +29109,28 @@
         "lib/netstandard2.1/CommunityToolkit.Mvvm.dll",
         "lib/netstandard2.1/CommunityToolkit.Mvvm.pdb",
         "lib/netstandard2.1/CommunityToolkit.Mvvm.xml"
+      ]
+    },
+    "Elasticsearch.Net/7.17.5": {
+      "sha512": "orChsQi1Ceho/NyIylNOn6y4vuGcsbCfMZnCueNN0fzqYEGQmQdPfcVmsR5+3fwpXTgxCdjTUVmqOwvHpCSB+Q==",
+      "type": "package",
+      "path": "elasticsearch.net/7.17.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "elasticsearch.net.7.17.5.nupkg.sha512",
+        "elasticsearch.net.nuspec",
+        "lib/net461/Elasticsearch.Net.dll",
+        "lib/net461/Elasticsearch.Net.pdb",
+        "lib/net461/Elasticsearch.Net.xml",
+        "lib/netstandard2.0/Elasticsearch.Net.dll",
+        "lib/netstandard2.0/Elasticsearch.Net.pdb",
+        "lib/netstandard2.0/Elasticsearch.Net.xml",
+        "lib/netstandard2.1/Elasticsearch.Net.dll",
+        "lib/netstandard2.1/Elasticsearch.Net.pdb",
+        "lib/netstandard2.1/Elasticsearch.Net.xml",
+        "license.txt",
+        "nuget-icon.png"
       ]
     },
     "GoogleGson/2.13.1.1": {
@@ -30531,6 +31249,25 @@
         "tools/net6.0/System.Text.Json.dll",
         "tools/x64/GenXbf.dll",
         "tools/x86/GenXbf.dll"
+      ]
+    },
+    "NEST/7.17.5": {
+      "sha512": "bo9UyuIoVRx4IUQiuC8ZrlZuvAXKIccernC7UUKukQCEmRq2eVIk+gubHlnMQljrP51q0mN4cjgy9vv5uZPkoA==",
+      "type": "package",
+      "path": "nest/7.17.5",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net461/Nest.dll",
+        "lib/net461/Nest.pdb",
+        "lib/net461/Nest.xml",
+        "lib/netstandard2.0/Nest.dll",
+        "lib/netstandard2.0/Nest.pdb",
+        "lib/netstandard2.0/Nest.xml",
+        "license.txt",
+        "nest.7.17.5.nupkg.sha512",
+        "nest.nuspec",
+        "nuget-icon.png"
       ]
     },
     "sqlite-net-pcl/1.9.172": {
@@ -33172,6 +33909,7 @@
       "Microsoft.Extensions.Logging.Debug >= 10.0.0",
       "Microsoft.Maui.Controls >= 10.0.20",
       "Microsoft.NET.ILLink.Tasks >= 10.0.3",
+      "NEST >= 7.17.5",
       "SQLitePCLRaw.bundle_green >= 2.1.10",
       "Syncfusion.Maui.Toolkit >= 1.0.7",
       "sqlite-net-pcl >= 1.9.172"
@@ -33183,6 +33921,7 @@
       "Microsoft.Extensions.Logging.Debug >= 10.0.0",
       "Microsoft.Maui.Controls >= 10.0.20",
       "Microsoft.NET.ILLink.Tasks >= 10.0.3",
+      "NEST >= 7.17.5",
       "SQLitePCLRaw.bundle_green >= 2.1.10",
       "Syncfusion.Maui.Toolkit >= 1.0.7",
       "sqlite-net-pcl >= 1.9.172"
@@ -33194,6 +33933,7 @@
       "Microsoft.Extensions.Logging.Debug >= 10.0.0",
       "Microsoft.Maui.Controls >= 10.0.20",
       "Microsoft.NET.ILLink.Tasks >= 10.0.3",
+      "NEST >= 7.17.5",
       "SQLitePCLRaw.bundle_green >= 2.1.10",
       "Syncfusion.Maui.Toolkit >= 1.0.7",
       "sqlite-net-pcl >= 1.9.172"
@@ -33204,6 +33944,7 @@
       "Microsoft.Data.Sqlite.Core >= 8.0.8",
       "Microsoft.Extensions.Logging.Debug >= 10.0.0",
       "Microsoft.Maui.Controls >= 10.0.20",
+      "NEST >= 7.17.5",
       "SQLitePCLRaw.bundle_green >= 2.1.10",
       "Syncfusion.Maui.Toolkit >= 1.0.7",
       "sqlite-net-pcl >= 1.9.172"
@@ -33301,6 +34042,10 @@
             "target": "Package",
             "version": "[10.0.3, )",
             "autoReferenced": true
+          },
+          "NEST": {
+            "target": "Package",
+            "version": "[7.17.5, )"
           },
           "SQLitePCLRaw.bundle_green": {
             "target": "Package",
@@ -33642,6 +34387,10 @@
             "version": "[10.0.3, )",
             "autoReferenced": true
           },
+          "NEST": {
+            "target": "Package",
+            "version": "[7.17.5, )"
+          },
           "SQLitePCLRaw.bundle_green": {
             "target": "Package",
             "version": "[2.1.10, )"
@@ -33982,6 +34731,10 @@
             "version": "[10.0.3, )",
             "autoReferenced": true
           },
+          "NEST": {
+            "target": "Package",
+            "version": "[7.17.5, )"
+          },
           "SQLitePCLRaw.bundle_green": {
             "target": "Package",
             "version": "[2.1.10, )"
@@ -34316,6 +35069,10 @@
           "Microsoft.Maui.Controls": {
             "target": "Package",
             "version": "[10.0.20, )"
+          },
+          "NEST": {
+            "target": "Package",
+            "version": "[7.17.5, )"
           },
           "SQLitePCLRaw.bundle_green": {
             "target": "Package",

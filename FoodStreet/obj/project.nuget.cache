@@ -1,12 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "j9YO8HD15Ps=",
+  "dgSpecHash": "3/Mpb2YM5i0=",
   "success": true,
   "projectFilePath": "D:\\DO_AN_C#\\FoodStreet\\FoodStreet.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Admin\\.nuget\\packages\\communitytoolkit.maui\\12.3.0\\communitytoolkit.maui.12.3.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\communitytoolkit.maui.core\\12.3.0\\communitytoolkit.maui.core.12.3.0.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\communitytoolkit.mvvm\\8.3.2\\communitytoolkit.mvvm.8.3.2.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\elasticsearch.net\\7.17.5\\elasticsearch.net.7.17.5.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\googlegson\\2.13.1.1\\googlegson.2.13.1.1.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.data.sqlite.core\\8.0.8\\microsoft.data.sqlite.core.8.0.8.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.extensions.configuration\\10.0.0\\microsoft.extensions.configuration.10.0.0.nupkg.sha512",
@@ -36,6 +37,7 @@
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.web.webview2\\1.0.3179.45\\microsoft.web.webview2.1.0.3179.45.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.windows.sdk.buildtools\\10.0.22621.756\\microsoft.windows.sdk.buildtools.10.0.22621.756.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\microsoft.windowsappsdk\\1.7.250909003\\microsoft.windowsappsdk.1.7.250909003.nupkg.sha512",
+    "C:\\Users\\Admin\\.nuget\\packages\\nest\\7.17.5\\nest.7.17.5.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\sqlite-net-pcl\\1.9.172\\sqlite-net-pcl.1.9.172.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\sqlitepclraw.bundle_green\\2.1.10\\sqlitepclraw.bundle_green.2.1.10.nupkg.sha512",
     "C:\\Users\\Admin\\.nuget\\packages\\sqlitepclraw.core\\2.1.10\\sqlitepclraw.core.2.1.10.nupkg.sha512",

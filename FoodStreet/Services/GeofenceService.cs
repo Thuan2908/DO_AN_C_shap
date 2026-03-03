@@ -7,15 +7,21 @@ public class GeofenceService
     {
         foreach (var poi in pois)
         {
-            var distance = Location.CalculateDistance(
+            var distanceKm = Location.CalculateDistance(
                 userLocation,
                 new Location(poi.Latitude, poi.Longitude),
-               DistanceUnits.Kilometers);
+                DistanceUnits.Kilometers);
 
-            if (distance <= poi.Radius)
+            var distanceMeters = distanceKm * 1000;
+            Console.WriteLine($"User: {userLocation.Latitude}, {userLocation.Longitude}");
+            Console.WriteLine($"POI: {poi.Latitude}, {poi.Longitude}");
+            Console.WriteLine($"khoảng cách: {distanceMeters} m");
+
+            if (distanceMeters <= poi.Radius)
                 return poi;
         }
 
         return null;
     }
 }
+

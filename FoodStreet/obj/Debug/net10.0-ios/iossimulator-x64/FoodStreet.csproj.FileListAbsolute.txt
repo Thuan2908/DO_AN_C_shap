@@ -4,6 +4,7 @@ D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\FoodStreet.pdb
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\CommunityToolkit.Maui.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\CommunityToolkit.Maui.Core.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\CommunityToolkit.Mvvm.dll
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\Elasticsearch.Net.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\Microsoft.Data.Sqlite.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\Microsoft.Extensions.Configuration.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\Microsoft.Extensions.Configuration.Abstractions.dll
@@ -22,6 +23,7 @@ D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\Microsoft.Maui.Con
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\Microsoft.Maui.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\Microsoft.Maui.Essentials.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\Microsoft.Maui.Graphics.dll
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\Nest.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\SQLite-net.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\SQLitePCLRaw.batteries_v2.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-ios\iossimulator-x64\SQLitePCLRaw.core.dll

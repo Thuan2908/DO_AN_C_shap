@@ -12,7 +12,7 @@ namespace FoodStreet.PageModels
         private readonly LocationService locationService = new();
         GeofenceService geofenceService = new();
         List<Poi> poiCache = new();
-       
+        NarrationService narrationService = new();
         public ObservableCollection<Poi> Pois { get; set; } = new();
 
         public MainPageModel()
@@ -44,14 +44,15 @@ namespace FoodStreet.PageModels
 
         void OnLocationChanged(Location loc)
         {
-            Console.WriteLine($"Lat: {loc.Latitude}");
-            Console.WriteLine($"Lng: {loc.Longitude}");
+            //Console.WriteLine($"Lat: {loc.Latitude}");
+            //Console.WriteLine($"Lng: {loc.Longitude}");
 
             var poi = geofenceService.CheckNearby(loc, poiCache);
 
             if (poi != null)
             {
                 Console.WriteLine($" Đã vào POI: {poi.Name}");
+                _ = narrationService.SpeakAsync(poi);
             }
         }
 
@@ -68,39 +69,88 @@ namespace FoodStreet.PageModels
         //    }
         //}
 
+        //async Task Load()
+        //{
+        //    await repo.Init();
+
+        //    var list = await repo.GetAll();
+
+        //    if (list.Count == 0)
+        //    {
+        //        await repo.Insert(new Poi
+        //        {
+        //            Name = "Bánh tráng Vĩnh Khánh",
+        //            Latitude = 10.761573,
+        //            Longitude = 106.702549,
+        //            Radius = 100,
+        //            Priority = 1,
+        //            Description = "Quán nổi tiếng",
+        //            TtsScript = "Bạn đang đến khu bánh tráng Vĩnh Khánh"
+        //        });
+
+        //        list = await repo.GetAll();
+        //    }
+
+        //    MainThread.BeginInvokeOnMainThread(() =>
+        //    {
+        //        Pois.Clear();
+
+        //        foreach (var poi in list)
+        //            Pois.Add(poi);
+        //    });
+
+        //    Console.WriteLine("POI loaded: " + list.Count);
+        //    poiCache = list;
+        //}
         async Task Load()
         {
             await repo.Init();
 
             var list = await repo.GetAll();
 
-            if (list.Count == 0)
+            var existing = list
+                .FirstOrDefault(p => p.Name == "Bánh tráng Vĩnh Khánh");
+
+            if (existing != null)
             {
+                // Cập nhật lại tọa độ nếu đã tồn tại
+                existing.Latitude = 10.761573;
+                existing.Longitude = 106.702549;
+                existing.Radius = 100;
+                existing.Priority = 1;
+                existing.Description = "Quán nổi tiếng";
+                existing.TtsScript = "Bạn đang đến khu bánh tráng Vĩnh Khánh";
+
+                await repo.Update(existing);
+            }
+            else
+            {
+                // Insert nếu chưa có
                 await repo.Insert(new Poi
                 {
                     Name = "Bánh tráng Vĩnh Khánh",
-                    Latitude = 10.764221,
-                    
-                    Longitude = 106.701187,
-                    Radius = 1,
+                    Latitude = 10.761573,
+                    Longitude = 106.702549,
+                    Radius = 100,
                     Priority = 1,
                     Description = "Quán nổi tiếng",
                     TtsScript = "Bạn đang đến khu bánh tráng Vĩnh Khánh"
                 });
-
-                list = await repo.GetAll();
             }
+
+            // Load lại sau khi update/insert
+            list = await repo.GetAll();
 
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 Pois.Clear();
-
                 foreach (var poi in list)
                     Pois.Add(poi);
             });
 
-            Console.WriteLine("POI loaded: " + list.Count);
             poiCache = list;
+
+            Console.WriteLine("POI loaded: " + list.Count);
         }
     }
 }

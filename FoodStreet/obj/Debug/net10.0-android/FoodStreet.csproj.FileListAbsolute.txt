@@ -167,6 +167,10 @@ D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\da\Micros
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\de\Microsoft.Maui.Controls.resources.dll
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\de\Microsoft.Maui.Controls.resources.jlo.xml
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\de\Microsoft.Maui.Controls.resources.typemap.xml
+D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\Elasticsearch.Net.dll
+D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\Elasticsearch.Net.jlo.xml
+D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\Elasticsearch.Net.pdb
+D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\Elasticsearch.Net.typemap.xml
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\el\Microsoft.Maui.Controls.resources.dll
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\el\Microsoft.Maui.Controls.resources.jlo.xml
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\el\Microsoft.Maui.Controls.resources.typemap.xml
@@ -322,6 +326,10 @@ D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\ms\Micros
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\nb\Microsoft.Maui.Controls.resources.dll
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\nb\Microsoft.Maui.Controls.resources.jlo.xml
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\nb\Microsoft.Maui.Controls.resources.typemap.xml
+D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\Nest.dll
+D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\Nest.jlo.xml
+D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\Nest.pdb
+D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\Nest.typemap.xml
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\netstandard.dll
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\netstandard.jlo.xml
 D:\DO_AN_C#\FoodStreet\obj\Debug\net10.0-android\android\assets\x86_64\netstandard.typemap.xml

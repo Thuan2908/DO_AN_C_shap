@@ -93,6 +93,10 @@
               "version": "[10.0.3, )",
               "autoReferenced": true
             },
+            "NEST": {
+              "target": "Package",
+              "version": "[7.17.5, )"
+            },
             "SQLitePCLRaw.bundle_green": {
               "target": "Package",
               "version": "[2.1.10, )"
@@ -432,6 +436,10 @@
               "target": "Package",
               "version": "[10.0.3, )",
               "autoReferenced": true
+            },
+            "NEST": {
+              "target": "Package",
+              "version": "[7.17.5, )"
             },
             "SQLitePCLRaw.bundle_green": {
               "target": "Package",
@@ -773,6 +781,10 @@
               "version": "[10.0.3, )",
               "autoReferenced": true
             },
+            "NEST": {
+              "target": "Package",
+              "version": "[7.17.5, )"
+            },
             "SQLitePCLRaw.bundle_green": {
               "target": "Package",
               "version": "[2.1.10, )"
@@ -1107,6 +1119,10 @@
             "Microsoft.Maui.Controls": {
               "target": "Package",
               "version": "[10.0.20, )"
+            },
+            "NEST": {
+              "target": "Package",
+              "version": "[7.17.5, )"
             },
             "SQLitePCLRaw.bundle_green": {
               "target": "Package",

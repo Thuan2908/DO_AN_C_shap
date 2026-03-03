@@ -27,5 +27,9 @@ public class PoiRepository
 
     public Task<int> Insert(Poi poi)
         => db.InsertAsync(poi);
+    public Task<int> Update(Poi poi)
+
+        => db.UpdateAsync(poi);
+    
 }
 
