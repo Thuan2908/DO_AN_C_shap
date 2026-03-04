@@ -349,11 +349,13 @@ D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.E
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.Graphics.Canvas.Interop.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.IO.RecyclableMemoryStream.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.Maui.Controls.dll
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.Maui.Controls.Maps.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.Maui.Controls.Xaml.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.Maui.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.Maui.Essentials.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.Maui.Graphics.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.Maui.Graphics.Win2D.WinUI.Desktop.dll
+D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.Maui.Maps.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.Graphics.Imaging.Projection.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.InteractiveExperiences.Projection.dll
 D:\DO_AN_C#\FoodStreet\bin\Debug\net10.0-windows10.0.19041.0\win-x64\Microsoft.Security.Authentication.OAuth.Projection.dll

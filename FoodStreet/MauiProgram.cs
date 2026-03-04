@@ -11,6 +11,7 @@ namespace FoodStreet
             var builder = MauiApp.CreateBuilder();
             builder
                 .UseMauiApp<App>()
+                  .UseMauiMaps()
                 .UseMauiCommunityToolkit()
                 .ConfigureSyncfusionToolkit()
                 .ConfigureMauiHandlers(handlers =>
