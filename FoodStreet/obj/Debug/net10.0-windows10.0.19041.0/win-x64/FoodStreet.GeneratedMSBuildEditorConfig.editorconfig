@@ -49,56 +49,6 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[D:/DO_AN_C\#/FoodStreet/Pages/Controls/AddButton.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = FoodStreet.Pages.Controls.AddButton.xaml
-build_metadata.AdditionalFiles.TargetPath = Pages\Controls\AddButton.xaml
-build_metadata.AdditionalFiles.RelativePath = Pages\Controls\AddButton.xaml
-build_metadata.AdditionalFiles.Inflator = Runtime
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
-[D:/DO_AN_C\#/FoodStreet/Pages/Controls/CategoryChart.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = FoodStreet.Pages.Controls.CategoryChart.xaml
-build_metadata.AdditionalFiles.TargetPath = Pages\Controls\CategoryChart.xaml
-build_metadata.AdditionalFiles.RelativePath = Pages\Controls\CategoryChart.xaml
-build_metadata.AdditionalFiles.Inflator = Runtime
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
-[D:/DO_AN_C\#/FoodStreet/Pages/Controls/ProjectCardView.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = FoodStreet.Pages.Controls.ProjectCardView.xaml
-build_metadata.AdditionalFiles.TargetPath = Pages\Controls\ProjectCardView.xaml
-build_metadata.AdditionalFiles.RelativePath = Pages\Controls\ProjectCardView.xaml
-build_metadata.AdditionalFiles.Inflator = Runtime
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
-[D:/DO_AN_C\#/FoodStreet/Pages/Controls/TagView.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = FoodStreet.Pages.Controls.TagView.xaml
-build_metadata.AdditionalFiles.TargetPath = Pages\Controls\TagView.xaml
-build_metadata.AdditionalFiles.RelativePath = Pages\Controls\TagView.xaml
-build_metadata.AdditionalFiles.Inflator = Runtime
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
-[D:/DO_AN_C\#/FoodStreet/Pages/Controls/TaskView.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = FoodStreet.Pages.Controls.TaskView.xaml
-build_metadata.AdditionalFiles.TargetPath = Pages\Controls\TaskView.xaml
-build_metadata.AdditionalFiles.RelativePath = Pages\Controls\TaskView.xaml
-build_metadata.AdditionalFiles.Inflator = Runtime
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
 [D:/DO_AN_C\#/FoodStreet/Pages/MainPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = FoodStreet.Pages.MainPage.xaml
@@ -109,41 +59,11 @@ build_metadata.AdditionalFiles.NoWarn =
 build_metadata.AdditionalFiles.EnableDiagnostics = 
 build_metadata.AdditionalFiles.LineInfo = 
 
-[D:/DO_AN_C\#/FoodStreet/Pages/ManageMetaPage.xaml]
+[D:/DO_AN_C\#/FoodStreet/Pages/MapPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = FoodStreet.Pages.ManageMetaPage.xaml
-build_metadata.AdditionalFiles.TargetPath = Pages\ManageMetaPage.xaml
-build_metadata.AdditionalFiles.RelativePath = Pages\ManageMetaPage.xaml
-build_metadata.AdditionalFiles.Inflator = Runtime
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
-[D:/DO_AN_C\#/FoodStreet/Pages/ProjectDetailPage.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = FoodStreet.Pages.ProjectDetailPage.xaml
-build_metadata.AdditionalFiles.TargetPath = Pages\ProjectDetailPage.xaml
-build_metadata.AdditionalFiles.RelativePath = Pages\ProjectDetailPage.xaml
-build_metadata.AdditionalFiles.Inflator = Runtime
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
-[D:/DO_AN_C\#/FoodStreet/Pages/ProjectListPage.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = FoodStreet.Pages.ProjectListPage.xaml
-build_metadata.AdditionalFiles.TargetPath = Pages\ProjectListPage.xaml
-build_metadata.AdditionalFiles.RelativePath = Pages\ProjectListPage.xaml
-build_metadata.AdditionalFiles.Inflator = Runtime
-build_metadata.AdditionalFiles.NoWarn = 
-build_metadata.AdditionalFiles.EnableDiagnostics = 
-build_metadata.AdditionalFiles.LineInfo = 
-
-[D:/DO_AN_C\#/FoodStreet/Pages/TaskDetailPage.xaml]
-build_metadata.AdditionalFiles.GenKind = Xaml
-build_metadata.AdditionalFiles.ManifestResourceName = FoodStreet.Pages.TaskDetailPage.xaml
-build_metadata.AdditionalFiles.TargetPath = Pages\TaskDetailPage.xaml
-build_metadata.AdditionalFiles.RelativePath = Pages\TaskDetailPage.xaml
+build_metadata.AdditionalFiles.ManifestResourceName = FoodStreet.Pages.MapPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\MapPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\MapPage.xaml
 build_metadata.AdditionalFiles.Inflator = Runtime
 build_metadata.AdditionalFiles.NoWarn = 
 build_metadata.AdditionalFiles.EnableDiagnostics = 
