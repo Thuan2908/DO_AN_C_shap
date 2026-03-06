@@ -3,20 +3,24 @@
   "WorkspaceRootPath": "D:\\DO_AN_C#\\FoodStreet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\pages\\mappage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:pages\\mappage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\pages\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:pages\\mainpage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\pages\\mappage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:pages\\mappage.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:appshell.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\pages\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:pages\\mainpage.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:appshell.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|d:\\do_an_c#\\foodstreet\\pages\\mappage.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{B9A3EADF-FE73-1E98-A910-52618D79DE0B}|FoodStreet.csproj|solutionrelative:pages\\mappage.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,54 +46,73 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AppShell.xaml.cs",
-              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\AppShell.xaml.cs",
-              "RelativeDocumentMoniker": "AppShell.xaml.cs",
-              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\AppShell.xaml.cs",
-              "RelativeToolTip": "AppShell.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAZAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T17:47:23.771Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "AppShell.xaml",
               "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\AppShell.xaml",
               "RelativeDocumentMoniker": "AppShell.xaml",
               "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\AppShell.xaml",
               "RelativeToolTip": "AppShell.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-05T17:22:37.82Z",
+              "WhenOpened": "2026-03-06T07:35:59.449Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MainPage.xaml",
+              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MainPage.xaml",
+              "RelativeDocumentMoniker": "Pages\\MainPage.xaml",
+              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MainPage.xaml",
+              "RelativeToolTip": "Pages\\MainPage.xaml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAYAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-03-06T07:31:37.845Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "MapPage.xaml.cs",
-              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MapPage.xaml.cs",
-              "RelativeDocumentMoniker": "Pages\\MapPage.xaml.cs",
-              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MapPage.xaml.cs",
-              "RelativeToolTip": "Pages\\MapPage.xaml.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAAwCAAAAAFAAAAAAAAAA==",
+              "Title": "MainPage.xaml.cs",
+              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MainPage.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\MainPage.xaml.cs",
+              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MainPage.xaml.cs",
+              "RelativeToolTip": "Pages\\MainPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-05T17:21:18.484Z",
+              "WhenOpened": "2026-03-06T07:31:31.797Z",
               "EditorCaption": ""
-            },
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "MapPage.xaml",
               "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MapPage.xaml",
               "RelativeDocumentMoniker": "Pages\\MapPage.xaml",
               "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MapPage.xaml",
               "RelativeToolTip": "Pages\\MapPage.xaml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAANAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-03-05T17:18:03.153Z",
+              "WhenOpened": "2026-03-06T07:31:26.291Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "MapPage.xaml.cs",
+              "DocumentMoniker": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MapPage.xaml.cs",
+              "RelativeDocumentMoniker": "Pages\\MapPage.xaml.cs",
+              "ToolTip": "D:\\DO_AN_C#\\FoodStreet\\Pages\\MapPage.xaml.cs",
+              "RelativeToolTip": "Pages\\MapPage.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-06T07:31:35.072Z",
               "EditorCaption": ""
             }
           ]

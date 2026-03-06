@@ -5,8 +5,16 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pages="clr-namespace:FoodStreet.Pages">
 
-    <ShellContent
-        Title="FoodStreet"
-        ContentTemplate="{DataTemplate pages:MapPage}" />
+    <TabBar>
+
+        <ShellContent
+            Title="Home"
+            ContentTemplate="{DataTemplate pages:MainPage}" />
+
+        <ShellContent
+            Title="Map"
+            ContentTemplate="{DataTemplate pages:MapPage}" />
+
+    </TabBar>
 
 </Shell>

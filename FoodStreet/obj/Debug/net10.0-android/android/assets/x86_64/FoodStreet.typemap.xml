@@ -1,4 +1,4 @@
-<api type="debug" assembly-name="FoodStreet" mvid="9a5f8bedf14644a89d3dfd9f879dbb44">
+<api type="debug" assembly-name="FoodStreet" mvid="26d8fdf6229b4db7b69909ef541ad59a">
   <java-to-managed>
     <entry java-name="crc644576c7880bd8dced/MainActivity" managed-name="FoodStreet.MainActivity, FoodStreet" managed-type-token-id="33554453" />
     <entry java-name="crc644576c7880bd8dced/MainApplication" managed-name="FoodStreet.MainApplication, FoodStreet" managed-type-token-id="33554454" />
