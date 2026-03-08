@@ -9,7 +9,7 @@ namespace FoodStreet.Pages
         public MainPage()
         {
             InitializeComponent();
-            BindingContext = new MainPageModel();
+            //BindingContext = new MainPageModel();
         }
     }
 

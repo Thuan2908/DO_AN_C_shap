@@ -47,12 +47,15 @@ namespace FoodStreet.PageModels
             //Console.WriteLine($"Lat: {loc.Latitude}");
             //Console.WriteLine($"Lng: {loc.Longitude}");
 
-            var poi = geofenceService.CheckNearby(loc, poiCache);
+            var pois = geofenceService.CheckNearby(loc, poiCache);
 
-            if (poi != null)
+            if (pois.Count > 0)
             {
-                Console.WriteLine($" Đã vào POI: {poi.Name}");
-                _ = narrationService.SpeakAsync(poi);
+                foreach (var poi in pois)
+                {
+                    Console.WriteLine($"Đã vào POI: {poi.Name}");
+                    _ = narrationService.SpeakAsync(poi);
+                }
             }
         }
 
@@ -116,7 +119,7 @@ namespace FoodStreet.PageModels
                 // Cập nhật lại tọa độ nếu đã tồn tại
                 existing.Latitude = 10.761573;
                 existing.Longitude = 106.702549;
-                existing.Radius = 100;
+                existing.Radius = 50;
                 existing.Priority = 1;
                 existing.Description = "Quán nổi tiếng";
                 existing.TtsScript = "Bạn đang đến khu bánh tráng Vĩnh Khánh";
@@ -131,7 +134,7 @@ namespace FoodStreet.PageModels
                     Name = "Bánh tráng Vĩnh Khánh",
                     Latitude = 10.761573,
                     Longitude = 106.702549,
-                    Radius = 100,
+                    Radius = 50,
                     Priority = 1,
                     Description = "Quán nổi tiếng",
                     TtsScript = "Bạn đang đến khu bánh tráng Vĩnh Khánh"

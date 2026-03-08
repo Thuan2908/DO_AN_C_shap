@@ -5,6 +5,7 @@
         public AppShell()
         {
             InitializeComponent();
+            BindingContext = new MainPageModel();
         }
     }
 }

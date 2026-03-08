@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="FoodStreet.Pages.PoiDetailPage">
+
+    <ScrollView>
+
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Label
+                x:Name="title"
+                FontSize="26"
+                FontAttributes="Bold"/>
+
+            <Label
+                x:Name="description"
+                FontSize="16"/>
+
+            <Button
+                Text="🔊 Nghe thuyết minh"
+                Clicked="OnSpeakClicked"/>
+
+        </VerticalStackLayout>
+
+    </ScrollView>
+
+</ContentPage>

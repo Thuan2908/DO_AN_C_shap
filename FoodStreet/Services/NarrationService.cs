@@ -1,5 +1,5 @@
 ﻿using FoodStreet.Models;
-
+using Microsoft.Maui.Media;
 namespace FoodStreet.Services;
 
 public class NarrationService
@@ -15,9 +15,9 @@ public class NarrationService
         if (isSpeaking)
             return;
 
-        // Nếu đã phát trong 2 phút → bỏ qua
+        // Nếu đã phát trong 6s → bỏ qua
         if (played.Contains(poi.Id) &&
-            (DateTime.Now - lastPlayedTime).TotalMinutes < 2)
+            (DateTime.Now - lastPlayedTime).TotalSeconds < 6)
             return;
 
         try
@@ -33,5 +33,8 @@ public class NarrationService
         {
             isSpeaking = false;
         }
+
+
     }
 }
+
