@@ -3,6 +3,7 @@ using FoodStreet.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using Microsoft.Maui.Devices.Sensors;
+using Microsoft.Maui.ApplicationModel;
 
 namespace FoodStreet.PageModels
 {
@@ -155,5 +156,33 @@ namespace FoodStreet.PageModels
 
             Console.WriteLine("POI loaded: " + list.Count);
         }
+
+        public void FilterPois(string keyword)
+        {
+            if (string.IsNullOrWhiteSpace(keyword))
+            {
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+                    Pois.Clear();
+                    foreach (var poi in poiCache)
+                        Pois.Add(poi);
+                });
+                return;
+            }
+
+            var filtered = poiCache
+                .Where(p => p.Name.ToLower().Contains(keyword.ToLower()))
+                .ToList();
+
+            MainThread.BeginInvokeOnMainThread(() =>
+            {
+                Pois.Clear();
+                foreach (var poi in filtered)
+                    Pois.Add(poi);
+            });
+        }
+
+
+
     }
 }

@@ -4,18 +4,23 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:pageModels="clr-namespace:FoodStreet.PageModels"
     xmlns:models="clr-namespace:FoodStreet.Models"
-    
+
     x:Class="FoodStreet.Pages.MainPage"
-    Title="Trang chủ">
+    Title="Danh sách điểm thuyết minh">
 
     <VerticalStackLayout Padding="20" Spacing="10">
 
-        <Label
-            Text="Danh sách điểm thuyết minh"
-            FontSize="22"
-            FontAttributes="Bold"/>
+    
 
-        <CollectionView ItemsSource="{Binding Pois}">
+        <!-- Thanh tìm kiếm -->
+        <SearchBar
+            Placeholder="Tìm quán...."
+            TextChanged="OnSearchTextChanged"/>
+
+        <CollectionView 
+    ItemsSource="{Binding Pois}"
+    SelectionMode="Single"
+    SelectionChanged="OnPoiSelected">
 
             <CollectionView.ItemTemplate>
 
@@ -26,12 +31,12 @@
                         <VerticalStackLayout>
 
                             <Label
-                                Text="{Binding Name}"
-                                FontAttributes="Bold"/>
+                        Text="{Binding Name}"
+                        FontAttributes="Bold"/>
 
                             <Label
-                                Text="{Binding Description}"
-                                FontSize="12"/>
+                        Text="{Binding Description}"
+                        FontSize="12"/>
 
                         </VerticalStackLayout>
 
@@ -42,7 +47,6 @@
             </CollectionView.ItemTemplate>
 
         </CollectionView>
-
     </VerticalStackLayout>
 
 </ContentPage>

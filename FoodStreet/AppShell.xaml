@@ -7,8 +7,10 @@
 
     <TabBar>
         <ShellContent
-    Title="Bản đồ"
-    ContentTemplate="{DataTemplate pages:MapPage}" />
+            x:Name="MapTab"
+            Title="Bản đồ"
+           
+            ContentTemplate="{DataTemplate pages:MapPage}" />
         
         <ShellContent
             Title="Trang chủ"

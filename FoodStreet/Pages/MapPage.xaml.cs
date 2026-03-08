@@ -12,6 +12,7 @@ public partial class MapPage : ContentPage
     LocationService locationService = new();
     GeofenceService geofenceService = new();
     List<Poi> poiList = new();
+    
     //public MapPage()
     //{
     //    InitializeComponent();
@@ -28,6 +29,8 @@ public partial class MapPage : ContentPage
 
         _ = locationService.StartAsync();
     }
+
+  
 
     async void LoadMap()
     {
@@ -66,6 +69,8 @@ public partial class MapPage : ContentPage
 
             map.MapElements.Add(circle);
         }
+
+       
     }
 
     void OnLocationChanged(Location loc)
