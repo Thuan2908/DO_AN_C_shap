@@ -1,9 +1,10 @@
-﻿using FoodStreet.Models;
-using FoodStreet.PageModels;
+﻿namespace FoodStreet.Pages;
+using FoodStreet.Models;
+using FoodStreet.Utilities;
 
-namespace FoodStreet.Pages
-{
-    public partial class MainPage : ContentPage
+
+
+public partial class MainPage : ContentPage
     {
         MainPageModel vm;
 
@@ -21,18 +22,17 @@ namespace FoodStreet.Pages
         }
 
         // Bấm vào quán -> mở map
-        private void OnPoiSelected(object sender, SelectionChangedEventArgs e)
+        private async void OnOpenMap(object sender, TappedEventArgs e)
         {
-            var poi = e.CurrentSelection.FirstOrDefault() as Poi;
+            var poi = e.Parameter as Poi;
 
             if (poi == null)
                 return;
 
-            // chuyển sang tab Bản đồ
-            //Shell.Current.CurrentItem = Shell.Current.Items[0];
-            Shell.Current.CurrentItem = ((AppShell)Shell.Current).MapTabContent;
+         
 
-            ((CollectionView)sender).SelectedItem = null;
-        }
+        // gửi POI cho MapPage
+        AppData.SelectedPoi = poi;
+        await Shell.Current.GoToAsync("//map");
     }
-}
+    }

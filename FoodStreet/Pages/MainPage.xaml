@@ -17,16 +17,12 @@
             Placeholder="Tìm quán...."
             TextChanged="OnSearchTextChanged"/>
 
-        <CollectionView 
-    ItemsSource="{Binding Pois}"
-    SelectionMode="Single"
-    SelectionChanged="OnPoiSelected">
+        <CollectionView ItemsSource="{Binding Pois}">
 
             <CollectionView.ItemTemplate>
-
                 <DataTemplate>
 
-                    <Frame Padding="10" Margin="0,5">
+                    <Border Padding="10" Margin="0,5">
 
                         <VerticalStackLayout>
 
@@ -38,12 +34,24 @@
                         Text="{Binding Description}"
                         FontSize="12"/>
 
+                            <!-- LINK MAP -->
+                            <Label
+                        Text="Xem trên bản đồ"
+                        TextColor="Blue">
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                Tapped="OnOpenMap"
+                                CommandParameter="{Binding .}" />
+                                </Label.GestureRecognizers>
+
+                            </Label>
+
                         </VerticalStackLayout>
 
-                    </Frame>
+                    </Border>
 
                 </DataTemplate>
-
             </CollectionView.ItemTemplate>
 
         </CollectionView>

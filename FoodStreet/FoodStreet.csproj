@@ -83,7 +83,6 @@
 	<ItemGroup>
 	  <Folder Include="Data\" />
 	  <Folder Include="Pages\Controls\" />
-	  <Folder Include="Utilities\" />
 	</ItemGroup>
 	
 </Project>

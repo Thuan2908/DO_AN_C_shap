@@ -44,8 +44,8 @@ public class GeofenceService
 
             var distanceMeters = distanceKm * 1000;
 
-            Console.WriteLine($"User: {userLocation.Latitude}, {userLocation.Longitude}");
-            Console.WriteLine($"POI: {poi.Latitude}, {poi.Longitude}");
+            //Console.WriteLine($"User: {userLocation.Latitude}, {userLocation.Longitude}");
+            //Console.WriteLine($"POI: {poi.Latitude}, {poi.Longitude}");
             Console.WriteLine($"Khoảng cách: {distanceMeters} m");
 
             if (distanceMeters <= poi.Radius)

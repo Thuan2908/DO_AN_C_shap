@@ -1,8 +1,8 @@
 ﻿using FoodStreet.Models;
-using FoodStreet.Services;
+
 using Microsoft.Maui.Controls.Maps;
 using Microsoft.Maui.Maps;
-
+using FoodStreet.Utilities;
 namespace FoodStreet.Pages;
 
 public partial class MapPage : ContentPage
@@ -13,24 +13,29 @@ public partial class MapPage : ContentPage
     GeofenceService geofenceService = new();
     List<Poi> poiList = new();
     
+  
     //public MapPage()
     //{
     //    InitializeComponent();
     //    //BindingContext = new MainPageModel();
+    //    locationService.OnLocationChanged += OnLocationChanged;
+
     //    LoadMap();
+
+    //    _ = locationService.StartAsync();
     //}
     public MapPage()
     {
         InitializeComponent();
-        //BindingContext = new MainPageModel();
+
         locationService.OnLocationChanged += OnLocationChanged;
+
 
         LoadMap();
 
         _ = locationService.StartAsync();
     }
 
-  
 
     async void LoadMap()
     {
@@ -73,6 +78,28 @@ public partial class MapPage : ContentPage
        
     }
 
+
+    protected override void OnAppearing()
+    {
+        base.OnAppearing();
+
+        if (AppData.SelectedPoi != null)
+        {
+            FocusPoi(AppData.SelectedPoi);
+        }
+    }
+
+    void FocusPoi(Poi poi)
+    {
+        var location = new Location(poi.Latitude, poi.Longitude);
+
+        map.MoveToRegion(
+            MapSpan.FromCenterAndRadius(
+                location,
+                Distance.FromMeters(200)));
+    }
+
+
     void OnLocationChanged(Location loc)
     {
         var nearbyPois = geofenceService.CheckNearby(loc, poiList);
@@ -102,4 +129,8 @@ public partial class MapPage : ContentPage
             }
         }
     }
+
+
+
+
 }

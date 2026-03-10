@@ -6,19 +6,21 @@
     xmlns:pages="clr-namespace:FoodStreet.Pages">
 
     <TabBar>
+
         <ShellContent
-            x:Name="MapTab"
+            Route="map"
             Title="Bản đồ"
-           
             ContentTemplate="{DataTemplate pages:MapPage}" />
-        
+
         <ShellContent
+            Route="home"
             Title="Trang chủ"
             ContentTemplate="{DataTemplate pages:MainPage}" />
+
         <ShellContent
+            Route="settings"
             Title="Cài đặt"
             ContentTemplate="{DataTemplate pages:SettingsPage}" />
-
 
     </TabBar>
 
