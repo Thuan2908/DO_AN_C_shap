@@ -1,0 +1,32 @@
+﻿using Microsoft.Maui.Controls;
+using Mapsui;
+using Mapsui.UI.Maui;
+using Mapsui.Tiling;
+
+namespace MauiApp1.Views
+{
+    public partial class MapPage : ContentPage
+    {
+        public MapPage()
+        {
+            InitializeComponent();
+
+            var map = new Mapsui.Map();
+            // Add OpenStreetMap tile layer (no API key required)
+            map.Layers.Add(OpenStreetMap.CreateTileLayer());
+
+            // Assign map to the control
+            MapView.Map = map;
+        }
+
+        private void ZoomIn_Clicked(object sender, EventArgs e)
+        {
+            MapView.Map?.Navigator?.ZoomIn();
+        }
+
+        private void ZoomOut_Clicked(object sender, EventArgs e)
+        {
+            MapView.Map?.Navigator?.ZoomOut();
+        }
+    }
+}

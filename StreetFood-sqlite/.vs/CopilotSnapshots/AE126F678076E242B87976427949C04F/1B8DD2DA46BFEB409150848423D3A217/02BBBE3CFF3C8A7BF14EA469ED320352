@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:mapsui="clr-namespace:Mapsui.UI.Maui;assembly=Mapsui.UI.Maui"
+             xmlns:maps="clr-namespace:Microsoft.Maui.Controls.Maps;assembly=Microsoft.Maui.Controls.Maps"
+             x:Class="MauiApp1.Views.MapPage"
+             BackgroundColor="#F2F2F2"
+             Title="Map">
+
+    <Grid RowDefinitions="Auto,Auto,*,Auto">
+        <!-- Header -->
+        <Grid Padding="16" Background="#FF6B35" Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="40" />
+            </Grid.ColumnDefinitions>
+            <StackLayout Spacing="2">
+                <Label Text="Phố Ẩm Thực" FontAttributes="Bold" TextColor="White" FontSize="18"/>
+                <Label Text="Thuyết minh tự động đa ngôn ngữ" FontSize="12" TextColor="#FFF0F0" />
+            </StackLayout>
+            <ImageButton Grid.Column="1" Source="dotnet_bot.png" BackgroundColor="Transparent" HeightRequest="36" WidthRequest="36"/>
+        </Grid>
+
+        <!-- Tabs -->
+        <Grid Row="1" BackgroundColor="White" Padding="8">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+            <StackLayout Orientation="Horizontal" Spacing="8">
+                <Frame HasShadow="False" Padding="8" BackgroundColor="#FFF7F2" CornerRadius="6">
+                    <Label Text="Bản đồ" />
+                </Frame>
+                <Frame HasShadow="False" Padding="8" BackgroundColor="Transparent" CornerRadius="6">
+                    <Label Text="Danh sách (4)" />
+                </Frame>
+            </StackLayout>
+            <Label Grid.Column="1" Text="Chưa có vị trí" VerticalOptions="Center" Opacity="0.7" />
+        </Grid>
+
+        <!-- Map area (Mapsui) -->
+        <Grid Row="2">
+            <mapsui:MapView x:Name="MapView" />
+
+            <!-- Zoom controls overlay (pinch-to-zoom is available) -->
+            <StackLayout Orientation="Vertical" VerticalOptions="Start" HorizontalOptions="Start" Margin="8" Spacing="6">
+                <Button x:Name="ZoomInButton" Text="+" WidthRequest="40" HeightRequest="40" Clicked="ZoomIn_Clicked" />
+                <Button x:Name="ZoomOutButton" Text="-" WidthRequest="40" HeightRequest="40" Clicked="ZoomOut_Clicked" />
+            </StackLayout>
+        </Grid>
+    </Grid>
+
+</ContentPage>

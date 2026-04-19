@@ -1,0 +1,27 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:zxing="clr-namespace:ZXing.Net.Maui.Controls;assembly=ZXing.Net.Maui.Controls"
+             x:Class="MauiApp1.Views.ScanPage"
+             Shell.NavBarIsVisible="False">
+
+    <Grid>
+
+        <!-- Camera + Scan -->
+        <zxing:CameraBarcodeReaderView
+            x:Name="cameraView"
+            BarcodesDetected="OnBarcodesDetected"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"/>
+
+        <!-- Nút Back -->
+        <Button Text="← Back"
+                Clicked="OnBackClicked"
+                BackgroundColor="#80000000"
+                TextColor="White"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                Margin="20"/>
+
+    </Grid>
+
+</ContentPage>

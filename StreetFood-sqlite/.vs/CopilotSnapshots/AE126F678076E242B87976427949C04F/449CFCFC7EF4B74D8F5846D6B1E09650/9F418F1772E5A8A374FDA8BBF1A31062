@@ -1,0 +1,46 @@
+﻿using System;
+using Microsoft.Maui.Controls;
+using Microsoft.Maui.Controls.Maps;
+
+namespace MauiApp1.Views
+{
+    public partial class MapPage : ContentPage
+    {
+        // Use radius (meters) to emulate zoom in/out by changing visible region
+        double currentRadiusMeters = 1000;
+        readonly double centerLat = 21.028511;
+        readonly double centerLng = 105.804817;
+
+        public MapPage()
+        {
+            InitializeComponent();
+
+            // Initialize native map region and pins
+            NativeMap.MapType = Microsoft.Maui.Controls.Maps.MapType.Street;
+            NativeMap.IsShowingUser = true;
+
+            var centerPos = new Microsoft.Maui.Controls.Maps.Position(centerLat, centerLng);
+            NativeMap.MoveToRegion(Microsoft.Maui.Controls.Maps.MapSpan.FromCenterAndRadius(centerPos, Microsoft.Maui.Controls.Maps.Distance.FromMeters(currentRadiusMeters)));
+
+            // Add sample pins
+            NativeMap.Pins.Add(new Microsoft.Maui.Controls.Maps.Pin { Label = "A", Location = centerPos });
+            NativeMap.Pins.Add(new Microsoft.Maui.Controls.Maps.Pin { Label = "B", Location = new Microsoft.Maui.Controls.Maps.Position(21.029511, 105.803817) });
+        }
+
+        private void ZoomIn_Clicked(object sender, EventArgs e)
+        {
+            // halve the radius to zoom in
+            currentRadiusMeters = Math.Max(50, currentRadiusMeters / 2);
+            var centerPos = new Microsoft.Maui.Controls.Maps.Position(centerLat, centerLng);
+            NativeMap.MoveToRegion(Microsoft.Maui.Controls.Maps.MapSpan.FromCenterAndRadius(centerPos, Microsoft.Maui.Controls.Maps.Distance.FromMeters(currentRadiusMeters)));
+        }
+
+        private void ZoomOut_Clicked(object sender, EventArgs e)
+        {
+            // double the radius to zoom out
+            currentRadiusMeters = Math.Min(50000, currentRadiusMeters * 2);
+            var centerPos = new Microsoft.Maui.Controls.Maps.Position(centerLat, centerLng);
+            NativeMap.MoveToRegion(Microsoft.Maui.Controls.Maps.MapSpan.FromCenterAndRadius(centerPos, Microsoft.Maui.Controls.Maps.Distance.FromMeters(currentRadiusMeters)));
+        }
+    }
+}

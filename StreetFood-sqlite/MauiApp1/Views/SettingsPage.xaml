@@ -1,0 +1,155 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:res="clr-namespace:MauiApp1.Resources.Languages"
+             x:Class="MauiApp1.Views.SettingsPage"
+             Title="{x:Static res:AppResources.Settings}"
+             BackgroundColor="{AppThemeBinding Light=White, Dark=#121212}">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="30">
+
+            <!-- Volume -->
+            <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="20">
+
+                <VerticalStackLayout>
+                    <Label x:Name="volumeLabel"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+
+                    <Slider x:Name="volumeSlider"
+                            Minimum="0"
+                            Maximum="100"
+                            ValueChanged="VolumeChanged"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- Speed -->
+            <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="20">
+
+                <VerticalStackLayout>
+                    <Label x:Name="speedLabel"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+
+                    <Slider x:Name="speedSlider"
+                            Minimum="0.5"
+                            Maximum="2"
+                            ValueChanged="SpeedChanged"/>
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- GPS -->
+            <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="20">
+
+                <Grid ColumnDefinitions="*,Auto">
+
+                    <Label Text="{x:Static res:AppResources.GPSBackground}"
+                           VerticalOptions="Center"
+                           TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+
+                    <Switch x:Name="gpsSwitch"
+                            Grid.Column="1"
+                            Toggled="GpsToggled"/>
+                </Grid>
+            </Border>
+
+            <!-- THEME -->
+            <!-- <Label Text="{x:Static res:AppResources.Theme}"
+       FontAttributes="Bold"
+       TextColor="{AppThemeBinding Light=Black, Dark=White}"/> -->
+
+            <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}"
+        StrokeShape="RoundRectangle 20"
+        Padding="18">
+
+                <Grid ColumnDefinitions="*,Auto"
+          VerticalOptions="Center">
+
+                    <Label x:Name="themeLabel"
+               Text="☀ Light"
+               VerticalOptions="Center"
+               TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+
+                    <Switch x:Name="themeSwitch"
+                Grid.Column="1"
+                Toggled="ThemeToggled"/>
+                </Grid>
+
+            </Border>
+
+            <!-- Language -->
+            <!-- <Label Text="{x:Static res:AppResources.Language}"
+                   FontAttributes="Bold"
+                   TextColor="{AppThemeBinding Light=Black, Dark=White}"/> -->
+
+            <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#1E1E1E}"
+                    StrokeShape="RoundRectangle 20"
+                    Padding="18">
+
+                <Grid ColumnDefinitions="Auto,*,Auto">
+
+                    <Label Text="🌐"/>
+
+                    <VerticalStackLayout Grid.Column="1">
+                        <Label Text="{x:Static res:AppResources.Language}"
+                               TextColor="{AppThemeBinding Light=Black, Dark=White}"/>
+
+                        <Label x:Name="languageLabel"
+                               FontSize="12"
+                               TextColor="Gray"/>
+                    </VerticalStackLayout>
+
+                    <Label Text="›" Grid.Column="2"/>
+                </Grid>
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ChooseLanguage"/>
+                </Border.GestureRecognizers>
+
+            </Border>
+
+            <!-- RESET -->
+           <!-- <Label Text="{x:Static res:AppResources.Reset}"
+       FontAttributes="Bold"
+       TextColor="{AppThemeBinding Light=Black, Dark=White}"/> -->
+
+            <Border BackgroundColor="{AppThemeBinding Light=#F9FAFF, Dark=#1E1E1E}"
+        Stroke="{AppThemeBinding Light=#2F80ED, Dark=#4DA3FF}"
+        StrokeThickness="1.5"
+        StrokeShape="RoundRectangle 20"
+        Padding="18">
+
+                <Grid ColumnDefinitions="40,*"
+          ColumnSpacing="10"
+          VerticalOptions="Center">
+
+                    <Label Text="🔄"
+               FontSize="22"
+               VerticalOptions="Center"
+               HorizontalOptions="Center"/>
+
+                    <Label Grid.Column="1"
+               Text="{x:Static res:AppResources.ResetDefault}"
+               VerticalOptions="Center"
+               TextColor="{AppThemeBinding Light=#2F80ED, Dark=#4DA3FF}"
+               FontAttributes="Bold"
+               FontSize="16"
+               LineBreakMode="WordWrap"/>
+                </Grid>
+
+                <Border.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ResetSettings"/>
+                </Border.GestureRecognizers>
+
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+
+</ContentPage>

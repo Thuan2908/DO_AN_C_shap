@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hệ thống quản trị</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- LOGIN SCREEN -->
+<div id="login-screen" style="
+  display:flex; align-items:center; justify-content:center;
+  position:fixed; inset:0; background:#0e0e10; z-index:999;
+  font-family:'Be Vietnam Pro',sans-serif;
+">
+  <div style="
+    background:#18181c; border:1px solid #2e2e38; border-radius:16px;
+    padding:40px; width:360px; text-align:center;
+  ">
+    <div style="font-size:36px; margin-bottom:12px">🍜</div>
+    <h2 style="font-size:20px; font-weight:700; color:#e8e4d8; margin-bottom:4px">Vĩnh Khánh CMS</h2>
+    <p style="font-size:13px; color:#5a5854; margin-bottom:28px">Đăng nhập để quản trị nội dung</p>
+
+    <div style="text-align:left; margin-bottom:14px">
+      <label style="display:block;font-size:11px;font-weight:700;color:#5a5854;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Email</label>
+      <input id="login-email" type="email" placeholder="admin@email.com" style="
+        width:100%; background:#222228; border:1px solid #2e2e38; border-radius:7px;
+        padding:10px 12px; color:#e8e4d8; font-family:'Be Vietnam Pro',sans-serif;
+        font-size:14px; outline:none; box-sizing:border-box;
+      ">
+    </div>
+    <div style="text-align:left; margin-bottom:20px">
+      <label style="display:block;font-size:11px;font-weight:700;color:#5a5854;text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">Mật khẩu</label>
+      <input id="login-pass" type="password" placeholder="••••••••" style="
+        width:100%; background:#222228; border:1px solid #2e2e38; border-radius:7px;
+        padding:10px 12px; color:#e8e4d8; font-family:'Be Vietnam Pro',sans-serif;
+        font-size:14px; outline:none; box-sizing:border-box;
+      ">
+    </div>
+
+    <p id="login-error" style="color:#e84040; font-size:12px; margin-bottom:12px; min-height:18px"></p>
+
+    <button id="login-btn" onclick="login()" style="
+      width:100%; background:#f5a623; color:#000; border:none; border-radius:7px;
+      padding:11px; font-family:'Be Vietnam Pro',sans-serif; font-size:14px;
+      font-weight:600; cursor:pointer; transition:background .15s;
+    " onmouseover="this.style.background='#f5b840'" onmouseout="this.style.background='#f5a623'">
+      Đăng nhập
+    </button>
+
+    <p style="font-size:11px; color:#5a5854; margin-top:20px; line-height:1.6">
+      Tài khoản được tạo qua<br>Firebase Console → Authentication
+    </p>
+  </div>
+</div>
+
+<!-- APP SHELL -->
+<div id="app-shell" style="display:none; width:100%; height:100vh">
+
+<!-- SIDEBAR -->
+<div id="sidebar">
+  <div class="brand">
+    <div class="brand-icon">🍜</div>
+    <h1>Vĩnh Khánh CMS</h1>
+    <p>Phố ẩm thực</p>
+  </div>
+  <nav>
+    <div class="nav-section">Tổng quan</div>
+    <div class="nav-item active" onclick="switchPanel('dashboard')">
+      <span class="icon">📊</span> Dashboard
+    </div>
+
+    <div class="nav-section">Nội dung</div>
+    <div class="nav-item" onclick="switchPanel('poi')">
+      <span class="icon">📍</span> Điểm POI
+      <span class="nav-badge" id="poi-count">8</span>
+    </div>
+    <div class="nav-item" onclick="switchPanel('audio')">
+      <span class="icon">🎵</span> Audio
+      <span class="nav-badge" id="audio-count">12</span>
+    </div>
+    <div class="nav-item" onclick="switchPanel('translations')">
+      <span class="icon">🌐</span> Bản dịch
+    </div>
+
+    <div class="nav-section">Vận hành</div>
+    <div class="nav-item" onclick="switchPanel('qr')">
+      <span class="icon">📱</span> QR Code
+    </div>
+    <div class="nav-item" onclick="switchPanel('tours')">
+      <span class="icon">🗺️</span> Tour
+    </div>
+    <div class="nav-item" onclick="switchPanel('history')">
+      <span class="icon">📋</span> Lịch sử
+      <span class="nav-badge" id="history-badge" style="background:var(--blue);color:#fff">24</span>
+    </div>
+    <div class="nav-item" onclick="switchPanel('access')">
+      <span class="icon">📊</span> Xem truy cập
+    </div>
+    <div class="nav-section">Hệ thống</div>
+    <div class="nav-item" onclick="switchPanel('settings')">
+      <span class="icon">⚙️</span> Cài đặt
+    </div>
+  </nav>
+  <div class="sidebar-footer">
+    <div class="user-row">
+      <div class="avatar" id="user-avatar">U</div>
+      <div class="user-info">
+        <div id="user-email" style="font-size:10px;color:#555"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="92e7e1f7e0d2f7fff3fbfebcf1fdff">[email&#160;protected]</a></div>
+      </div>
+    </div>
+  
+    <button onclick="logout()" class="btn-logout">
+      🚪 Đăng xuất
+    </button>
+  </div>
+</div>
+
+<!-- MAIN -->
+<div id="main">
+  <div id="topbar">
+    <h2 id="page-title">Dashboard</h2>
+    <div id="topbar-actions"></div>
+  </div>
+  <div id="content">
+
+    <!-- DASHBOARD -->
+    <div class="panel active" id="panel-dashboard">
+      <div class="config-banner">
+        ⚠️ <div>Kết nối Firebase: thay thế config trong thẻ <code>&lt;script&gt;</code> cuối file với thông tin Firebase project của bạn. Xem hướng dẫn ở panel <b>Cài đặt</b>.</div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card" style="--c:var(--accent)">
+          <div class="stat-icon">📍</div>
+          <div class="stat-label">Điểm POI</div>
+          <div class="stat-value"></div>
+          <div class="stat-sub">3 ngôn ngữ / điểm</div>
+        </div>
+        <div class="stat-card" style="--c:var(--blue)">
+          <div class="stat-icon">🎵</div>
+          <div class="stat-label">File Audio</div>
+          <div class="stat-value"></div>
+          <div class="stat-sub">VI + EN + JA</div>
+        </div>
+        <div class="stat-card" style="--c:var(--teal)">
+          <div class="stat-icon">👥</div>
+          <div class="stat-label">Lượt nghe hôm nay</div>
+          <div class="stat-value"></div>
+          <div class="stat-sub"></div>
+        </div>
+        <div class="stat-card" style="--c:var(--purple)">
+          <div class="stat-icon">📱</div>
+          <div class="stat-label">Lượt quét QR</div>
+          <div class="stat-value"></div>
+          <div class="stat-sub"></div>
+        </div>
+      </div>
+      <div class="dashboard-grid">
+        <div class="card">
+          <div class="card-title">Hoạt động gần đây</div>
+          <div class="history-item">
+            <div class="history-dot dot-play"></div>
+            <div style="flex:1"><b>Bún mắm Bà Năm</b> — vừa được phát<div class="sub">2 phút trước · Tiếng Việt</div></div>
+          </div>
+          <div class="history-item">
+            <div class="history-dot dot-scan"></div>
+            <div style="flex:1"><b>Bánh tráng trộn Hoa</b> — QR được quét<div class="sub">5 phút trước</div></div>
+          </div>
+          <div class="history-item">
+            <div class="history-dot dot-enter"></div>
+            <div style="flex:1"><b>Hủ tiếu Nam Vang</b> — Người dùng vào vùng<div class="sub">8 phút trước · GPS</div></div>
+          </div>
+          <div class="history-item">
+            <div class="history-dot dot-play"></div>
+            <div style="flex:1"><b>Chè bưởi Cô Lan</b> — vừa được phát<div class="sub">11 phút trước · 日本語</div></div>
+          </div>
+          <div class="history-item">
+            <div class="history-dot dot-scan"></div>
+            <div style="flex:1"><b>Cơm tấm Sài Gòn</b> — QR được quét<div class="sub">20 phút trước · English</div></div>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">Điểm POI phổ biến nhất</div>
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-size:16px">🥣</span>
+              <div style="flex:1">
+                <div style="font-size:13px;font-weight:500">Bún mắm Bà Năm</div>
+                <div style="height:5px;background:var(--border);border-radius:3px;margin-top:4px;overflow:hidden">
+                  <div style="height:100%;background:var(--accent);width:87%;border-radius:3px"></div>
+                </div>
+              </div>
+              <span style="font-family:var(--mono);font-size:12px;color:var(--text3)">87%</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-size:16px">🍜</span>
+              <div style="flex:1">
+                <div style="font-size:13px;font-weight:500">Hủ tiếu Nam Vang</div>
+                <div style="height:5px;background:var(--border);border-radius:3px;margin-top:4px;overflow:hidden">
+                  <div style="height:100%;background:var(--blue);width:72%;border-radius:3px"></div>
+                </div>
+              </div>
+              <span style="font-family:var(--mono);font-size:12px;color:var(--text3)">72%</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-size:16px">🍧</span>
+              <div style="flex:1">
+                <div style="font-size:13px;font-weight:500">Chè bưởi Cô Lan</div>
+                <div style="height:5px;background:var(--border);border-radius:3px;margin-top:4px;overflow:hidden">
+                  <div style="height:100%;background:var(--teal);width:64%;border-radius:3px"></div>
+                </div>
+              </div>
+              <span style="font-family:var(--mono);font-size:12px;color:var(--text3)">64%</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-size:16px">🌯</span>
+              <div style="flex:1">
+                <div style="font-size:13px;font-weight:500">Bánh tráng trộn Hoa</div>
+                <div style="height:5px;background:var(--border);border-radius:3px;margin-top:4px;overflow:hidden">
+                  <div style="height:100%;background:var(--purple);width:55%;border-radius:3px"></div>
+                </div>
+              </div>
+              <span style="font-family:var(--mono);font-size:12px;color:var(--text3)">55%</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- POI PANEL -->
+    <div class="panel" id="panel-poi">
+      <div class="toolbar">
+        <input class="search-input" placeholder="🔍  Tìm kiếm điểm POI..." oninput="filterPOI(this.value)">
+        <!-- <select class="filter-select" onchange="filterPOI()">
+          <option value="">Tất cả trạng thái</option>
+          <option>Đang hoạt động</option>
+          <option>Tạm dừng</option>
+        </select> -->
+        <button class="btn btn-primary" onclick="openAddPOI()">+ Thêm POI</button>
+      </div>
+      <div class="table-wrap">
+        <table id="poi-table">
+          <thead>
+            <tr>
+              <th>Tên điểm</th>
+              <th>Tọa độ</th>
+              <th>Bán kính</th>
+              <th>Ngôn ngữ</th>
+              <th>Trạng thái</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="poi-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- AUDIO PANEL -->
+    <div class="panel" id="panel-audio">
+      <div class="section-header">
+        <div class="section-title">Quản lý file audio</div>
+        <button class="btn btn-primary" onclick="openAddAudio()">+ Upload Audio</button>
+      </div>
+      <div id="audio-list"></div>
+    </div>
+
+    <!-- TRANSLATIONS PANEL -->
+    <div class="panel" id="panel-translations">
+      <div class="section-header">
+        <div class="section-title">📚 Quản lý bản dịch</div>
+        <div style="display:flex;gap:8px">
+          <!-- <button class="btn btn-primary btn-sm" onclick="openTranslateModal()">+ Dịch ngôn ngữ mới</button> -->
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Điểm POI</th>
+              <th>Tiếng Việt ✓</th>
+              <th>English</th>
+              <th>日本語</th>
+              <!-- <th>Thao tác</th> -->
+            </tr>
+          </thead>
+          <tbody id="trans-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- QR PANEL -->
+    <div class="panel" id="panel-qr">
+      <div class="section-header">
+        <div class="section-title">QR Code — Kích hoạt nội dung không cần GPS</div>
+        <button class="btn btn-outline btn-sm" onclick="downloadAllQR()">⬇ Tải tất cả QR</button>
+      </div>
+      <p style="color:var(--text3);font-size:13px;margin-bottom:16px">
+        Mỗi QR code chứa link <code>poi.html?id={id}</code> — khi quét sẽ mở trang chọn ngôn ngữ và nghe thuyết minh ngay trên trình duyệt.
+      </p>
+      <div class="qr-grid" id="qr-grid"></div>
+    </div>
+
+    <!-- TOURS PANEL -->
+    <div class="panel" id="panel-tours">
+      <div class="section-header">
+        <div class="section-title">Quản lý tour tham quan</div>
+        <button class="btn btn-primary" onclick="showToast('Tính năng tạo tour mới','success')">+ Tour mới</button>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+        <div class="card">
+          <div class="card-title">🗺️ Tour Vĩnh Khánh Classic</div>
+          <div style="font-size:12px;color:var(--text3);margin-bottom:12px">8 điểm dừng · ~90 phút · Toàn bộ phố</div>
+          <div class="tour-stops" id="tour-classic"></div>
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <button class="btn btn-outline btn-sm">Chỉnh sửa</button>
+            <button class="btn btn-success btn-sm">Kích hoạt</button>
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">⚡ Tour Nhanh (30 phút)</div>
+          <div style="font-size:12px;color:var(--text3);margin-bottom:12px">4 điểm dừng · ~30 phút · Nổi bật nhất</div>
+          <div class="tour-stops" id="tour-quick"></div>
+          <div style="margin-top:12px;display:flex;gap:8px">
+            <button class="btn btn-outline btn-sm">Chỉnh sửa</button>
+            <button class="btn btn-outline btn-sm">Kích hoạt</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HISTORY PANEL -->
+    <div class="panel" id="panel-history">
+      <div class="section-header">
+        <div class="section-title">Lịch sử sử dụng</div>
+        <div style="display:flex;gap:8px">
+          <input type="date" class="search-input" id="history-date-filter" style="width:160px" onchange="filterHistoryByDate()">
+          <!-- <button class="btn btn-outline btn-sm">Xuất báo cáo</button> -->
+        </div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Thời gian</th>
+              <th>Điểm POI</th>
+              <th>Ngôn ngữ</th>
+              <th>Nguồn</th>
+              <th>Thiết bị</th>
+            </tr>
+          </thead>
+          <tbody id="history-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- TRUY CẬP PANEL -->
+    <div class="panel" id="panel-access">
+      <div class="section-header">
+        <div class="section-title">Danh sách truy cập app</div>
+      </div>
+    
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Device ID</th>
+              <th>Thiết bị</th>
+              <th>Nền tảng</th>
+              <th>Lần hoạt động cuối</th>
+              <th>Trạng thái</th>
+            </tr>
+          </thead>
+          <tbody id="access-tbody"></tbody>
+        </table>
+      </div>
+    </div>
+    <!-- SETTINGS PANEL -->
+    <div class="panel" id="panel-settings">
+      <div style="max-width:600px">
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-title">🔥 Cấu hình Firebase</div>
+          <p style="font-size:13px;color:var(--text3);margin-bottom:14px">Thay thế đoạn code bên dưới vào cuối file HTML này để kết nối với Firebase project của bạn.</p>
+          <div style="background:var(--surface2);border-radius:7px;padding:14px;font-family:var(--mono);font-size:12px;color:var(--text2);line-height:1.8;border:1px solid var(--border)">
+            <span style="color:var(--text3)">// Thay thế config này</span><br>
+            <span style="color:var(--blue)">const</span> firebaseConfig = {<br>
+            &nbsp;&nbsp;apiKey: <span style="color:var(--teal)">"YOUR_API_KEY"</span>,<br>
+            &nbsp;&nbsp;authDomain: <span style="color:var(--teal)">"your-project.firebaseapp.com"</span>,<br>
+            &nbsp;&nbsp;projectId: <span style="color:var(--teal)">"your-project-id"</span>,<br>
+            &nbsp;&nbsp;storageBucket: <span style="color:var(--teal)">"your-project.appspot.com"</span>,<br>
+            &nbsp;&nbsp;messagingSenderId: <span style="color:var(--teal)">"123456789"</span>,<br>
+            &nbsp;&nbsp;appId: <span style="color:var(--teal)">"1:123:web:abc123"</span><br>
+            };
+          </div>
+        </div>
+        <div class="card" style="margin-bottom:16px">
+          <div class="card-title">🔗 Deep Link Schema</div>
+          <p style="font-size:13px;color:var(--text3);margin-bottom:10px">Trong AndroidManifest.xml và Info.plist của MAUI app, đăng ký scheme sau:</p>
+          <div style="background:var(--surface2);border-radius:7px;padding:12px;font-family:var(--mono);font-size:12px;color:var(--accent);border:1px solid var(--border)">
+            vinh-khanh://poi/{poiId}?lang={vi|en|ja}
+          </div>
+        </div>
+        <div class="card">
+          <div class="card-title">🌐 Ngôn ngữ hỗ trợ</div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap">
+            <span class="badge badge-active">🇻🇳 Tiếng Việt</span>
+            <span class="badge badge-active">🇬🇧 English</span>
+            <span class="badge badge-active">🇯🇵 日本語</span>
+           
+          </div>
+          <button class="btn btn-outline btn-sm" style="margin-top:12px">+ Thêm ngôn ngữ</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- MODAL: THÊM/SỬA POI -->
+<div class="modal-overlay" id="modal-poi">
+  <div class="modal modal-wide">
+    <div class="modal-header">
+      <h3 id="poi-modal-title">Thêm điểm POI mới</h3>
+      <button class="close-btn" onclick="closeModal('modal-poi')">✕</button>
+    </div>
+
+    <!-- Tên 3 ngôn ngữ + Nút dịch tự động -->
+    <div class="form-group">
+      <label class="form-label">Tên điểm *</label>
+      <div class="lang-tabs" style="margin-bottom:8px">
+        <div class="lang-tab active" onclick="switchLangTab(this,'name-vi')">🇻🇳 VI</div>
+        <div class="lang-tab" onclick="switchLangTab(this,'name-en')">🇬🇧 EN</div>
+        <div class="lang-tab" onclick="switchLangTab(this,'name-ja')">🇯🇵 JA</div>
+      </div>
+      <div id="name-vi-wrap">
+        <div style="display:flex;gap:8px;align-items:flex-end">
+          <input class="form-input" id="poi-name-vi" placeholder="VD: Bò Né 3 Ngon" style="flex:1">
+        </div>
+      </div>
+      <div id="name-en-wrap" style="display:none">
+        <div style="display:flex;gap:8px;align-items:flex-end">
+          <input class="form-input" id="poi-name-en" placeholder="Bo Ne 3 Ngon" style="flex:1">
+          <button class="btn btn-sm btn-outline" onclick="autoTranslatePOI('poi-name-vi','poi-name-en','en')">🔄</button>
+        </div>
+      </div>
+      <div id="name-ja-wrap" style="display:none">
+        <div style="display:flex;gap:8px;align-items:flex-end">
+          <input class="form-input" id="poi-name-ja" placeholder="ボネー3ゴン" style="flex:1">
+          <button class="btn btn-sm btn-outline" onclick="autoTranslatePOI('poi-name-vi','poi-name-ja','ja')">🔄</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hàng 2: Tọa độ + Bán kính + NearRadius -->
+    <div class="form-row-3">
+      <div class="form-group">
+        <label class="form-label">Vĩ độ (Latitude) *</label>
+        <input class="form-input" id="poi-lat" placeholder="10.761819" type="number" step="any">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Kinh độ (Longitude) *</label>
+        <input class="form-input" id="poi-lng" placeholder="106.702132" type="number" step="any">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Radius (m) *</label>
+        <input class="form-input" id="poi-radius" placeholder="10" type="number" value="10">
+      </div>
+    </div>
+
+    <div class="form-row-3">
+      <div class="form-group">
+        <label class="form-label">NearRadius (m)</label>
+        <input class="form-input" id="poi-nearradius" placeholder="0" type="number" value="0">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Priority</label>
+        <select class="form-select" id="poi-priority">
+          <option value="1">1 — Cao nhất</option>
+          <option value="2" selected>2 — Trung bình</option>
+          <option value="3">3 — Thấp</option>
+          <option value="4">4</option>
+          <option value="5">5 — Thấp nhất</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Rating ⭐</label>
+        <input class="form-input" id="poi-rating" placeholder="4.5" type="number" step="0.1" min="0" max="5" value="4.5">
+      </div>
+    </div>
+
+    <!-- Hàng 4: ImageUrl + Status -->
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Tên file ảnh</label>
+        <input class="form-input" type="text" id="poi-imageurl" placeholder="bone.webp">
+        <div style="font-size:11px;color:var(--text3);margin-top:5px">
+          Copy file ảnh vào <code style="background:var(--surface2);padding:1px 5px;border-radius:4px;font-family:var(--mono)">public/images/</code> rồi nhập tên file
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Trạng thái</label>
+        <select class="form-select" id="poi-status">
+          <option value="active">Đang hoạt động</option>
+          <option value="inactive">Tạm dừng</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Địa chỉ 3 ngôn ngữ + Nút dịch tự động -->
+    <div class="form-group">
+      <label class="form-label">Địa chỉ</label>
+      <div class="lang-tabs" style="margin-bottom:8px">
+        <div class="lang-tab active" onclick="switchLangTab(this,'addr-vi')">🇻🇳 VI</div>
+        <div class="lang-tab" onclick="switchLangTab(this,'addr-en')">🇬🇧 EN</div>
+        <div class="lang-tab" onclick="switchLangTab(this,'addr-ja')">🇯🇵 JA</div>
+      </div>
+      <div id="addr-vi-wrap">
+        <input class="form-input" id="poi-addr-vi" placeholder="40 Vĩnh Khánh, Phường 8, Quận 4, TP.HCM">
+      </div>
+      <div id="addr-en-wrap" style="display:none">
+        <div style="display:flex;gap:8px;align-items:flex-end">
+          <input class="form-input" id="poi-addr-en" placeholder="40 Vinh Khanh Street, Ward 8, District 4, HCMC" style="flex:1">
+          <button class="btn btn-sm btn-outline" onclick="autoTranslatePOI('poi-addr-vi','poi-addr-en','en')">🔄</button>
+        </div>
+      </div>
+      <div id="addr-ja-wrap" style="display:none">
+        <div style="display:flex;gap:8px;align-items:flex-end">
+          <input class="form-input" id="poi-addr-ja" placeholder="ホーチミン市..." style="flex:1">
+          <button class="btn btn-sm btn-outline" onclick="autoTranslatePOI('poi-addr-vi','poi-addr-ja','ja')">🔄</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Description 3 ngôn ngữ + Nút dịch tự động -->
+    <div class="form-group">
+      <label class="form-label">Mô tả ngắn (Description)</label>
+      <div class="lang-tabs" style="margin-bottom:8px">
+        <div class="lang-tab active" onclick="switchLangTab(this,'desc-vi')">🇻🇳 VI</div>
+        <div class="lang-tab" onclick="switchLangTab(this,'desc-en')">🇬🇧 EN</div>
+        <div class="lang-tab" onclick="switchLangTab(this,'desc-ja')">🇯🇵 JA</div>
+      </div>
+      <div id="desc-vi-wrap">
+        <input class="form-input" id="poi-desc-vi" placeholder="Gian hàng chuyên bán đồ ăn">
+      </div>
+      <div id="desc-en-wrap" style="display:none">
+        <div style="display:flex;gap:8px;align-items:flex-end">
+          <input class="form-input" id="poi-desc-en" placeholder="Food stall" style="flex:1">
+          <button class="btn btn-sm btn-outline" onclick="autoTranslatePOI('poi-desc-vi','poi-desc-en','en')">🔄</button>
+        </div>
+      </div>
+      <div id="desc-ja-wrap" style="display:none">
+        <div style="display:flex;gap:8px;align-items:flex-end">
+          <input class="form-input" id="poi-desc-ja" placeholder="屋台フード店" style="flex:1">
+          <button class="btn btn-sm btn-outline" onclick="autoTranslatePOI('poi-desc-vi','poi-desc-ja','ja')">🔄</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Detail 3 ngôn ngữ + Nút dịch tự động -->
+    <div class="form-group">
+      <label class="form-label">Mô tả dài (Detail)</label>
+      <div class="lang-tabs" style="margin-bottom:8px">
+        <div class="lang-tab active" onclick="switchLangTab(this,'detail-vi')">🇻🇳 VI</div>
+        <div class="lang-tab" onclick="switchLangTab(this,'detail-en')">🇬🇧 EN</div>
+        <div class="lang-tab" onclick="switchLangTab(this,'detail-ja')">🇯🇵 JA</div>
+      </div>
+      <div id="detail-vi-wrap">
+        <textarea class="form-textarea" id="poi-detail-vi" placeholder="Bò Né 3 Ngon phục vụ món bò né truyền thống..."></textarea>
+      </div>
+      <div id="detail-en-wrap" style="display:none">
+        <div style="display:flex;gap:8px;align-items:flex-end;flex-direction:column">
+          <textarea class="form-textarea" id="poi-detail-en" placeholder="Bo Ne 3 Ngon serves traditional sizzling beef..." style="flex:1"></textarea>
+          <button class="btn btn-sm btn-outline" style="align-self:flex-end" onclick="autoTranslatePOI('poi-detail-vi','poi-detail-en','en')">🔄 Dịch tự động</button>
+        </div>
+      </div>
+      <div id="detail-ja-wrap" style="display:none">
+        <div style="display:flex;gap:8px;align-items:flex-end;flex-direction:column">
+          <textarea class="form-textarea" id="poi-detail-ja" placeholder="ボネー3ゴンでは..." style="flex:1"></textarea>
+          <button class="btn btn-sm btn-outline" style="align-self:flex-end" onclick="autoTranslatePOI('poi-detail-vi','poi-detail-ja','ja')">🔄 Dịch tự động</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content / Script TTS 3 ngôn ngữ + Nút dịch tự động -->
+    <div class="form-group">
+      <label class="form-label">Script TTS (Câu thuyết minh)</label>
+      <div class="lang-tabs" style="margin-bottom:8px">
+        <div class="lang-tab active" onclick="switchLangTab(this,'content-vi')">🇻🇳 VI</div>
+        <div class="lang-tab" onclick="switchLangTab(this,'content-en')">🇬🇧 EN</div>
+        <div class="lang-tab" onclick="switchLangTab(this,'content-ja')">🇯🇵 JA</div>
+      </div>
+      <div id="content-vi-wrap">
+        <textarea class="form-textarea" id="poi-content-vi" placeholder="Bò né Sài Gòn — câu thuyết minh TTS..."></textarea>
+      </div>
+      <div id="content-en-wrap" style="display:none">
+        <div style="display:flex;gap:8px;align-items:flex-end;flex-direction:column">
+          <textarea class="form-textarea" id="poi-content-en" placeholder="Saigon sizzling beef..." style="flex:1"></textarea>
+          <button class="btn btn-sm btn-outline" style="align-self:flex-end" onclick="autoTranslatePOI('poi-content-vi','poi-content-en','en')">🔄 Dịch tự động</button>
+        </div>
+      </div>
+      <div id="content-ja-wrap" style="display:none">
+        <div style="display:flex;gap:8px;align-items:flex-end;flex-direction:column">
+          <textarea class="form-textarea" id="poi-content-ja" placeholder="サイゴン風ボネー..." style="flex:1"></textarea>
+          <button class="btn btn-sm btn-outline" style="align-self:flex-end" onclick="autoTranslatePOI('poi-content-vi','poi-content-ja','ja')">🔄 Dịch tự động</button>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;justify-content:flex-end;gap:10px;margin-top:8px">
+      <button class="btn btn-outline" onclick="closeModal('modal-poi')">Hủy</button>
+      <button class="btn btn-primary" onclick="savePOI()">💾 Lưu POI</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: VIEW TRANSLATION DETAILS -->
+<div class="modal-overlay" id="modal-view-translation">
+  <div class="modal" style="max-height:90vh;overflow-y:auto;width:720px">
+    <div class="modal-header">
+      <h3 id="view-trans-title">Xem bản dịch</h3>
+      <button class="close-btn" onclick="closeModal('modal-view-translation')">✕</button>
+    </div>
+
+    <div id="view-trans-content">
+      <!-- Nội dung sẽ được load động -->
+    </div>
+
+ 
+  </div>
+</div>
+<!-- MODAL: UPLOAD AUDIO -->
+<div class="modal-overlay" id="modal-audio">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Upload Audio</h3>
+      <button class="close-btn" onclick="closeModal('modal-audio')">✕</button>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Điểm POI</label>
+      <select class="form-select" id="audio-poi">
+        <option>Bún mắm Bà Năm</option>
+        <option>Hủ tiếu Nam Vang</option>
+        <option>Chè bưởi Cô Lan</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label">Ngôn ngữ</label>
+      <select class="form-select" id="audio-lang">
+        <option value="vi">🇻🇳 Tiếng Việt</option>
+        <option value="en">🇬🇧 English</option>
+        <option value="ja">🇯🇵 日本語</option>
+        
+      </select>
+    </div>
+    <div class="form-group">
+      <div class="audio-drop" onclick="document.getElementById('audio-file').click()">
+        🎵 Nhấn để chọn file audio<br>
+        <span style="font-size:11px;margin-top:4px;display:block">MP3, WAV, M4A · Tối đa 50MB</span>
+        <input type="file" id="audio-file" accept="audio/*" style="display:none" onchange="previewAudio(this)">
+      </div>
+      <div id="audio-preview" style="display:none;margin-top:10px">
+        <div class="audio-row">
+          <span class="audio-icon">🎵</span>
+          <div class="audio-info">
+            <div class="audio-name" id="audio-filename">—</div>
+            <div class="audio-meta" id="audio-filesize">—</div>
+          </div>
+        </div>
+        <audio id="audio-player" controls style="width:100%;margin-top:8px;border-radius:6px"></audio>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;gap:10px">
+      <button class="btn btn-outline" onclick="closeModal('modal-audio')">Hủy</button>
+      <button class="btn btn-primary" onclick="uploadAudio()">⬆ Upload lên Firebase</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast"></div>
+
+<!-- Firebase SDK -->
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script type="module" src="js/app.js"></script>
+</div><!-- /app-shell -->
+</body>
+</html>

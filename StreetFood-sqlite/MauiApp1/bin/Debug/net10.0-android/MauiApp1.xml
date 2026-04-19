@@ -1,0 +1,258 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MauiApp1</name>
+    </assembly>
+    <members>
+        <member name="T:MauiApp1.Models.FirebasePoiDto">
+            <summary>
+            DTO ánh xạ document Firestore → POI model.
+            Firestore dùng camelCase, model dùng PascalCase → cần JsonPropertyName.
+            </summary>
+        </member>
+        <member name="T:MauiApp1.Resources.Languages.AppResources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Audio">
+            <summary>
+              Looks up a localized string similar to Âm thanh.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.AudioDescription">
+            <summary>
+              Looks up a localized string similar to Nghe nội dung giới thiệu bằng âm thanh.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.AutoAudio">
+            <summary>
+              Looks up a localized string similar to Thuyết minh tự động.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.AutoDescription">
+            <summary>
+              Looks up a localized string similar to Thuyết minh tự động đa ngôn ngữ.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.AutoGuide">
+            <summary>
+              Looks up a localized string similar to Thuyết Minh Tự Động.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.AutoPlay">
+            <summary>
+              Looks up a localized string similar to Tự động phát thuyết minh khi vào vùng.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.AutoPlayDesc">
+            <summary>
+              Looks up a localized string similar to Tự động phát thuyết minh khi vào vùng.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Cancel">
+            <summary>
+              Looks up a localized string similar to Hủy.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.ChooseLanguage">
+            <summary>
+              Looks up a localized string similar to Chọn ngôn ngữ.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Detail">
+            <summary>
+              Looks up a localized string similar to Chi tiết.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.EnterArea">
+            <summary>
+              Looks up a localized string similar to Bạn đã vào khu vực.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.ExitArea">
+            <summary>
+              Looks up a localized string similar to Bạn đã rời khỏi khu vực.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.FoodStreet">
+            <summary>
+              Looks up a localized string similar to Phố Ẩm Thực.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.GPSBackground">
+            <summary>
+              Looks up a localized string similar to GPS chạy nền.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Introduction">
+            <summary>
+              Looks up a localized string similar to Giới thiệu.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Language">
+            <summary>
+              Looks up a localized string similar to Ngôn ngữ.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Latitude">
+            <summary>
+              Looks up a localized string similar to Vĩ độ.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.List">
+            <summary>
+              Looks up a localized string similar to Danh Sách.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.ListenNow">
+            <summary>
+              Looks up a localized string similar to Nghe ngay.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.ListTitle">
+            <summary>
+              Looks up a localized string similar to Danh sách.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Location">
+            <summary>
+              Looks up a localized string similar to Vị trí.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Longitude">
+            <summary>
+              Looks up a localized string similar to Kinh độ.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Map">
+            <summary>
+              Looks up a localized string similar to Bản Đồ.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.MapTitle">
+            <summary>
+              Looks up a localized string similar to Bản đồ.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.OK">
+            <summary>
+              Looks up a localized string similar to OK.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Radius">
+            <summary>
+              Looks up a localized string similar to  Bán kính.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Rating">
+            <summary>
+              Looks up a localized string similar to Đánh giá.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Reset">
+            <summary>
+              Looks up a localized string similar to Khôi phục.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.ResetConfirm">
+            <summary>
+              Looks up a localized string similar to Bạn muốn khôi phục cài đặt mặc định?.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.ResetDefault">
+            <summary>
+              Looks up a localized string similar to Reset về mặc định.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Settings">
+            <summary>
+              Looks up a localized string similar to Cài đặt.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.SettingsTitle">
+            <summary>
+              Looks up a localized string similar to Cài đặt.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Speak">
+            <summary>
+              Looks up a localized string similar to Phát.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.SpeechSpeed">
+            <summary>
+              Looks up a localized string similar to Tốc độ giọng nói.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Stop">
+            <summary>
+              Looks up a localized string similar to Dừng.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.SupportedLanguage">
+            <summary>
+              Looks up a localized string similar to Ngôn ngữ hỗ trợ.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Theme">
+            <summary>
+              Looks up a localized string similar to Giao diện.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.VietnamFood">
+            <summary>
+              Looks up a localized string similar to Món Việt.
+            </summary>
+        </member>
+        <member name="P:MauiApp1.Resources.Languages.AppResources.Volume">
+            <summary>
+              Looks up a localized string similar to Âm lượng.
+            </summary>
+        </member>
+        <member name="T:MauiApp1.Services.FirebaseService">
+            <summary>
+            Đồng bộ POI từ Firestore REST API (không cần SDK nặng).
+            Chiến lược: Firebase là nguồn chính, SQLite là cache offline.
+            </summary>
+        </member>
+        <member name="M:MauiApp1.Services.FirebaseService.FetchPoisAsync">
+            <summary>
+            Trả về danh sách POI từ Firestore.
+            Nếu mạng lỗi → trả về null (caller dùng SQLite cache).
+            </summary>
+        </member>
+        <member name="M:MauiApp1.Services.FirebaseService.LogHistoryAsync(System.String,System.String,System.String,System.String)">
+            <summary>
+            Ghi log khi người dùng nghe thuyết minh (GPS hoặc QR).
+            Fire-and-forget — không await ở caller để không block UI.
+            </summary>
+        </member>
+        <member name="T:MauiApp1.Services.PoiRepository">
+            <summary>
+            Nguồn dữ liệu POI duy nhất cho toàn app.
+            Chiến lược offline-first:
+              1. Load SQLite cache ngay lập tức (không chờ mạng)
+              2. Fetch Firebase background
+              3. Nếu Firebase trả data → cập nhật SQLite + báo UI reload
+            </summary>
+        </member>
+        <member name="T:MauiApp1.Resource">
+            <summary>
+            Android Resource Designer class.
+            Exposes the Android Resource designer assembly into the project Namespace.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,68 @@
+﻿using System;
+using Microsoft.Maui.Controls;
+
+namespace MauiApp1.Views
+{
+    public partial class MapPage : ContentPage
+    {
+        int currentZoom = 13;
+
+        public MapPage()
+        {
+            InitializeComponent();
+            LoadMapHtml();
+        }
+
+        void LoadMapHtml()
+        {
+            // Simple Leaflet HTML. In a real app consider embedding local file or using WebView2 on Windows.
+            var html = @"<!DOCTYPE html>
+<html>
+<head>
+<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"> 
+<link rel=\"stylesheet\" href=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.css\" />
+<style>html,body,#map{height:100%;margin:0;padding:0}</style>
+</head>
+<body>
+<div id=\"map\"></div>
+<script src=\"https://unpkg.com/leaflet@1.9.4/dist/leaflet.js\"></script>
+<script>
+  var map = L.map('map').setView([21.028511,105.804817]," + currentZoom + @");
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '© OpenStreetMap'
+  }).addTo(map);
+
+  var markers = [
+    { lat:21.028511, lng:105.804817, label: 'A' },
+    { lat:21.029511, lng:105.803817, label: 'B' }
+  ];
+  markers.forEach(function(m){ L.marker([m.lat,m.lng]).addTo(map).bindPopup(m.label); });
+
+  function setZoom(z){ map.setZoom(z); }
+  function getZoom(){ return map.getZoom(); }
+</script>
+</body>
+</html>";
+
+            mapWebView.Source = new HtmlWebViewSource { Html = html };
+        }
+
+        private async void ZoomIn_Clicked(object sender, EventArgs e)
+        {
+            currentZoom = Math.Min(19, currentZoom + 1);
+            await mapWebView.EvaluateJavaScriptAsync($"setZoom({currentZoom})");
+        }
+
+        private async void ZoomOut_Clicked(object sender, EventArgs e)
+        {
+            currentZoom = Math.Max(1, currentZoom - 1);
+            await mapWebView.EvaluateJavaScriptAsync($"setZoom({currentZoom})");
+        }
+
+        private void CloseGps_Clicked(object sender, EventArgs e)
+        {
+            GpsErrorFrame.IsVisible = false;
+        }
+    }
+}

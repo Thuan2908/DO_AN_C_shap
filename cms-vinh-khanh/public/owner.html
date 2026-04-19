@@ -1,0 +1,1199 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quản lý POI — Chủ Quán</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@300;400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+  :root {
+    --bg: #0e0e10;
+    --surface: #18181c;
+    --surface2: #222228;
+    --border: #2e2e38;
+    --accent: #f5a623;
+    --accent2: #e85d24;
+    --teal: #1db87a;
+    --blue: #3b8be0;
+    --purple: #8b6af0;
+    --text: #e8e4d8;
+    --text2: #9a9690;
+    --text3: #5a5854;
+    --danger: #e84040;
+    --success: #2ecc71;
+    --radius: 10px;
+    --font: 'Be Vietnam Pro', sans-serif;
+    --mono: 'Space Mono', monospace;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  /* ════ SIDEBAR ════ */
+  #sidebar {
+    width: 260px;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 0;
+  }
+
+  .sidebar-header {
+    padding: 24px 20px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .shop-name {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--accent);
+    margin-bottom: 4px;
+    word-break: break-word;
+  }
+
+  .shop-info {
+    font-size: 11px;
+    color: var(--text3);
+    line-height: 1.4;
+  }
+
+  .sidebar-nav {
+    flex: 1;
+    padding: 16px 12px;
+    overflow-y: auto;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text2);
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s;
+    margin-bottom: 4px;
+  }
+
+  .nav-item:hover {
+    background: var(--surface2);
+    color: var(--text);
+  }
+
+  .nav-item.active {
+    background: rgba(245, 166, 35, 0.15);
+    color: var(--accent);
+    font-weight: 600;
+  }
+
+  .nav-icon {
+    font-size: 18px;
+    width: 20px;
+  }
+
+  .sidebar-footer {
+    padding: 16px 20px;
+    border-top: 1px solid var(--border);
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  .user-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    color: #000;
+    flex-shrink: 0;
+  }
+
+  .user-info {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .user-email {
+    font-size: 12px;
+    color: var(--text2);
+    word-break: break-word;
+  }
+
+  .logout-btn {
+    width: 100%;
+    padding: 8px 12px;
+    background: var(--danger);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  .logout-btn:hover {
+    background: #c93333;
+  }
+
+  /* ════ MAIN ════ */
+  #main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  .topbar {
+    height: 60px;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    padding: 0 28px;
+    gap: 16px;
+  }
+
+  .topbar-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--text);
+    flex: 1;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    border-radius: 7px;
+    font-family: var(--font);
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.2s;
+  }
+
+  .btn-primary {
+    background: var(--accent);
+    color: #000;
+  }
+
+  .btn-primary:hover {
+    background: #f5b840;
+  }
+
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text2);
+  }
+
+  .btn-outline:hover {
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  .btn-sm {
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .btn-danger {
+    background: var(--danger);
+    color: #fff;
+    padding: 6px 12px;
+    font-size: 12px;
+  }
+
+  .btn-danger:hover {
+    background: #c93333;
+  }
+
+  .btn-success {
+    background: var(--success);
+    color: #000;
+  }
+
+  /* ════ CONTENT ════ */
+  #content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 28px;
+  }
+
+  .page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+  }
+
+  .page-header h1 {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .stat-box {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px;
+    border-top: 3px solid var(--accent);
+  }
+
+  .stat-label {
+    font-size: 11px;
+    color: var(--text3);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: 0.05em;
+  }
+
+  .stat-value {
+    font-size: 28px;
+    font-weight: 700;
+    font-family: var(--mono);
+    color: var(--accent);
+  }
+
+  .stat-desc {
+    font-size: 12px;
+    color: var(--text3);
+    margin-top: 4px;
+  }
+
+  /* ════ TABLE ════ */
+  .table-section {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+
+  .table-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .table-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  table th {
+    background: var(--surface2);
+    padding: 12px 20px;
+    text-align: left;
+    font-weight: 600;
+    color: var(--text2);
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--border);
+  }
+
+  table td {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+    font-size: 13px;
+  }
+
+  table tbody tr:hover {
+    background: var(--surface2);
+  }
+
+  table tbody tr:last-child td {
+    border-bottom: none;
+  }
+
+  .poi-name {
+    font-weight: 600;
+    color: var(--accent);
+  }
+
+  .poi-address {
+    color: var(--text2);
+    font-size: 12px;
+  }
+
+  .status-badge {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+
+  .status-active {
+    background: rgba(46, 204, 113, 0.2);
+    color: var(--success);
+  }
+
+  .status-inactive {
+    background: rgba(232, 64, 64, 0.2);
+    color: var(--danger);
+  }
+
+  .action-buttons {
+    display: flex;
+    gap: 6px;
+  }
+
+  .empty-state {
+    text-align: center;
+    padding: 60px 20px;
+    color: var(--text3);
+  }
+
+  .empty-icon {
+    font-size: 48px;
+    margin-bottom: 16px;
+    opacity: 0.6;
+  }
+
+  .empty-text {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
+  /* ════ MODAL ════ */
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    padding: 20px;
+  }
+
+  .modal.active {
+    display: flex;
+  }
+
+  .modal-content {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 32px;
+    max-width: 700px;
+    width: 100%;
+    animation: slideUp 0.3s ease;
+    position: relative;
+  }
+
+  @keyframes slideUp {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+  }
+
+  .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--text3);
+    transition: color 0.2s;
+  }
+
+  .modal-close:hover {
+    color: var(--text);
+  }
+
+  .modal-title {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: var(--text);
+  }
+
+  /* ════ FORM ════ */
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-label {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text2);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .form-input,
+  .form-select,
+  .form-textarea {
+    width: 100%;
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 7px;
+    padding: 10px 12px;
+    color: var(--text);
+    font-family: var(--font);
+    font-size: 13px;
+    transition: border-color 0.2s;
+  }
+
+  .form-input:focus,
+  .form-select:focus,
+  .form-textarea:focus {
+    outline: none;
+    border-color: var(--accent);
+    box-shadow: 0 0 0 3px rgba(245, 166, 35, 0.1);
+  }
+
+  .form-textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .form-row-3 {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  .button-group {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-top: 28px;
+  }
+
+  /* ════ TOAST ════ */
+  .toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 9999;
+  }
+
+  .toast {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 7px;
+    padding: 14px 16px;
+    margin-top: 10px;
+    font-size: 13px;
+    animation: slideIn 0.3s ease;
+    max-width: 320px;
+  }
+
+  @keyframes slideIn {
+    from { transform: translateX(400px); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+  }
+
+  .toast.success {
+    border-left-color: var(--success);
+  }
+
+  .toast.error {
+    border-left-color: var(--danger);
+  }
+
+  .toast.info {
+    border-left-color: var(--blue);
+  }
+
+  /* ════ RESPONSIVE ════ */
+  @media (max-width: 768px) {
+    #sidebar {
+      width: 200px;
+    }
+
+    .stats-bar {
+      grid-template-columns: 1fr;
+    }
+
+    .form-row,
+    .form-row-3 {
+      grid-template-columns: 1fr;
+    }
+
+    .table-section {
+      font-size: 12px;
+    }
+
+    table th,
+    table td {
+      padding: 10px 12px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ════════════════════════════ SIDEBAR ════════════════════════════ -->
+<div id="sidebar">
+  <div class="sidebar-header">
+    <div class="shop-name" id="shop-name">Quán của bạn</div>
+    <div class="shop-info" id="shop-info">Chủ quán</div>
+  </div>
+
+  <div class="sidebar-nav">
+    <div class="nav-item active" onclick="switchTab('pois')">
+      <span class="nav-icon">📍</span>
+      <span>Quản lý POI</span>
+    </div>
+    <div class="nav-item" onclick="switchTab('settings')">
+      <span class="nav-icon">⚙️</span>
+      <span>Thông tin quán</span>
+    </div>
+    <div class="nav-item" onclick="switchTab('qrcode')">
+      <span class="nav-icon">🔗</span>
+      <span>QR Code</span>
+    </div>
+  </div>
+
+  <div class="sidebar-footer">
+    <div class="user-section">
+      <div class="avatar" id="avatar">C</div>
+      <div class="user-info">
+        <div class="user-email" id="user-email">user@example.com</div>
+      </div>
+    </div>
+    <button class="logout-btn" onclick="logout()">🚪 Đăng xuất</button>
+  </div>
+</div>
+
+<!-- ════════════════════════════ MAIN ════════════════════════════ -->
+<div id="main">
+  <div class="topbar">
+    <div class="topbar-title" id="page-title">📍 Quản lý POI</div>
+  </div>
+
+  <div id="content">
+    <!-- ════ POI TAB ════ -->
+    <div id="pois-tab" class="tab-content active">
+      <div class="page-header">
+        <h1>Quản lý thông tin quán</h1>
+        <button class="btn btn-primary" onclick="openAddPOIModal()">
+          ➕ Thêm thông tin quán
+        </button>
+      </div>
+
+      <div class="stats-bar">
+        <div class="stat-box">
+          <div class="stat-label">📍 Tổng thông tin</div>
+          <div class="stat-value" id="stat-total-pois">0</div>
+          <div class="stat-desc">điểm thông tin</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">✨ Trạng thái</div>
+          <div class="stat-value" id="stat-active-pois">0</div>
+          <div class="stat-desc">đang hoạt động</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-label">⏱️ Cập nhật</div>
+          <div class="stat-value" id="stat-last-update">—</div>
+          <div class="stat-desc">lần cuối</div>
+        </div>
+      </div>
+
+      <div class="table-section">
+        <div class="table-header">
+          <div class="table-title">📋 Danh sách thông tin</div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Tên</th>
+              <th>Địa chỉ</th>
+              <th>Mô tả</th>
+              <th>Trạng thái</th>
+              <th style="text-align: right;">Hành động</th>
+            </tr>
+          </thead>
+          <tbody id="pois-table">
+            <tr><td colspan="5" style="text-align: center; color: var(--text3);">
+              <div class="empty-state">
+                <div class="empty-icon">📂</div>
+                <div class="empty-text">Chưa có thông tin quán nào</div>
+              </div>
+            </td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ════ SETTINGS TAB ════ -->
+    <div id="settings-tab" class="tab-content" style="display: none;">
+      <div class="page-header">
+        <h1>Thông tin quán</h1>
+      </div>
+
+      <div class="table-section" style="max-width: 600px;">
+        <div class="table-header">
+          <div class="table-title">ℹ️ Hồ sơ của bạn</div>
+        </div>
+        <div style="padding: 20px;">
+          <div class="form-group">
+            <label class="form-label">Tên quán</label>
+            <input type="text" id="profile-shop-name" class="form-input" readonly>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" id="profile-email" class="form-input" readonly>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Điện thoại</label>
+            <input type="tel" id="profile-phone" class="form-input" readonly>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Ngày tham gia</label>
+            <input type="text" id="profile-joined" class="form-input" readonly>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ════ QR CODE TAB ════ -->
+    <div id="qrcode-tab" class="tab-content" style="display: none;">
+      <div class="page-header">
+        <h1>QR Code POI</h1>
+      </div>
+
+      <div class="table-section">
+        <div class="table-header">
+          <div class="table-title">🔗 QR Code cho từng thông tin</div>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Tên</th>
+              <th>QR Code</th>
+              <th style="text-align: right;">Hành động</th>
+            </tr>
+          </thead>
+          <tbody id="qrcode-table">
+            <tr><td colspan="3" style="text-align: center; color: var(--text3);">
+              <div class="empty-state">
+                <div class="empty-icon">🔗</div>
+                <div class="empty-text">Chưa có POI nào để tạo QR Code</div>
+              </div>
+            </td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ MODAL ADD/EDIT POI ════════════════════════════ -->
+<div id="modal-poi" class="modal">
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal('modal-poi')">✕</button>
+    <div class="modal-title" id="modal-title">Thêm thông tin quán</div>
+
+    <div class="form-group">
+      <label class="form-label">Tên quán *</label>
+      <input type="text" id="poi-name" class="form-input" placeholder="Tên quán của bạn">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Địa chỉ *</label>
+      <input type="text" id="poi-address" class="form-input" placeholder="Địa chỉ đầy đủ">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Mô tả ngắn</label>
+      <input type="text" id="poi-description" class="form-input" placeholder="Mô tả ngắn về quán">
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Mô tả chi tiết</label>
+      <textarea id="poi-detail" class="form-textarea" placeholder="Mô tả chi tiết: giờ mở cửa, đặc sản, ..."></textarea>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label class="form-label">Latitude</label>
+        <input type="number" id="poi-lat" class="form-input" placeholder="10.761819" step="any">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Longitude</label>
+        <input type="number" id="poi-lng" class="form-input" placeholder="106.702132" step="any">
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Trạng thái</label>
+      <select id="poi-status" class="form-select">
+        <option value="active">✓ Đang hoạt động</option>
+        <option value="inactive">✕ Tạm dừng</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label class="form-label">Rating ⭐</label>
+      <input type="number" id="poi-rating" class="form-input" placeholder="4.5" step="0.1" min="0" max="5" value="4.5">
+    </div>
+
+    <div class="button-group">
+      <button class="btn btn-outline" onclick="closeModal('modal-poi')">Hủy</button>
+      <button class="btn btn-primary" onclick="savePOI()">💾 Lưu</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ MODAL QR CODE ════════════════════════════ -->
+<div id="modal-qr" class="modal">
+  <div class="modal-content" style="max-width: 400px; text-align: center;">
+    <button class="modal-close" onclick="closeModal('modal-qr')">✕</button>
+    <div class="modal-title" id="qr-modal-title">QR Code</div>
+    
+    <div id="qr-code-container" style="background: white; padding: 20px; border-radius: 10px; margin-bottom: 20px;"></div>
+    
+    <input type="text" id="qr-link" class="form-input" readonly style="margin-bottom: 12px;">
+    
+    <div style="display: flex; gap: 10px;">
+      <button class="btn btn-outline" style="flex: 1;" onclick="copyQRLink()">📋 Copy Link</button>
+      <button class="btn btn-primary" style="flex: 1;" onclick="downloadQR()">⬇️ Download</button>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════ TOAST ════════════════════════════ -->
+<div class="toast-container" id="toast-container"></div>
+
+<script>
+// ════════════════════════════════════════════════════
+// DEMO DATA
+// ════════════════════════════════════════════════════
+let currentOwner = {
+  id: 'owner1',
+  shopName: 'Quán Phở Minh',
+  email: 'owner1@example.com',
+  phone: '0912345678',
+  joinedDate: new Date('2024-01-15'),
+  status: 'active'
+};
+
+let poisData = [
+  {
+    id: '1',
+    name: 'Quán Phở Minh - Chi nhánh 1',
+    address: '123 Đường Lê Lợi, Phường Bến Nghé, Quận 1, TP.HCM',
+    description: 'Phở truyền thống hơn 20 năm',
+    detail: 'Mở từ 6h sáng đến 11h đêm. Phục vụ phở bò, phở gà, các món ăn kèm.',
+    lat: 10.7761,
+    lng: 106.6952,
+    status: 'active',
+    rating: 4.5,
+    createdAt: new Date('2024-01-20')
+  }
+];
+
+let editingPOI = null;
+
+// ════════════════════════════════════════════════════
+// INITIALIZATION
+// ════════════════════════════════════════════════════
+document.addEventListener('DOMContentLoaded', function() {
+  loadOwnerProfile();
+  renderPOIsTable();
+  updateStats();
+});
+
+// ════════════════════════════════════════════════════
+// UI FUNCTIONS
+// ════════════════════════════════════════════════════
+function switchTab(tabName) {
+  // Hide all tabs
+  document.querySelectorAll('.tab-content').forEach(tab => {
+    tab.style.display = 'none';
+  });
+
+  // Show selected tab
+  const tabId = `${tabName}-tab`;
+  const tab = document.getElementById(tabId);
+  if (tab) {
+    tab.style.display = 'block';
+  }
+
+  // Update nav items
+  document.querySelectorAll('.nav-item').forEach(item => {
+    item.classList.remove('active');
+  });
+  event.target.closest('.nav-item').classList.add('active');
+
+  // Update page title
+  const titles = {
+    pois: '📍 Quản lý POI',
+    settings: '⚙️ Thông tin quán',
+    qrcode: '🔗 QR Code POI'
+  };
+  document.getElementById('page-title').textContent = titles[tabName] || 'Dashboard';
+
+  // Load tab-specific content
+  if (tabName === 'qrcode') {
+    renderQRCodeTable();
+  } else if (tabName === 'settings') {
+    loadOwnerProfile();
+  }
+}
+
+function loadOwnerProfile() {
+  const avatar = (currentOwner.shopName || 'C').substring(0, 1).toUpperCase();
+  document.getElementById('avatar').textContent = avatar;
+  document.getElementById('shop-name').textContent = currentOwner.shopName;
+  document.getElementById('shop-info').textContent = '🏪 Chủ quán';
+  document.getElementById('user-email').textContent = currentOwner.email;
+
+  document.getElementById('profile-shop-name').value = currentOwner.shopName;
+  document.getElementById('profile-email').value = currentOwner.email;
+  document.getElementById('profile-phone').value = currentOwner.phone;
+  document.getElementById('profile-joined').value = currentOwner.joinedDate.toLocaleDateString('vi-VN');
+}
+
+function updateStats() {
+  const totalPois = poisData.length;
+  const activePois = poisData.filter(p => p.status === 'active').length;
+  const lastUpdate = poisData.length > 0 ? poisData[0].createdAt.toLocaleDateString('vi-VN') : '—';
+
+  document.getElementById('stat-total-pois').textContent = totalPois;
+  document.getElementById('stat-active-pois').textContent = activePois;
+  document.getElementById('stat-last-update').textContent = lastUpdate;
+}
+
+// ════════════════════════════════════════════════════
+// POI MANAGEMENT
+// ════════════════════════════════════════════════════
+function openAddPOIModal() {
+  editingPOI = null;
+  document.getElementById('modal-title').textContent = '➕ Thêm thông tin quán';
+  
+  document.getElementById('poi-name').value = '';
+  document.getElementById('poi-address').value = '';
+  document.getElementById('poi-description').value = '';
+  document.getElementById('poi-detail').value = '';
+  document.getElementById('poi-lat').value = '';
+  document.getElementById('poi-lng').value = '';
+  document.getElementById('poi-status').value = 'active';
+  document.getElementById('poi-rating').value = '4.5';
+
+  openModal('modal-poi');
+}
+
+function editPOI(poiId) {
+  const poi = poisData.find(p => p.id === poiId);
+  if (!poi) return;
+
+  editingPOI = poi;
+  document.getElementById('modal-title').textContent = '✏️ Chỉnh sửa thông tin';
+  
+  document.getElementById('poi-name').value = poi.name;
+  document.getElementById('poi-address').value = poi.address;
+  document.getElementById('poi-description').value = poi.description;
+  document.getElementById('poi-detail').value = poi.detail;
+  document.getElementById('poi-lat').value = poi.lat;
+  document.getElementById('poi-lng').value = poi.lng;
+  document.getElementById('poi-status').value = poi.status;
+  document.getElementById('poi-rating').value = poi.rating;
+
+  openModal('modal-poi');
+}
+
+function savePOI() {
+  const name = document.getElementById('poi-name').value.trim();
+  const address = document.getElementById('poi-address').value.trim();
+  const description = document.getElementById('poi-description').value.trim();
+  const detail = document.getElementById('poi-detail').value.trim();
+  const lat = parseFloat(document.getElementById('poi-lat').value);
+  const lng = parseFloat(document.getElementById('poi-lng').value);
+  const status = document.getElementById('poi-status').value;
+  const rating = parseFloat(document.getElementById('poi-rating').value) || 4.5;
+
+  if (!name || !address) {
+    showToast('Vui lòng nhập tên và địa chỉ!', 'error');
+    return;
+  }
+
+  if (editingPOI) {
+    // Update
+    Object.assign(editingPOI, {
+      name, address, description, detail, lat, lng, status, rating
+    });
+    showToast('Cập nhật thành công! ✓', 'success');
+  } else {
+    // Add new
+    const newPOI = {
+      id: 'poi_' + Date.now(),
+      name, address, description, detail, lat, lng, status, rating,
+      createdAt: new Date()
+    };
+    poisData.unshift(newPOI);
+    showToast('Thêm thông tin quán thành công! ✓', 'success');
+  }
+
+  closeModal('modal-poi');
+  renderPOIsTable();
+  updateStats();
+}
+
+function deletePOI(poiId) {
+  if (!confirm('⚠️ Bạn có chắc chắn muốn xóa thông tin này?')) return;
+
+  poisData = poisData.filter(p => p.id !== poiId);
+  showToast('Đã xóa thông tin quán!', 'success');
+  renderPOIsTable();
+  updateStats();
+}
+
+function renderPOIsTable() {
+  const tbody = document.getElementById('pois-table');
+
+  if (poisData.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="5">
+          <div class="empty-state">
+            <div class="empty-icon">📂</div>
+            <div class="empty-text">Chưa có thông tin quán nào</div>
+          </div>
+        </td>
+      </tr>
+    `;
+    return;
+  }
+
+  tbody.innerHTML = poisData.map(poi => `
+    <tr>
+      <td>
+        <div class="poi-name">${poi.name}</div>
+      </td>
+      <td>
+        <div class="poi-address">${poi.address}</div>
+      </td>
+      <td style="font-size: 12px; color: var(--text3);">
+        ${poi.description ? poi.description.substring(0, 40) + '...' : '—'}
+      </td>
+      <td>
+        <span class="status-badge ${poi.status === 'active' ? 'status-active' : 'status-inactive'}">
+          ${poi.status === 'active' ? '✓ Hoạt động' : '✕ Tạm dừng'}
+        </span>
+      </td>
+      <td style="text-align: right;">
+        <div class="action-buttons">
+          <button class="btn btn-sm btn-outline" onclick="editPOI('${poi.id}')">✏️ Sửa</button>
+          <button class="btn btn-sm btn-danger" onclick="deletePOI('${poi.id}')">🗑️ Xóa</button>
+        </div>
+      </td>
+    </tr>
+  `).join('');
+}
+
+// ════════════════════════════════════════════════════
+// QR CODE
+// ════════════════════════════════════════════════════
+function renderQRCodeTable() {
+  const tbody = document.getElementById('qrcode-table');
+
+  if (poisData.length === 0) {
+    tbody.innerHTML = `
+      <tr>
+        <td colspan="3">
+          <div class="empty-state">
+            <div class="empty-icon">🔗</div>
+            <div class="empty-text">Chưa có POI nào để tạo QR Code</div>
+          </div>
+        </td>
+      </tr>
+    `;
+    return;
+  }
+
+  tbody.innerHTML = poisData.map(poi => `
+    <tr>
+      <td>
+        <div class="poi-name">${poi.name}</div>
+      </td>
+      <td style="text-align: center;">
+        <button class="btn btn-sm btn-outline" onclick="showQRCode('${poi.id}')">
+          🔗 Xem
+        </button>
+      </td>
+      <td style="text-align: right;">
+        <button class="btn btn-sm btn-primary" onclick="downloadQRForPOI('${poi.id}')">
+          ⬇️ Download
+        </button>
+      </td>
+    </tr>
+  `).join('');
+}
+
+function showQRCode(poiId) {
+  const poi = poisData.find(p => p.id === poiId);
+  if (!poi) return;
+
+  const qrLink = `https://vinh-khanh.app/poi/${poiId}?owner=${currentOwner.id}`;
+  
+  document.getElementById('qr-modal-title').textContent = `🔗 QR Code — ${poi.name}`;
+  document.getElementById('qr-link').value = qrLink;
+
+  // Clear and generate QR code
+  const container = document.getElementById('qr-code-container');
+  container.innerHTML = '';
+  
+  new QRCode(container, {
+    text: qrLink,
+    width: 300,
+    height: 300,
+    colorDark: '#000',
+    colorLight: '#fff'
+  });
+
+  openModal('modal-qr');
+}
+
+function downloadQRForPOI(poiId) {
+  const poi = poisData.find(p => p.id === poiId);
+  if (!poi) return;
+
+  showQRCode(poiId);
+  setTimeout(() => downloadQR(), 500);
+}
+
+function copyQRLink() {
+  const link = document.getElementById('qr-link').value;
+  navigator.clipboard.writeText(link).then(() => {
+    showToast('📋 Đã copy link!', 'success');
+  });
+}
+
+function downloadQR() {
+  const canvas = document.querySelector('#qr-code-container canvas');
+  if (!canvas) return;
+
+  const link = document.createElement('a');
+  link.href = canvas.toDataURL('image/png');
+  link.download = `qrcode-${Date.now()}.png`;
+  link.click();
+  showToast('⬇️ Đang tải QR Code...', 'success');
+}
+
+// ════════════════════════════════════════════════════
+// MODAL HELPERS
+// ════════════════════════════════════════════════════
+function openModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) modal.classList.add('active');
+}
+
+function closeModal(modalId) {
+  const modal = document.getElementById(modalId);
+  if (modal) modal.classList.remove('active');
+}
+
+// ════════════════════════════════════════════════════
+// LOGOUT
+// ════════════════════════════════════════════════════
+function logout() {
+  if (confirm('🚪 Bạn có chắc chắn muốn đăng xuất?')) {
+    alert('Đã đăng xuất! Quay lại trang đăng nhập.');
+    // Redirect to login page
+    // window.location.href = 'index.html';
+  }
+}
+
+// ════════════════════════════════════════════════════
+// TOAST
+// ════════════════════════════════════════════════════
+function showToast(message, type = 'info') {
+  const container = document.getElementById('toast-container');
+  const toast = document.createElement('div');
+  toast.className = `toast ${type}`;
+  toast.textContent = message;
+  container.appendChild(toast);
+
+  setTimeout(() => toast.remove(), 3000);
+}
+
+// ════════════════════════════════════════════════════
+// MODAL OVERLAY CLOSE
+// ════════════════════════════════════════════════════
+document.querySelectorAll('.modal').forEach(modal => {
+  modal.addEventListener('click', function(e) {
+    if (e.target === this) {
+      this.classList.remove('active');
+    }
+  });
+});
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.modal.active').forEach(m => {
+      m.classList.remove('active');
+    });
+  }
+});
+</script>
+
+</body>
+</html>

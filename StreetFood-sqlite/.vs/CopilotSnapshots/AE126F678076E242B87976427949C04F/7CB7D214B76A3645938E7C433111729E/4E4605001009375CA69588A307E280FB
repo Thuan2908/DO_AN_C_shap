@@ -1,0 +1,53 @@
+﻿using Microsoft.Maui.Controls;
+using Mapsui.UI.Maui;
+using Mapsui.Tiling.Layers;
+using Mapsui.Providers.Castor;
+using Mapsui.Styles;
+using Mapsui.Utilities;
+using Mapsui.Layers;
+using Mapsui.Providers;
+using Mapsui;
+using Mapsui.UI;
+
+namespace MauiApp1.Views
+{
+    public partial class MapPage : ContentPage
+    {
+        readonly Mapsui.Map mapsuiMap = new();
+
+        public MapPage()
+        {
+            InitializeComponent();
+
+            // Initialize Mapsui with OpenStreetMap tile source
+            var tileLayer = new Mapsui.Tiling.OpenStreetMap.OpenStreetMapTileLayer();
+            mapsuiMap.Layers.Add(tileLayer);
+
+            // Set initial center and zoom
+            var center = SphericalMercator.FromLonLat(105.804817, 21.028511); // Lon, Lat -> X,Y
+            mapsuiMap.Navigator.NavigateTo(mapCenter: center, scale: 5000);
+
+            // Add a simple pin using a MemoryProvider
+            var features = new[] { new Mapsui.Features.Feature { Geometry = SphericalMercator.FromLonLat(105.804817, 21.028511).ToPoint() } };
+            var provider = new MemoryProvider(features);
+            var pinLayer = new Layer("pins") { DataSource = provider };
+            pinLayer.Style = new SymbolStyle { SymbolScale = 0.8, Fill = new Brush { Color = Mapsui.Styles.Color.Red } };
+            mapsuiMap.Layers.Add(pinLayer);
+
+            MapView.Map = mapsuiMap;
+        }
+
+        private void ZoomIn_Clicked(object sender, EventArgs e)
+        {
+            // Zoom in by halving the scale
+            mapsuiMap.Navigator.ZoomIn();
+            MapView.Invalidate();
+        }
+
+        private void ZoomOut_Clicked(object sender, EventArgs e)
+        {
+            mapsuiMap.Navigator.ZoomOut();
+            MapView.Invalidate();
+        }
+    }
+}
