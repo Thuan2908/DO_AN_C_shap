@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Vĩnh Khánh — Thuyết minh tự động</title>
+<link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  :root {
+    --accent:  #f5a623;
+    --accent2: #e85d24;
+    --teal:    #1db87a;
+    --bg:      #0e0e10;
+    --surface: #18181c;
+    --surface2:#222228;
+    --border:  #2e2e38;
+    --text:    #e8e4d8;
+    --text2:   #9a9690;
+    --text3:   #5a5854;
+    --danger:  #e84040;
+  }
+
+  body {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100dvh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 0 40px;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    width: 100%;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .header-icon { font-size: 24px; }
+  .header-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--accent);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+  }
+  .header-sub { font-size: 11px; color: var(--text3); }
+
+  /* ── CARD CHÍNH ── */
+  .card {
+    width: 100%;
+    max-width: 480px;
+    margin: 24px 16px 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  /* ảnh POI */
+  .poi-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    background: var(--surface2);
+  }
+  .poi-image-placeholder {
+    width: 100%;
+    height: 200px;
+    background: var(--surface2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 56px;
+  }
+
+  .card-body { padding: 20px; }
+
+  /* rating */
+  .poi-rating {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .stars { color: var(--accent); font-size: 14px; letter-spacing: 1px; }
+  .rating-num {
+    font-size: 12px;
+    color: var(--text3);
+    font-family: 'Space Mono', monospace;
+  }
+
+  .poi-name {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .poi-address {
+    font-size: 13px;
+    color: var(--text3);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+  }
+  .poi-description {
+    font-size: 14px;
+    color: var(--text2);
+    line-height: 1.6;
+    margin-bottom: 16px;
+    padding: 12px;
+    background: var(--surface2);
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+  }
+
+  /* ── CHỌN NGÔN NGỮ ── */
+  .lang-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--text3);
+    text-transform: uppercase;
+    letter-spacing: .08em;
+    margin-bottom: 10px;
+  }
+  .lang-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-bottom: 20px;
+  }
+  .lang-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 12px 8px;
+    border-radius: 10px;
+    border: 2px solid var(--border);
+    background: var(--surface2);
+    cursor: pointer;
+    transition: all .15s;
+    font-family: 'Be Vietnam Pro', sans-serif;
+  }
+  .lang-btn:active { transform: scale(.96); }
+  .lang-btn.selected {
+    border-color: var(--accent);
+    background: rgba(245,166,35,.1);
+  }
+  .lang-flag { font-size: 24px; }
+  .lang-name { font-size: 12px; font-weight: 600; color: var(--text2); }
+  .lang-btn.selected .lang-name { color: var(--accent); }
+
+  /* ── NÚT NGHE ── */
+  .btn-speak {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    border: none;
+    background: var(--accent);
+    color: #000;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all .15s;
+    margin-bottom: 12px;
+  }
+  .btn-speak:active { transform: scale(.98); background: #f5b840; }
+  .btn-speak:disabled { opacity: .5; cursor: not-allowed; }
+  .btn-speak.playing { background: var(--danger); color: #fff; }
+
+  .speak-icon { font-size: 20px; }
+
+  /* ── SCRIPT BOX ── */
+  .script-box {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px;
+    font-size: 13px;
+    color: var(--text2);
+    line-height: 1.7;
+    margin-top: 12px;
+    display: none;
+  }
+  .script-box.show { display: block; }
+  .script-toggle {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: var(--text3);
+    font-size: 12px;
+    cursor: pointer;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    transition: all .15s;
+  }
+  .script-toggle:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ── LOADING / ERROR ── */
+  .state-screen {
+    width: 100%;
+    max-width: 480px;
+    margin: 80px 16px 0;
+    text-align: center;
+  }
+  .state-icon { font-size: 48px; margin-bottom: 16px; }
+  .state-title { font-size: 18px; font-weight: 600; margin-bottom: 8px; }
+  .state-sub { font-size: 13px; color: var(--text3); line-height: 1.6; }
+
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .spinner {
+    width: 36px; height: 36px;
+    border: 3px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin .8s linear infinite;
+    margin: 0 auto 16px;
+  }
+
+  /* ── MAP LINK ── */
+  .map-link {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 14px;
+    border-radius: 10px;
+    border: 1px solid var(--border);
+    background: var(--surface2);
+    color: var(--text2);
+    font-size: 13px;
+    text-decoration: none;
+    margin-top: 8px;
+    transition: all .15s;
+  }
+  .map-link:hover { border-color: var(--teal); color: var(--teal); }
+
+  /* ── FOOTER ── */
+  .footer {
+    margin-top: 32px;
+    font-size: 11px;
+    color: var(--text3);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header">
+  <div class="header-icon">🍜</div>
+  <div>
+    <div class="header-title">Vĩnh Khánh</div>
+    <div class="header-sub">Phố ẩm thực — Thuyết minh tự động</div>
+  </div>
+</div>
+
+<!-- LOADING -->
+<div class="state-screen" id="screen-loading">
+  <div class="spinner"></div>
+  <div class="state-title">Đang tải thông tin...</div>
+  <div class="state-sub">Vui lòng chờ trong giây lát</div>
+</div>
+
+<!-- ERROR -->
+<div class="state-screen" id="screen-error" style="display:none">
+  <div class="state-icon">😕</div>
+  <div class="state-title">Không tìm thấy điểm này</div>
+  <div class="state-sub" id="error-msg">QR code có thể đã hết hạn hoặc điểm tham quan tạm ngưng hoạt động.</div>
+</div>
+
+<!-- NỘI DUNG POI -->
+<div id="screen-poi" style="display:none; width:100%; flex-direction:column; align-items:center">
+
+  <div class="card" id="poi-card">
+
+    <!-- Ảnh -->
+    <div id="poi-image-wrap"></div>
+
+    <div class="card-body">
+
+      <!-- Rating -->
+      <div class="poi-rating">
+        <span class="stars" id="poi-stars">⭐⭐⭐⭐⭐</span>
+        <span class="rating-num" id="poi-rating-num">5.0</span>
+      </div>
+
+      <!-- Tên -->
+      <div class="poi-name" id="poi-name">—</div>
+
+      <!-- Địa chỉ -->
+      <div class="poi-address">
+        <span>📍</span>
+        <span id="poi-address">—</span>
+      </div>
+
+      <!-- Mô tả ngắn -->
+      <div class="poi-description" id="poi-description"></div>
+
+      <!-- CHỌN NGÔN NGỮ -->
+      <div class="lang-label">🌐 Chọn ngôn ngữ thuyết minh</div>
+      <div class="lang-grid" id="lang-grid">
+        <!-- render bằng JS -->
+      </div>
+
+      <!-- NÚT NGHE -->
+      <button class="btn-speak" id="btn-speak" onclick="toggleSpeak()">
+        <span class="speak-icon" id="speak-icon">🔊</span>
+        <span id="speak-label">Nghe thuyết minh</span>
+      </button>
+
+      <!-- Toggle script -->
+      <button class="script-toggle" onclick="toggleScript()">📄 Xem nội dung thuyết minh</button>
+      <div class="script-box" id="script-box"></div>
+
+      <!-- Map link -->
+      <a class="map-link" id="map-link" href="#" target="_blank">
+        🗺️ Xem trên Google Maps
+      </a>
+
+    </div>
+  </div>
+
+  <div class="footer">Phố ẩm thực Vĩnh Khánh · Quận 4 · TP.HCM</div>
+</div>
+
+<script type="module" src="./poi.js"></script>
+</body>
+</html>

@@ -9,6 +9,8 @@ namespace MauiApp1
 {
     public partial class App : Application
     {
+        public static bool IsInternalAction = false;
+
         public App()
         {
             InitializeComponent();
@@ -57,52 +59,33 @@ namespace MauiApp1
             // Sync lại data
             _ = PoiRepository.Instance.SyncFromFirebaseAsync();
 
-            // 🔥 SET STATUS ONLINE khi mở lại app
-            _ = LogAppAccessWithStatus("online");
+            // 💡 Nếu quay về từ Web (Cờ đang bật) thì KHÔNG cập nhật lại thời gian/trạng thái
+            if (!IsInternalAction)
+            {
+                _ = LogAppAccessWithStatus("online");
+            }
+
+            // Xử lý xong thì mới tắt cờ
+            IsInternalAction = false;
         }
 
         protected override void OnSleep()
         {
             base.OnSleep();
 
-            // 🔥 SET STATUS OFFLINE NGAY KHI TẮT APP
-            _ = LogAppAccessWithStatus("offline");
-        }
-
-        // ════════════════════════════════════════
-        // 🔥 DEEP LINKING (APP LINKS)
-        // ════════════════════════════════════════
-        protected override void OnAppLinkRequestReceived(Uri uri)
-        {
-            base.OnAppLinkRequestReceived(uri);
-
-            // Xử lý link dạng https://vinh-khanh-cms.web.app/poi.html?id=xxx
-            if (uri.Host == "vinh-khanh-cms.web.app" && uri.AbsolutePath.Contains("/poi.html"))
+            // Nếu không phải là hành động mở trình duyệt thì mới set offline
+            if (!IsInternalAction)
             {
-                string query = uri.Query; // "?id=xxx"
-                if (query.Contains("id="))
-                {
-                    var poiId = query.Split("id=")[1].Split('&')[0];
-                    if (!string.IsNullOrEmpty(poiId))
-                    {
-                        MainThread.BeginInvokeOnMainThread(async () =>
-                        {
-                            // Đảm bảo Shell đã khởi tạo
-                            while (Shell.Current == null)
-                                await Task.Delay(100);
-
-                            // Điều hướng vào màn hình chi tiết POI
-                            await Shell.Current.GoToAsync($"POIDetailPage?poiId={poiId}");
-                        });
-                    }
-                }
+                _ = LogAppAccessWithStatus("offline");
             }
+            
+            // 💡 Không tắt cờ ở đây để OnResume có thể nhận biết được là vừa đi từ web về
         }
 
         // ════════════════════════════════════════
         // 🔥 DEVICE ID
         // ════════════════════════════════════════
-        private string GetDeviceId()
+        public string GetDeviceId()
         {
             string key = "device_id";
 

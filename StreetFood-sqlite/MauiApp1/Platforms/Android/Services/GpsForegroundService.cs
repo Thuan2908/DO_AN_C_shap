@@ -1,4 +1,4 @@
-﻿using global::Android.App;
+using global::Android.App;
 using global::Android.Content;
 using global::Android.OS;
 using AndroidX.Core.App;

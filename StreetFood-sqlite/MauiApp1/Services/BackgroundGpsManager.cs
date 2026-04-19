@@ -1,4 +1,4 @@
-﻿#if ANDROID
+#if ANDROID
 using global::Android.Content;
 using MauiApp1.Platforms.Android.Services;
 #endif
