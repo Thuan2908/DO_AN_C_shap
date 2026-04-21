@@ -49,8 +49,13 @@ function listenPOI() {
     poisData = snap.docs.map(d => ({ id: d.id, ...d.data() }));
     renderPOI(poisData);
     updateCounts();
-    // Cập nhật dropdown audio khi POI thay đổi
     updateAudioPOIDropdown();
+    
+    // MỚI: Vẽ lại POI trên bản đồ theo dõi nếu bản đồ đã khởi tạo
+    window.poisData = poisData; 
+    if (window.renderAccessPOIs) {
+      window.renderAccessPOIs();
+    }
   }, err => {
     showToast('Lỗi kết nối Firestore: ' + err.message, 'error');
   });
@@ -577,17 +582,22 @@ function switchPanel(name) {
   const titles = {
     dashboard:'Dashboard', poi:'Điểm POI', audio:'Quản lý Audio',
     translations:'Bản dịch', qr:'QR Code', tours:'Tour tham quan',
-    history:'Lịch sử sử dụng',access:'Xem truy cập', settings:'Cài đặt'
+    analytics:'Lịch sử & Bản đồ nhiệt', access:'Xem truy cập', settings:'Cài đặt'
   };
   document.getElementById('page-title').textContent = titles[name] || name;
-  event.currentTarget.classList.add('active');
+  if (event && event.currentTarget) event.currentTarget.classList.add('active');
 
   if (name === 'audio')        renderAudio();
   if (name === 'translations') renderTranslations();
   if (name === 'qr')           renderQR();
   if (name === 'tours')        renderTours();
-  if (name === 'history')      renderHistory();
-  if (name === 'access') loadAccessLogs(); 
+  if (name === 'analytics') {
+    renderHistory(); // Khởi tạo listener lịch sử
+  }
+  if (name === 'access') {
+    initAccessMap();
+    loadAccessLogs(); 
+  }
 }
 
 function renderTours() {
@@ -901,6 +911,8 @@ function loadAccessLogs() {
 function renderAccessLogs(data) {
   const tbody = document.getElementById('access-tbody');
   tbody.innerHTML = '';
+  // Sử dụng Layer từ window (khởi tạo ở index.html)
+  if (window.accessDeviceLayer) window.accessDeviceLayer.clearLayers();
 
   if (data.length === 0) {
     tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text3)">Chưa có dữ liệu truy cập</td></tr>';
@@ -908,16 +920,28 @@ function renderAccessLogs(data) {
   }
 
   data.forEach(item => {
-    // Xử lý timestamp từ Firestore hoặc string ISO
-    let lastDate;
-    if (item.LastActive?.toDate) {
-      lastDate = item.LastActive.toDate();
-    } else {
-      lastDate = new Date(item.LastActive || Date.now());
-    }
-
+    let lastDate = item.LastActive?.toDate ? item.LastActive.toDate() : new Date(item.LastActive || Date.now());
     const status = item.Status || 'online';
-    const isOnline = status === 'online';
+    
+    // Nếu quá 5 phút không có tín hiệu thì coi như Offline (đề phòng tắt app đột ngột)
+    const diffMinutes = (new Date() - lastDate) / (1000 * 60);
+    const isOnline = (status === 'online') && (diffMinutes < 5); 
+
+    const lat = item.Latitude;
+    const lng = item.Longitude;
+
+    // Hiển thị thiết bị lên bản đồ nếu đang Online và có vị trí
+    if (isOnline && lat && lng && window.accessDeviceLayer && window.L) {
+      const marker = window.L.marker([lat, lng], {
+        icon: window.L.divIcon({
+          className: 'device-icon',
+          html: `<div style="background-color:var(--blue); width:16px; height:16px; border-radius:50%; border:2px solid white; box-shadow: 0 0 15px var(--blue);"></div>`,
+          iconSize: [16, 16],
+          iconAnchor: [8, 8]
+        })
+      }).bindPopup(`<b>Thiết bị: ${item.Device || item.id}</b><br><span style="color:var(--success)">● Đang trực tuyến</span>`);
+      window.accessDeviceLayer.addLayer(marker);
+    }
 
     const tr = document.createElement('tr');
     tr.innerHTML = `
@@ -1038,3 +1062,98 @@ window.filterHistoryByDate = filterHistoryByDate;
 window.login          = login;
 window.logout         = logout;
 window.viewTranslation        = viewTranslation;
+window.initAccessMap         = initAccessMap;
+window.renderHistory         = renderHistory;
+window.initHeatmap           = function() { 
+  if (window._initHeatmapTimer) clearTimeout(window._initHeatmapTimer);
+  window._initHeatmapTimer = setTimeout(() => {
+    if (typeof window.initHeatmapInternal === 'function') {
+        window.initHeatmapInternal();
+    }
+  }, 300);
+};
+
+// ════════════════════════════════════════════════════
+// BẮT ĐẦU THÊM MỚI: Logic lấy dữ liệu thật từ Firebase cho Heat Map
+// ════════════════════════════════════════════════════
+let heatmapUnsubscribe = null;
+
+function updateHeatmapFromFirebase(filterType, isManual = false) {
+  try {
+    let isFirstSnapshot = true;
+    // Nếu có listener cũ thì hủy để tránh rò rỉ bộ nhớ
+    if (heatmapUnsubscribe) {
+      heatmapUnsubscribe();
+    }
+
+    // 1. Truy vấn tối đa 2000 lịch sử tương tác gần nhất
+    const q = query(collection(db, HISTORY), orderBy('timestamp', 'desc'), limit(2000));
+    
+    // Sử dụng onSnapshot thay cho getDocs để TỰ ĐỘNG CẬP NHẬT REAL-TIME
+    heatmapUnsubscribe = onSnapshot(q, (snap) => {
+      const historyLogs = snap.docs.map(d => d.data());
+
+      // 2. Xác định mốc thời gian dựa theo bộ lọc
+      const now = new Date();
+      let startDate = new Date();
+      
+      if (filterType === 'today') {
+        startDate.setHours(0, 0, 0, 0); // Từ 00:00 hôm nay
+      } else if (filterType === '7days') {
+        startDate.setDate(now.getDate() - 7);
+      } else if (filterType === '30days') {
+        startDate.setDate(now.getDate() - 30);
+      }
+
+      // 3. Lọc lịch sử theo mốc thời gian
+      const filteredLogs = historyLogs.filter(h => {
+        if (!h.timestamp) return false;
+        const ts = h.timestamp.toDate();
+        return ts >= startDate && ts <= now;
+      });
+
+      // 4. Thống kê số lượt tương tác cho từng Điểm POI
+      const poiCounts = {};
+      filteredLogs.forEach(h => {
+        const pName = h.poiName;
+        if (pName) {
+          poiCounts[pName] = (poiCounts[pName] || 0) + 1;
+        }
+      });
+
+      // 5. Tính toán dữ liệu Heat Map
+      const counts = Object.values(poiCounts);
+      const maxCount = counts.length > 0 ? Math.max(...counts) : 1;
+      const heatmapData = [];
+      
+      for (const [pName, count] of Object.entries(poiCounts)) {
+        // Đối chiếu tên POI với poisData để lấy tọa độ
+        const poi = poisData.find(p => (p.Name_vi || p.name) === pName);
+        if (poi && poi.Latitude && poi.Longitude) {
+          // Cường độ min là 0.4, max là 1.0
+          let intensity = 0.4 + (count / maxCount) * 0.6;
+          heatmapData.push([poi.Latitude, poi.Longitude, intensity]);
+        }
+      }
+
+      // 6. Gửi dữ liệu thật về lại hàm render ở index.html mỗi khi có thay đổi
+      if (window.renderHeatmapLayer) {
+        // Chỉ hiện Toast nếu đây là lần snapshot đầu tiên của một lần bấm nút thủ công
+        window.renderHeatmapLayer(heatmapData, isManual && isFirstSnapshot);
+      }
+      isFirstSnapshot = false; // Các lần cập nhật ngầm sau đó sẽ không hiện Toast nữa
+    }, (error) => {
+      console.error("Lỗi khi lắng nghe dữ liệu Heat Map:", error);
+    });
+
+  } catch (error) {
+    console.error("Lỗi thiết lập Bản đồ nhiệt:", error);
+    if (window.showToast) window.showToast('Lỗi tải dữ liệu Bản đồ nhiệt', 'error');
+  }
+}
+
+// Gắn hàm vào global window để HTML có thể gọi
+window.updateHeatmapFromFirebase = updateHeatmapFromFirebase;
+// ════════════════════════════════════════════════════
+// KẾT THÚC THÊM MỚI
+// ════════════════════════════════════════════════════

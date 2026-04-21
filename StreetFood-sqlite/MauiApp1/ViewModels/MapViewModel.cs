@@ -1,4 +1,4 @@
-﻿using System.Collections.ObjectModel;
+using System.Collections.ObjectModel;
 using MauiApp1.Models;
 using MauiApp1.Resources.Languages;
 using MauiApp1.Services;
@@ -103,6 +103,15 @@ namespace MauiApp1.ViewModels
         private async void OnLocationChanged(Location location)
         {
             LocationUpdated?.Invoke(location);
+
+            // ── MỚI: Cập nhật vị trí trực tuyến lên CMS ──
+            var deviceId = Preferences.Get("device_id", "Unknown");
+            var deviceName = DeviceInfo.Name;
+            var platform = DeviceInfo.Platform.ToString();
+            
+            _ = FirebaseService.Instance.SetDeviceStatusAsync(
+                deviceId, deviceName, platform, App.CurrentStatus, 
+                location.Latitude, location.Longitude);
 
             if (_geofenceService != null)
                 await _geofenceService.ProcessLocation(location);

@@ -1,4 +1,4 @@
-﻿using System.Net.Http.Json;
+using System.Net.Http.Json;
 using System.Text.Json;
 using MauiApp1.Models;
 
@@ -245,22 +245,27 @@ namespace MauiApp1.Services
         // ══════════════════════════════════════════
         // 🔥 SET DEVICE STATUS (online/offline) + Device + Platform
         // ══════════════════════════════════════════
-        public async Task SetDeviceStatusAsync(string deviceId, string device, string platform, string status)
+        public async Task SetDeviceStatusAsync(string deviceId, string device, string platform, string status, double lat = 0, double lng = 0)
         {
             try
             {
                 var url = $"{BASE_URL}/app_access_logs/{deviceId}?key={API_KEY}";
 
-                var body = new
+                var fields = new Dictionary<string, object>
                 {
-                    fields = new
-                    {
-                        Device = new { stringValue = device },
-                        Platform = new { stringValue = platform },
-                        Status = new { stringValue = status },
-                        LastActive = new { timestampValue = DateTime.UtcNow.ToString("o") }
-                    }
+                    { "Device", new { stringValue = device } },
+                    { "Platform", new { stringValue = platform } },
+                    { "Status", new { stringValue = status } },
+                    { "LastActive", new { timestampValue = DateTime.UtcNow.ToString("o") } }
                 };
+
+                if (lat != 0 || lng != 0)
+                {
+                    fields.Add("Latitude", new { doubleValue = lat });
+                    fields.Add("Longitude", new { doubleValue = lng });
+                }
+
+                var body = new { fields = fields };
 
                 var content = new StringContent(
                     JsonSerializer.Serialize(body),
@@ -279,8 +284,9 @@ namespace MauiApp1.Services
                 System.Diagnostics.Debug.WriteLine($"[Firebase] SetStatus lỗi: {ex.Message}");
             }
         }
-    }
 
+    }
+}
     // ══════════════════════════════════════════
     // FIRESTORE REST RESPONSE MODELS
     // ══════════════════════════════════════════
@@ -333,4 +339,3 @@ namespace MauiApp1.Services
 
 
 
-}

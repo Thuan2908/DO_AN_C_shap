@@ -10,6 +10,7 @@ namespace MauiApp1
     public partial class App : Application
     {
         public static bool IsInternalAction = false;
+        public static string CurrentStatus = "offline";
 
         public App()
         {
@@ -46,6 +47,7 @@ namespace MauiApp1
             _ = PoiRepository.Instance.InitializeAsync();
 
             // 🔥 LOG DEVICE + SET STATUS ONLINE
+            CurrentStatus = "online";
             _ = LogAppAccessWithStatus("online");
 
             // DEBUG (giữ nguyên)
@@ -62,6 +64,7 @@ namespace MauiApp1
             // 💡 Nếu quay về từ Web (Cờ đang bật) thì KHÔNG cập nhật lại thời gian/trạng thái
             if (!IsInternalAction)
             {
+                CurrentStatus = "online";
                 _ = LogAppAccessWithStatus("online");
             }
 
@@ -76,6 +79,7 @@ namespace MauiApp1
             // Nếu không phải là hành động mở trình duyệt thì mới set offline
             if (!IsInternalAction)
             {
+                CurrentStatus = "offline";
                 _ = LogAppAccessWithStatus("offline");
             }
             
