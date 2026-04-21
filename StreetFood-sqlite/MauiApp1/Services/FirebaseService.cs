@@ -89,7 +89,7 @@ namespace MauiApp1.Services
         // GHI LỊCH SỬ SỬ DỤNG LÊN FIRESTORE
         // ══════════════════════════════════════════
         /// <summary>
-        /// Ghi log khi người dùng nghe thuyết minh (GPS hoặc QR).
+        /// Ghi log khi người dùng nghe thuyết minh (GPS).
         /// Fire-and-forget — không await ở caller để không block UI.
         /// </summary>
         public async Task LogHistoryAsync(
