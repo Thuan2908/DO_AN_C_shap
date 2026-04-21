@@ -94,7 +94,7 @@ namespace MauiApp1.Services
         /// </summary>
         public async Task LogHistoryAsync(
             string poiName, string lang,
-            string source, string device = "MAUI")
+            string source, string device, string deviceId)
         {
             try
             {
@@ -107,6 +107,7 @@ namespace MauiApp1.Services
                         lang = new { stringValue = lang },
                         source = new { stringValue = source },
                         device = new { stringValue = device },
+                        deviceId = new { stringValue = deviceId },
                         timestamp = new { timestampValue = DateTime.UtcNow.ToString("o") }
                     }
                 };

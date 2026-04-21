@@ -233,7 +233,7 @@
             Nếu mạng lỗi → trả về null (caller dùng SQLite cache).
             </summary>
         </member>
-        <member name="M:MauiApp1.Services.FirebaseService.LogHistoryAsync(System.String,System.String,System.String,System.String)">
+        <member name="M:MauiApp1.Services.FirebaseService.LogHistoryAsync(System.String,System.String,System.String,System.String,System.String)">
             <summary>
             Ghi log khi người dùng nghe thuyết minh (GPS hoặc QR).
             Fire-and-forget — không await ở caller để không block UI.

@@ -1,4 +1,4 @@
-﻿using MauiApp1.Models;
+using MauiApp1.Models;
 using SQLite;
 using System.Globalization;
 
@@ -107,23 +107,29 @@ namespace MauiApp1.Services
         //mới chú ý
         public void LogPlay(POI poi, string source)
         {
-            var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
             var today = DateTime.UtcNow.ToString("yyyy-MM-dd");
 
-            string key = $"{poi.Id}_{source}_{lang}_{today}";
+            // Không bao gồm lang trong key để tránh lưu lại khi đổi ngôn ngữ
+            string key = $"{poi.Id}_{source}_{today}";
 
             if (_logged.Contains(key))
                 return;
 
             _logged.Add(key);
 
-            var device = DeviceInfo.Platform.ToString();
+            var lang = CultureInfo.CurrentUICulture.TwoLetterISOLanguageName;
+            
+            // Lấy DeviceId từ Preferences (đã được tạo ở App.xaml.cs)
+            string deviceId = Preferences.Get("device_id", "Unknown");
+            string deviceModel = DeviceInfo.Model;
 
+            // Luôn gửi Name_vi để Heatmap ở CMS nhận diện chính xác
             _ = _firebase.LogHistoryAsync(
-                poi.GetName(),
+                poi.Name_vi,
                 lang,
                 source,
-                device
+                deviceModel,
+                deviceId
             );
         }
 
