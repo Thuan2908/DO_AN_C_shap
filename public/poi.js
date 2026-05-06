@@ -47,15 +47,14 @@ function getWebDeviceId() {
 async function logScanHistory(poiData) {
   try {
     const deviceId = getWebDeviceId();
-    const userAgent = navigator.userAgent;
+    const ua = navigator.userAgent;
     let deviceModel = "Web Browser";
+    
+    if (/iPhone|iPad|iPod/.test(ua)) deviceModel = "iOS";
+    else if (/Android/.test(ua)) deviceModel = "Android";
 
-    if (userAgent.match(/Android/i)) deviceModel = "Android Device";
-    else if (userAgent.match(/iPhone|iPad|iPod/i)) deviceModel = "iOS Device";
-
-    await addDoc(collection(db, 'history'), {
+    await addDoc(collection(db, 'history_qr'), {
       poiName: poiData.Name_vi || poiData.name || 'Unknown',
-      lang: selectedLang,
       source: 'QR',
       device: deviceModel,
       deviceId: deviceId,

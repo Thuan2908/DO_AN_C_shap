@@ -1128,9 +1128,6 @@
           <span class="icon">📜</span> Lịch sử QR
           <span class="nav-badge" id="qr-history-badge">0</span>
         </div>
-        <div class="nav-item" onclick="switchPanel('tours')">
-          <span class="icon">🗺️</span> Tour
-        </div>
         <div class="nav-item" onclick="switchPanel('analytics'); initHeatmap();">
           <span class="icon">📊</span> Lịch sử & Bản đồ nhiệt
           <span class="nav-badge" id="history-badge" style="background:var(--blue);color:#fff">0</span>
@@ -1171,102 +1168,58 @@
             ⚠️ <div>Kết nối Firebase: thay thế config trong thẻ <code>&lt;script&gt;</code> cuối file với thông tin
               Firebase project của bạn. Xem hướng dẫn ở panel <b>Cài đặt</b>.</div>
           </div>
-          <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="stats-grid" style="grid-template-columns: repeat(4, 1fr);">
             <div class="stat-card" style="--c:var(--accent)">
               <div class="stat-icon">📍</div>
               <div class="stat-label">Điểm POI</div>
               <div class="stat-value" id="stat-poi-count">0</div>
               <div class="stat-sub">Tổng số địa điểm</div>
             </div>
+            <div class="stat-card" style="--c:var(--success)">
+              <div class="stat-icon">🤳</div>
+              <div class="stat-label">Số lượng quét QR</div>
+              <div class="stat-value" id="stat-qr-scans">0</div>
+              <div class="stat-sub">Tổng số lượt quét</div>
+            </div>
             <div class="stat-card" style="--c:var(--purple)">
-              <div class="stat-icon">📱</div>
-              <div class="stat-label">Số lượng poi hoạt động</div>
-              <div class="stat-value" id="stat-qr-count">0</div>
-              <div class="stat-sub">đang hoạt động</div>
+              <div class="stat-icon">🛰️</div>
+              <div class="stat-label">Số lượng tracking</div>
+              <div class="stat-value" id="stat-tracking-count">0</div>
+              <div class="stat-sub">Lịch sử GPS</div>
             </div>
             <div class="stat-card" style="--c:var(--blue)">
               <div class="stat-icon">📡</div>
               <div class="stat-label">Thiết bị Online</div>
               <div class="stat-value" id="stat-online-count">0</div>
-              <div class="stat-sub">Đang truy cập trực tuyến</div>
+              <div class="stat-sub">Đang trực tuyến</div>
             </div>
           </div>
-          <div class="dashboard-grid">
-            <div class="card">
-              <div class="card-title">Hoạt động gần đây</div>
-              <div class="history-item">
-                <div class="history-dot dot-play"></div>
-                <div style="flex:1"><b>Bún mắm Bà Năm</b> — vừa được phát<div class="sub">2 phút trước · Tiếng Việt
-                  </div>
-                </div>
-              </div>
-              <div class="history-item">
-                <div class="history-dot dot-scan"></div>
-                <div style="flex:1"><b>Bánh tráng trộn Hoa</b> — QR được quét<div class="sub">5 phút trước</div>
-                </div>
-              </div>
-              <div class="history-item">
-                <div class="history-dot dot-enter"></div>
-                <div style="flex:1"><b>Hủ tiếu Nam Vang</b> — Người dùng vào vùng<div class="sub">8 phút trước · GPS
-                  </div>
-                </div>
-              </div>
-              <div class="history-item">
-                <div class="history-dot dot-play"></div>
-                <div style="flex:1"><b>Chè bưởi Cô Lan</b> — vừa được phát<div class="sub">11 phút trước · 日本語</div>
-                </div>
-              </div>
-              <div class="history-item">
-                <div class="history-dot dot-scan"></div>
-                <div style="flex:1"><b>Cơm tấm Sài Gòn</b> — QR được quét<div class="sub">20 phút trước · English</div>
-                </div>
-              </div>
+          <!-- DASHBOARD HEATMAP -->
+          <div class="section-header" style="margin-top: 24px;">
+            <div class="section-title">📊 Bản đồ nhiệt tương tác</div>
+            <div style="display:flex;gap:8px">
+              <select class="search-input" id="db-heatmap-time-filter" style="width:140px" onchange="loadDashboardHeatmapData()">
+                <option value="today">Hôm nay</option>
+                <option value="7days">7 ngày qua</option>
+                <option value="30days">30 ngày qua</option>
+              </select>
+              <button class="btn btn-outline btn-sm" id="btn-toggle-db-poi" onclick="toggleDashboardHeatmapPOIs()">
+                📍 Hiện tên quán
+              </button>
             </div>
-            <div class="card">
-              <div class="card-title">Điểm POI phổ biến nhất</div>
-              <div style="display:flex;flex-direction:column;gap:10px">
-                <div style="display:flex;align-items:center;gap:10px">
-                  <span style="font-size:16px">🥣</span>
-                  <div style="flex:1">
-                    <div style="font-size:13px;font-weight:500">Bún mắm Bà Năm</div>
-                    <div style="height:5px;background:var(--border);border-radius:3px;margin-top:4px;overflow:hidden">
-                      <div style="height:100%;background:var(--accent);width:87%;border-radius:3px"></div>
-                    </div>
-                  </div>
-                  <span style="font-family:var(--mono);font-size:12px;color:var(--text3)">87%</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:10px">
-                  <span style="font-size:16px">🍜</span>
-                  <div style="flex:1">
-                    <div style="font-size:13px;font-weight:500">Hủ tiếu Nam Vang</div>
-                    <div style="height:5px;background:var(--border);border-radius:3px;margin-top:4px;overflow:hidden">
-                      <div style="height:100%;background:var(--blue);width:72%;border-radius:3px"></div>
-                    </div>
-                  </div>
-                  <span style="font-family:var(--mono);font-size:12px;color:var(--text3)">72%</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:10px">
-                  <span style="font-size:16px">🍧</span>
-                  <div style="flex:1">
-                    <div style="font-size:13px;font-weight:500">Chè bưởi Cô Lan</div>
-                    <div style="height:5px;background:var(--border);border-radius:3px;margin-top:4px;overflow:hidden">
-                      <div style="height:100%;background:var(--teal);width:64%;border-radius:3px"></div>
-                    </div>
-                  </div>
-                  <span style="font-family:var(--mono);font-size:12px;color:var(--text3)">64%</span>
-                </div>
-                <div style="display:flex;align-items:center;gap:10px">
-                  <span style="font-size:16px">🌯</span>
-                  <div style="flex:1">
-                    <div style="font-size:13px;font-weight:500">Bánh tráng trộn Hoa</div>
-                    <div style="height:5px;background:var(--border);border-radius:3px;margin-top:4px;overflow:hidden">
-                      <div style="height:100%;background:var(--purple);width:55%;border-radius:3px"></div>
-                    </div>
-                  </div>
-                  <span style="font-family:var(--mono);font-size:12px;color:var(--text3)">55%</span>
-                </div>
-              </div>
-            </div>
+          </div>
+
+          <div
+            style="background:var(--surface2); border:1px solid var(--border); border-radius:var(--radius); padding:10px; margin-bottom:12px; font-size:12px; color:var(--text3); display:flex; align-items:center; gap:10px;">
+            <span style="font-weight:bold;">Cường độ:</span>
+            <span style="display:inline-block; width:12px; height:12px; background:blue; border-radius:2px;"></span>
+            Thấp
+            <span style="display:inline-block; width:12px; height:12px; background:lime; border-radius:2px;"></span>
+            Trung bình
+            <span style="display:inline-block; width:12px; height:12px; background:red; border-radius:2px;"></span> Cao
+          </div>
+          <div id="dashboard-heatmap-container"
+            style="width:100%; height:500px; border-radius:var(--radius); border:1px solid var(--border); z-index: 1;">
           </div>
         </div>
 
@@ -1362,35 +1315,6 @@
           </div>
         </div>
 
-        <!-- TOURS PANEL -->
-        <div class="panel" id="panel-tours">
-          <div class="section-header">
-            <div class="section-title">Quản lý tour tham quan</div>
-            <button class="btn btn-primary" onclick="showToast('Tính năng tạo tour mới','success')">+ Tour mới</button>
-          </div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
-            <div class="card">
-              <div class="card-title">🗺️ Tour Vĩnh Khánh Classic</div>
-              <div style="font-size:12px;color:var(--text3);margin-bottom:12px">8 điểm dừng · ~90 phút · Toàn bộ phố
-              </div>
-              <div class="tour-stops" id="tour-classic"></div>
-              <div style="margin-top:12px;display:flex;gap:8px">
-                <button class="btn btn-outline btn-sm">Chỉnh sửa</button>
-                <button class="btn btn-success btn-sm">Kích hoạt</button>
-              </div>
-            </div>
-            <div class="card">
-              <div class="card-title">⚡ Tour Nhanh (30 phút)</div>
-              <div style="font-size:12px;color:var(--text3);margin-bottom:12px">4 điểm dừng · ~30 phút · Nổi bật nhất
-              </div>
-              <div class="tour-stops" id="tour-quick"></div>
-              <div style="margin-top:12px;display:flex;gap:8px">
-                <button class="btn btn-outline btn-sm">Chỉnh sửa</button>
-                <button class="btn btn-outline btn-sm">Kích hoạt</button>
-              </div>
-            </div>
-          </div>
-        </div>
 
         <!-- QR HISTORY PANEL -->
         <div class="panel" id="panel-qr-history">
@@ -1405,10 +1329,10 @@
             <table>
               <thead>
                 <tr>
-                  <th>Thời gian</th>
+                  <th>Ngày giờ</th>
+                  <th>Nguồn</th>
                   <th>Tên quán</th>
                   <th>Thiết bị</th>
-                  <th>Mã định danh (ID)</th>
                 </tr>
               </thead>
               <tbody id="qr-history-tbody"></tbody>
@@ -1936,7 +1860,92 @@
         });
       }
       window.toggleHeatmapPOIs = toggleHeatmapPOIs;
-      // KẾT THÚC THÊM MỚI
+
+      // ── DASHBOARD HEATMAP LOGIC ──
+      let dbHeatmapMap = null;
+      let dbHeatLayer = null;
+      let dbHeatmapPoiLayer = null;
+
+      function initDashboardHeatmap() {
+        if (dbHeatmapMap !== null) {
+          setTimeout(() => dbHeatmapMap.invalidateSize(), 200);
+          return;
+        }
+        setTimeout(() => {
+          dbHeatmapMap = L.map('dashboard-heatmap-container').setView([10.761819, 106.702132], 16);
+          L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+            attribution: '© OpenStreetMap contributors, © CARTO',
+            maxZoom: 19
+          }).addTo(dbHeatmapMap);
+          loadDashboardHeatmapData();
+        }, 500);
+      }
+
+      function loadDashboardHeatmapData(isManual = false) {
+        if (!dbHeatmapMap) return;
+        const filter = document.getElementById('db-heatmap-time-filter').value;
+        if (window.updateHeatmapFromFirebase) {
+          window.updateHeatmapFromFirebase(filter, isManual, true); // true indicates dashboard
+        }
+      }
+
+      function renderDashboardHeatmapLayer(data) {
+        if (!dbHeatmapMap) return;
+        if (dbHeatLayer) dbHeatmapMap.removeLayer(dbHeatLayer);
+        if (!data || data.length === 0) return;
+        dbHeatLayer = L.heatLayer(data, {
+          radius: 25,
+          blur: 15,
+          maxZoom: 17,
+          gradient: { 0.4: 'blue', 0.6: 'cyan', 0.7: 'lime', 0.8: 'yellow', 1.0: 'red' }
+        }).addTo(dbHeatmapMap);
+      }
+
+      function toggleDashboardHeatmapPOIs() {
+        if (!dbHeatmapMap) return;
+        if (!dbHeatmapPoiLayer) {
+          dbHeatmapPoiLayer = L.layerGroup();
+          renderDashboardHeatmapPOIMarkers();
+        }
+        const btn = document.getElementById('btn-toggle-db-poi');
+        if (dbHeatmapMap.hasLayer(dbHeatmapPoiLayer)) {
+          dbHeatmapMap.removeLayer(dbHeatmapPoiLayer);
+          btn.classList.replace('btn-primary', 'btn-outline');
+          btn.innerHTML = '📍 Hiện tên quán';
+        } else {
+          dbHeatmapPoiLayer.addTo(dbHeatmapMap);
+          btn.classList.replace('btn-outline', 'btn-primary');
+          btn.innerHTML = '📍 Ẩn tên quán';
+        }
+      }
+
+      function renderDashboardHeatmapPOIMarkers() {
+        if (!window.poisData || !dbHeatmapPoiLayer) return;
+        dbHeatmapPoiLayer.clearLayers();
+        window.poisData.forEach(p => {
+          const lat = p.Latitude ?? p.lat;
+          const lng = p.Longitude ?? p.lng;
+          if (lat && lng) {
+            L.circleMarker([lat, lng], {
+              radius: 4,
+              color: '#ffffff',
+              weight: 2,
+              fillColor: '#333333',
+              fillOpacity: 0.8
+            }).bindTooltip(p.Name_vi || p.name, {
+              permanent: false,
+              direction: 'top',
+              className: 'poi-tooltip'
+            }).addTo(dbHeatmapPoiLayer);
+          }
+        });
+      }
+
+      window.initDashboardHeatmap = initDashboardHeatmap;
+      window.loadDashboardHeatmapData = loadDashboardHeatmapData;
+      window.renderDashboardHeatmapLayer = renderDashboardHeatmapLayer;
+      window.toggleDashboardHeatmapPOIs = toggleDashboardHeatmapPOIs;
+      // ── END DASHBOARD HEATMAP LOGIC ──
     </script>
     <!-- KẾT THÚC THÊM MỚI -->
     <!-- Thêm logic bản đồ theo dõi trực tuyến -->

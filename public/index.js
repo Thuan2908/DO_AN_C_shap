@@ -31,6 +31,7 @@ const auth = getAuth(app);
 const POIS = 'pois';
 const AUDIOS = 'audios';
 const HISTORY = 'history';
+const HISTORY_QR = 'history_qr';
 const ACCESS = 'app_access_logs';
 
 // ════════════════════════════════════════════════════
@@ -323,12 +324,11 @@ function initQRHistoryListener() {
   
   if (qrHistoryUnsubscribe) qrHistoryUnsubscribe();
   
-  // Lấy 500 bản ghi mới nhất và lọc bằng Javascript để tránh lỗi Index
-  const q = query(collection(db, HISTORY), orderBy('timestamp', 'desc'), limit(500));
+  // Lấy dữ liệu từ bảng chuyên biệt history_qr
+  const q = query(collection(db, HISTORY_QR), orderBy('timestamp', 'desc'), limit(500));
   
   qrHistoryUnsubscribe = onSnapshot(q, (snap) => {
-    const allLogs = snap.docs.map(d => d.data());
-    allQRHistoryData = allLogs.filter(h => h.source === 'QR');
+    allQRHistoryData = snap.docs.map(d => d.data());
     
     filterQRHistoryByDate();
     document.getElementById('qr-history-badge').textContent = allQRHistoryData.length;
@@ -358,12 +358,14 @@ function filterQRHistoryByDate() {
   
   tbody.innerHTML = filteredData.map(h => {
     const ts = h.timestamp?.toDate();
-    const time = ts ? ts.toLocaleTimeString('vi-VN') : '—';
+    const dateStr = ts ? ts.toLocaleDateString('vi-VN') : '—';
+    const timeStr = ts ? ts.toLocaleTimeString('vi-VN', { hour: '2-digit', minute: '2-digit' }) : '—';
+    
     return `<tr>
-      <td style="font-family:var(--mono);font-size:12px;font-weight:500">${time}</td>
-      <td>${h.poiName || '—'}</td>
-      <td>${h.device === 'Android Device' ? 'Android' : h.device === 'iOS Device' ? 'iOS' : 'Web Browser'}</td>
-      <td style="font-family:var(--mono);font-size:11px;color:var(--text3)">${h.deviceId || '—'}</td>
+      <td style="font-family:var(--mono);font-size:12px;font-weight:500">${dateStr} <span style="color:var(--text3)">${timeStr}</span></td>
+      <td><span class="source-tag" style="background:var(--accent);color:#000;padding:2px 6px;border-radius:4px;font-size:10px;font-weight:bold">QR</span></td>
+      <td style="font-weight:600;color:var(--accent)">${h.poiName || '—'}</td>
+      <td>${h.device || 'Web'}</td>
     </tr>`;
   }).join('');
 }
@@ -373,15 +375,27 @@ function filterQRHistoryByDate() {
 // ════════════════════════════════════════════════════
 function updateCounts() {
   const total = poisData.length;
-  const active = poisData.filter(p => p.status === 'active').length;
-
   if (document.getElementById('poi-count')) document.getElementById('poi-count').textContent = total;
 
   // Stats dashboard
   const statPoi = document.getElementById('stat-poi-count');
-  const statQr = document.getElementById('stat-qr-count');
   if (statPoi) statPoi.textContent = total;
-  if (statQr) statQr.textContent = active;
+}
+
+// ── LISTENERS FOR DASHBOARD COUNTS ──
+function listenDashboardStats() {
+  // QR Scans count
+  onSnapshot(collection(db, HISTORY_QR), snap => {
+    const el = document.getElementById('stat-qr-scans');
+    if (el) el.textContent = snap.size;
+  });
+
+  // Tracking count (source === 'GPS')
+  onSnapshot(collection(db, HISTORY), snap => {
+    const gpsCount = snap.docs.filter(d => d.data().source === 'GPS').length;
+    const el = document.getElementById('stat-tracking-count');
+    if (el) el.textContent = gpsCount;
+  });
 }
 
 function updateAudioPOIDropdown() {
@@ -634,11 +648,13 @@ function switchPanel(name) {
   document.getElementById('page-title').textContent = titles[name] || name;
   if (event && event.currentTarget) event.currentTarget.classList.add('active');
 
+  if (name === 'dashboard') {
+    if (window.initDashboardHeatmap) window.initDashboardHeatmap();
+  }
   if (name === 'audio') renderAudio();
   if (name === 'translations') renderTranslations();
   if (name === 'qr') renderQR();
   if (name === 'qr-history') initQRHistoryListener();
-  if (name === 'tours') renderTours();
   if (name === 'analytics') {
     renderHistory(); // Khởi tạo listener lịch sử chung
   }
@@ -721,6 +737,8 @@ onAuthStateChanged(auth, user => {
     listenPOI();
     listenAudio();
     loadAccessLogs();
+    listenDashboardStats();
+    if (window.initDashboardHeatmap) window.initDashboardHeatmap();
   } else {
     document.getElementById('login-screen').style.display = 'flex';
     document.getElementById('app-shell').style.display = 'none';
@@ -1145,7 +1163,7 @@ window.initHeatmap = function () {
 // ════════════════════════════════════════════════════
 let heatmapUnsubscribe = null;
 
-function updateHeatmapFromFirebase(filterType, isManual = false) {
+function updateHeatmapFromFirebase(filterType, isManual = false, isDashboard = false) {
   try {
     let isFirstSnapshot = true;
     // Nếu có listener cũ thì hủy để tránh rò rỉ bộ nhớ
@@ -1204,9 +1222,15 @@ function updateHeatmapFromFirebase(filterType, isManual = false) {
       }
 
       // 6. Gửi dữ liệu thật về lại hàm render ở index.html mỗi khi có thay đổi
-      if (window.renderHeatmapLayer) {
-        // Chỉ hiện Toast nếu đây là lần snapshot đầu tiên của một lần bấm nút thủ công
-        window.renderHeatmapLayer(heatmapData, isManual && isFirstSnapshot);
+      if (isDashboard) {
+        if (window.renderDashboardHeatmapLayer) {
+          window.renderDashboardHeatmapLayer(heatmapData);
+        }
+      } else {
+        if (window.renderHeatmapLayer) {
+          // Chỉ hiện Toast nếu đây là lần snapshot đầu tiên của một lần bấm nút thủ công
+          window.renderHeatmapLayer(heatmapData, isManual && isFirstSnapshot);
+        }
       }
       isFirstSnapshot = false; // Các lần cập nhật ngầm sau đó sẽ không hiện Toast nữa
     }, (error) => {
