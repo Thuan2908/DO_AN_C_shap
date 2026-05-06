@@ -12,33 +12,33 @@ import {
 } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js';
 
 const firebaseConfig = {
-  apiKey:            "AIzaSyDO7cvTxvx26Qu6Bo6Ts5ZT0cl8yBhcj5s",
-  authDomain:        "vinh-khanh-cms.firebaseapp.com",
-  projectId:         "vinh-khanh-cms",
-  storageBucket:     "vinh-khanh-cms.firebasestorage.app",
+  apiKey: "AIzaSyDO7cvTxvx26Qu6Bo6Ts5ZT0cl8yBhcj5s",
+  authDomain: "vinh-khanh-cms.firebaseapp.com",
+  projectId: "vinh-khanh-cms",
+  storageBucket: "vinh-khanh-cms.firebasestorage.app",
   messagingSenderId: "27322782868",
-  appId:             "1:27322782868:web:ed13c37aea04023e7f9081"
+  appId: "1:27322782868:web:ed13c37aea04023e7f9081"
 };
 
 // ── KHỞI TẠO ──
-const app  = initializeApp(firebaseConfig);
-const db   = getFirestore(app);
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
 const stor = getStorage(app);
 const auth = getAuth(app);
 
 
 // ── COLLECTIONS ──
-const POIS     = 'pois';
-const AUDIOS   = 'audios';
-const HISTORY  = 'history';
-const ACCESS   = 'app_access_logs';
+const POIS = 'pois';
+const AUDIOS = 'audios';
+const HISTORY = 'history';
+const ACCESS = 'app_access_logs';
 
 // ════════════════════════════════════════════════════
 // TRẠNG THÁI TOÀN CỤC
 // ════════════════════════════════════════════════════
-let poisData   = [];
+let poisData = [];
 let audiosData = [];
-let editingId  = null;  // null = thêm mới, string = đang sửa
+let editingId = null;  // null = thêm mới, string = đang sửa
 
 // ════════════════════════════════════════════════════
 // POI — ĐỌC REAL-TIME
@@ -50,9 +50,9 @@ function listenPOI() {
     renderPOI(poisData);
     updateCounts();
     updateAudioPOIDropdown();
-    
+
     // MỚI: Vẽ lại POI trên bản đồ theo dõi nếu bản đồ đã khởi tạo
-    window.poisData = poisData; 
+    window.poisData = poisData;
     if (window.renderAccessPOIs) {
       window.renderAccessPOIs();
     }
@@ -67,11 +67,11 @@ function listenPOI() {
 
 async function savePOI() {
   const g = id => document.getElementById(id)?.value.trim() ?? '';
-  const n = (id, fallback=0) => parseFloat(document.getElementById(id)?.value) || fallback;
+  const n = (id, fallback = 0) => parseFloat(document.getElementById(id)?.value) || fallback;
 
   const nameVi = g('poi-name-vi');
-  const lat    = parseFloat(document.getElementById('poi-lat').value);
-  const lng    = parseFloat(document.getElementById('poi-lng').value);
+  const lat = parseFloat(document.getElementById('poi-lat').value);
+  const lng = parseFloat(document.getElementById('poi-lng').value);
 
   if (!nameVi || isNaN(lat) || isNaN(lng)) {
     showToast('Bắt buộc: Tên (VI), Vĩ độ, Kinh độ!', 'error');
@@ -108,15 +108,15 @@ async function savePOI() {
     Content_ja: contentJa,
     langs,
     // ── Location ──
-    Latitude:   lat,
-    Longitude:  lng,
-    Radius:     n('poi-radius', 10),
+    Latitude: lat,
+    Longitude: lng,
+    Radius: n('poi-radius', 10),
     NearRadius: n('poi-nearradius', 0),
     // ── Meta ──
-    Priority:  parseInt(document.getElementById('poi-priority').value) || 2,
-    Rating:    n('poi-rating', 0),
-    ImageUrl:  g('poi-imageurl'),
-    status:    document.getElementById('poi-status').value,
+    Priority: parseInt(document.getElementById('poi-priority').value) || 2,
+    Rating: n('poi-rating', 0),
+    ImageUrl: g('poi-imageurl'),
+    status: document.getElementById('poi-status').value,
     updatedAt: serverTimestamp()
   };
 
@@ -164,9 +164,9 @@ function listenAudio() {
 // AUDIO — UPLOAD LÊN FIREBASE STORAGE
 // ════════════════════════════════════════════════════
 async function uploadAudio() {
-  const file    = document.getElementById('audio-file').files[0];
-  const poiId   = document.getElementById('audio-poi').value;
-  const lang    = document.getElementById('audio-lang').value;
+  const file = document.getElementById('audio-file').files[0];
+  const poiId = document.getElementById('audio-poi').value;
+  const lang = document.getElementById('audio-lang').value;
   if (!file || !poiId) {
     showToast('Chọn file và điểm POI!', 'error');
     return;
@@ -174,8 +174,8 @@ async function uploadAudio() {
 
   const poiName = poisData.find(p => p.id === poiId)?.Name_vi || poiId;
   const fileName = `${poiId}_${lang}_${Date.now()}.${file.name.split('.').pop()}`;
-  const storRef  = ref(stor, `audios/${fileName}`);
-  const task     = uploadBytesResumable(storRef, file);
+  const storRef = ref(stor, `audios/${fileName}`);
+  const task = uploadBytesResumable(storRef, file);
 
   // Progress bar
   const btn = document.querySelector('#modal-audio .btn-primary');
@@ -197,7 +197,7 @@ async function uploadAudio() {
       await addDoc(collection(db, AUDIOS), {
         poiId, poiName, lang,
         fileName, url,
-        size:    (file.size / 1024 / 1024).toFixed(2) + 'MB',
+        size: (file.size / 1024 / 1024).toFixed(2) + 'MB',
         createdAt: serverTimestamp()
       });
       btn.textContent = '⬆ Upload lên Firebase';
@@ -215,7 +215,7 @@ async function deleteAudio(audioId, fileName, poiName) {
   try {
     await deleteDoc(doc(db, AUDIOS, audioId));
     const storRef = ref(stor, `audios/${fileName}`);
-    await deleteObject(storRef).catch(() => {});
+    await deleteObject(storRef).catch(() => { });
     showToast('Đã xóa audio', 'success');
   } catch (e) {
     showToast('Lỗi xóa: ' + e.message, 'error');
@@ -231,7 +231,7 @@ async function logHistory(event, poiName, lang, source) {
       event, poiName, lang, source,
       timestamp: serverTimestamp()
     });
-  } catch (_) {}
+  } catch (_) { }
 }
 
 // ════════════════════════════════════════════════════
@@ -246,22 +246,22 @@ let allHistoryData = []; // Lưu toàn bộ dữ liệu
 function initHistoryListener() {
   const tbody = document.getElementById('history-tbody');
   if (!tbody) return;
-  
+
   // Nếu đã có listener cũ, hủy bỏ
   if (historyUnsubscribe) {
     historyUnsubscribe();
   }
-  
+
   // Lắng nghe real-time từ Firestore
   const q = query(collection(db, HISTORY), orderBy('timestamp', 'desc'), limit(500));
-  
+
   historyUnsubscribe = onSnapshot(q, (snap) => {
     // Lưu tất cả dữ liệu
     allHistoryData = snap.docs.map(d => d.data());
-    
+
     // Áp dụng filter
     filterHistoryByDate();
-    
+
     // Cập nhật badge
     document.getElementById('history-badge').textContent = snap.size;
   }, (error) => {
@@ -272,34 +272,34 @@ function initHistoryListener() {
 function filterHistoryByDate() {
   const tbody = document.getElementById('history-tbody');
   const dateInput = document.getElementById('history-date-filter').value;
-  
+
   let filteredData = allHistoryData;
-  
+
   // Nếu có chọn ngày, lọc theo ngày đó
   if (dateInput) {
     const selectedDate = new Date(dateInput);
     const selectedDateStr = selectedDate.toLocaleDateString('vi-VN');
-    
+
     filteredData = allHistoryData.filter(h => {
       const ts = h.timestamp?.toDate();
       if (!ts) return false;
       return ts.toLocaleDateString('vi-VN') === selectedDateStr;
     });
   }
-  
+
   // Hiển thị
   if (filteredData.length === 0) {
     tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--text3);padding:20px">Chưa có lịch sử' + (dateInput ? ' cho ngày này' : '') + '</td></tr>';
     return;
   }
-  
+
   tbody.innerHTML = filteredData.map(h => {
     const ts = h.timestamp?.toDate();
     const time = ts ? ts.toLocaleTimeString('vi-VN') : '—';
     return `<tr>
       <td style="font-family:var(--mono);font-size:12px;font-weight:500">${time}</td>
       <td>${h.poiName || '—'}</td>
-      <td><span class="lang-tag">${(h.lang||'').toUpperCase()}</span></td>
+      <td><span class="lang-tag">${(h.lang || '').toUpperCase()}</span></td>
       <td>${h.source === 'QR' ? '📱 QR Code' : h.source === 'CMS' ? '💻 CMS' : '📡 GPS'}</td>
       <td style="font-size:12px;color:var(--text3)">${h.device || '—'}</td>
     </tr>`;
@@ -312,13 +312,76 @@ async function renderHistory() {
 }
 
 // ════════════════════════════════════════════════════
+// QR HISTORY — Real-time updates
+// ════════════════════════════════════════════════════
+let qrHistoryUnsubscribe = null;
+let allQRHistoryData = [];
+
+function initQRHistoryListener() {
+  const tbody = document.getElementById('qr-history-tbody');
+  if (!tbody) return;
+  
+  if (qrHistoryUnsubscribe) qrHistoryUnsubscribe();
+  
+  // Lấy 500 bản ghi mới nhất và lọc bằng Javascript để tránh lỗi Index
+  const q = query(collection(db, HISTORY), orderBy('timestamp', 'desc'), limit(500));
+  
+  qrHistoryUnsubscribe = onSnapshot(q, (snap) => {
+    const allLogs = snap.docs.map(d => d.data());
+    allQRHistoryData = allLogs.filter(h => h.source === 'QR');
+    
+    filterQRHistoryByDate();
+    document.getElementById('qr-history-badge').textContent = allQRHistoryData.length;
+  }, (error) => {
+    tbody.innerHTML = `<tr><td colspan="5" style="color:var(--danger);padding:20px">Lỗi: ${error.message}</td></tr>`;
+  });
+}
+
+function filterQRHistoryByDate() {
+  const tbody = document.getElementById('qr-history-tbody');
+  const dateInput = document.getElementById('qr-history-date-filter').value;
+  
+  let filteredData = allQRHistoryData;
+  if (dateInput) {
+    const selectedDate = new Date(dateInput);
+    const selectedDateStr = selectedDate.toLocaleDateString('vi-VN');
+    filteredData = allQRHistoryData.filter(h => {
+      const ts = h.timestamp?.toDate();
+      return ts && ts.toLocaleDateString('vi-VN') === selectedDateStr;
+    });
+  }
+  
+  if (filteredData.length === 0) {
+    tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;color:var(--text3);padding:20px">Chưa có lượt quét QR nào' + (dateInput ? ' cho ngày này' : '') + '</td></tr>';
+    return;
+  }
+  
+  tbody.innerHTML = filteredData.map(h => {
+    const ts = h.timestamp?.toDate();
+    const time = ts ? ts.toLocaleTimeString('vi-VN') : '—';
+    return `<tr>
+      <td style="font-family:var(--mono);font-size:12px;font-weight:500">${time}</td>
+      <td>${h.poiName || '—'}</td>
+      <td>${h.device === 'Android Device' ? 'Android' : h.device === 'iOS Device' ? 'iOS' : 'Web Browser'}</td>
+      <td style="font-family:var(--mono);font-size:11px;color:var(--text3)">${h.deviceId || '—'}</td>
+    </tr>`;
+  }).join('');
+}
+
+// ════════════════════════════════════════════════════
 // UI HELPERS
 // ════════════════════════════════════════════════════
 function updateCounts() {
-  document.getElementById('poi-count').textContent = poisData.length;
+  const total = poisData.length;
+  const active = poisData.filter(p => p.status === 'active').length;
+
+  if (document.getElementById('poi-count')) document.getElementById('poi-count').textContent = total;
+
   // Stats dashboard
-  const statCards = document.querySelectorAll('.stat-value');
-  if (statCards[0]) statCards[0].textContent = poisData.length;
+  const statPoi = document.getElementById('stat-poi-count');
+  const statQr = document.getElementById('stat-qr-count');
+  if (statPoi) statPoi.textContent = total;
+  if (statQr) statQr.textContent = active;
 }
 
 function updateAudioPOIDropdown() {
@@ -351,12 +414,12 @@ function renderPOI(data) {
       <td><span style="font-family:var(--mono)">${p.Radius ?? p.radius ?? 10}m</span></td>
       <td>
         <div class="lang-tags">
-          ${(p.langs||[]).map(l => `<span class="lang-tag">${l.toUpperCase()}</span>`).join('')}
+          ${(p.langs || []).map(l => `<span class="lang-tag">${l.toUpperCase()}</span>`).join('')}
         </div>
       </td>
       <td>
-        <span class="badge ${p.status==='active'?'badge-active':'badge-inactive'}">
-          ${p.status==='active'?'● Hoạt động':'○ Dừng'}
+        <span class="badge ${p.status === 'active' ? 'badge-active' : 'badge-inactive'}">
+          ${p.status === 'active' ? '● Hoạt động' : '○ Dừng'}
         </span>
       </td>
       <td>
@@ -372,19 +435,19 @@ function renderPOI(data) {
 function openAddPOI() {
   editingId = null;
   document.getElementById('poi-modal-title').textContent = '➕ Thêm điểm POI mới';
-  const ids = ['poi-name-vi','poi-name-en','poi-name-ja',
-    'poi-lat','poi-lng',
-    'poi-addr-vi','poi-addr-en','poi-addr-ja',
-    'poi-desc-vi','poi-desc-en','poi-desc-ja',
-    'poi-detail-vi','poi-detail-en','poi-detail-ja',
-    'poi-content-vi','poi-content-en','poi-content-ja',
+  const ids = ['poi-name-vi', 'poi-name-en', 'poi-name-ja',
+    'poi-lat', 'poi-lng',
+    'poi-addr-vi', 'poi-addr-en', 'poi-addr-ja',
+    'poi-desc-vi', 'poi-desc-en', 'poi-desc-ja',
+    'poi-detail-vi', 'poi-detail-en', 'poi-detail-ja',
+    'poi-content-vi', 'poi-content-en', 'poi-content-ja',
     'poi-imageurl'];
   ids.forEach(id => { const el = document.getElementById(id); if (el) el.value = ''; });
-  document.getElementById('poi-radius').value    = '10';
+  document.getElementById('poi-radius').value = '10';
   document.getElementById('poi-nearradius').value = '0';
-  document.getElementById('poi-rating').value    = '4.5';
-  document.getElementById('poi-priority').value  = '2';
-  document.getElementById('poi-status').value    = 'active';
+  document.getElementById('poi-rating').value = '4.5';
+  document.getElementById('poi-priority').value = '2';
+  document.getElementById('poi-status').value = 'active';
   openModal('modal-poi');
 }
 
@@ -393,30 +456,30 @@ function editPOI(id) {
   if (!p) return;
   editingId = id;
   document.getElementById('poi-modal-title').textContent = '✏️ Sửa thông tin POI';
-  const s = (elId, val) => { const el = document.getElementById(elId); if(el) el.value = val ?? ''; };
-  s('poi-name-vi',   p.Name_vi);
-  s('poi-name-en',   p.Name_en || p.translations?.en?.Name || '');
-  s('poi-name-ja',   p.Name_ja || p.translations?.ja?.Name || '');
-  s('poi-lat',       p.Latitude);
-  s('poi-lng',       p.Longitude);
-  s('poi-radius',    p.Radius ?? 10);
-  s('poi-nearradius',p.NearRadius ?? 0);
-  s('poi-rating',    p.Rating ?? 4.5);
-  s('poi-addr-vi',   p.Address_vi);
-  s('poi-addr-en',   p.Address_en || p.translations?.en?.Address || '');
-  s('poi-addr-ja',   p.Address_ja || p.translations?.ja?.Address || '');
-  s('poi-desc-vi',   p.Description_vi);
-  s('poi-desc-en',   p.Description_en || p.translations?.en?.Description || '');
-  s('poi-desc-ja',   p.Description_ja || p.translations?.ja?.Description || '');
+  const s = (elId, val) => { const el = document.getElementById(elId); if (el) el.value = val ?? ''; };
+  s('poi-name-vi', p.Name_vi);
+  s('poi-name-en', p.Name_en || p.translations?.en?.Name || '');
+  s('poi-name-ja', p.Name_ja || p.translations?.ja?.Name || '');
+  s('poi-lat', p.Latitude);
+  s('poi-lng', p.Longitude);
+  s('poi-radius', p.Radius ?? 10);
+  s('poi-nearradius', p.NearRadius ?? 0);
+  s('poi-rating', p.Rating ?? 4.5);
+  s('poi-addr-vi', p.Address_vi);
+  s('poi-addr-en', p.Address_en || p.translations?.en?.Address || '');
+  s('poi-addr-ja', p.Address_ja || p.translations?.ja?.Address || '');
+  s('poi-desc-vi', p.Description_vi);
+  s('poi-desc-en', p.Description_en || p.translations?.en?.Description || '');
+  s('poi-desc-ja', p.Description_ja || p.translations?.ja?.Description || '');
   s('poi-detail-vi', p.Detail_vi);
   s('poi-detail-en', p.Detail_en || p.translations?.en?.Detail || '');
   s('poi-detail-ja', p.Detail_ja || p.translations?.ja?.Detail || '');
-  s('poi-content-vi',p.Content_vi);
-  s('poi-content-en',p.Content_en || p.translations?.en?.Content || '');
-  s('poi-content-ja',p.Content_ja || p.translations?.ja?.Content || '');
-  s('poi-imageurl',  p.ImageUrl);
+  s('poi-content-vi', p.Content_vi);
+  s('poi-content-en', p.Content_en || p.translations?.en?.Content || '');
+  s('poi-content-ja', p.Content_ja || p.translations?.ja?.Content || '');
+  s('poi-imageurl', p.ImageUrl);
   document.getElementById('poi-priority').value = p.Priority ?? 2;
-  document.getElementById('poi-status').value   = p.status   ?? 'active';
+  document.getElementById('poi-status').value = p.status ?? 'active';
   openModal('modal-poi');
 }
 
@@ -424,9 +487,9 @@ function filterPOI(query) {
   const q = (query || '').toLowerCase();
   const filtered = q
     ? poisData.filter(p =>
-        (p.Name_vi||p.name||'').toLowerCase().includes(q) ||
-        (p.Name_en||'').toLowerCase().includes(q) ||
-        (p.Address_vi||p.address||'').toLowerCase().includes(q))
+      (p.Name_vi || p.name || '').toLowerCase().includes(q) ||
+      (p.Name_en || '').toLowerCase().includes(q) ||
+      (p.Address_vi || p.address || '').toLowerCase().includes(q))
     : poisData;
   renderPOI(filtered);
 }
@@ -448,7 +511,7 @@ function renderAudio() {
   });
   list.innerHTML = Object.entries(grouped).map(([poiId, g]) => `
     <div class="card" style="margin-bottom:14px">
-      <div class="card-title">${poisData.find(p=>p.id===poiId)?.icon || '📍'} ${g.name}</div>
+      <div class="card-title">${poisData.find(p => p.id === poiId)?.icon || '📍'} ${g.name}</div>
       ${g.files.map(f => `
         <div class="audio-row">
           <span class="audio-icon">🎵</span>
@@ -456,7 +519,7 @@ function renderAudio() {
             <div class="audio-name">${f.fileName}</div>
             <div class="audio-meta">${f.size || '—'}</div>
           </div>
-          <span class="audio-lang-badge">${(f.lang||'').toUpperCase()}</span>
+          <span class="audio-lang-badge">${(f.lang || '').toUpperCase()}</span>
           <a href="${f.url}" target="_blank" class="btn btn-outline btn-sm" style="margin-left:8px">▶ Nghe</a>
           <button class="btn btn-danger btn-sm" onclick="deleteAudio('${f.id}','${f.fileName}','${g.name}')">🗑</button>
         </div>
@@ -472,7 +535,7 @@ function previewAudio(input) {
   if (!input.files[0]) return;
   const f = input.files[0];
   document.getElementById('audio-filename').textContent = f.name;
-  document.getElementById('audio-filesize').textContent = (f.size/1024/1024).toFixed(2) + 'MB';
+  document.getElementById('audio-filesize').textContent = (f.size / 1024 / 1024).toFixed(2) + 'MB';
   document.getElementById('audio-player').src = URL.createObjectURL(f);
   document.getElementById('audio-preview').style.display = 'block';
 }
@@ -488,36 +551,36 @@ function renderTranslations() {
 
     const hasEn = p.Name_en || p.translations?.en?.Name || (p.langs || []).includes('en');
     const hasJa = p.Name_ja || p.translations?.ja?.Name || (p.langs || []).includes('ja');
-    
+
     return `
     <tr>
-      <td><b>${p.icon||'📍'} ${p.Name_vi||p.name||'—'}</b></td>
+      <td><b>${p.icon || '📍'} ${p.Name_vi || p.name || '—'}</b></td>
 
       <!-- 🇻🇳 VI -->
-      <td style="cursor:${hasVi?'pointer':'default'}"
-          onclick="${hasVi?`viewTranslation('${p.id}','vi')`:''}"
-          class="${hasVi?'hover-highlight':''}">
+      <td style="cursor:${hasVi ? 'pointer' : 'default'}"
+          onclick="${hasVi ? `viewTranslation('${p.id}','vi')` : ''}"
+          class="${hasVi ? 'hover-highlight' : ''}">
         ${hasVi
-          ? '<span class="badge badge-active">✓ Có</span>'
-          : '<span class="badge badge-pending">! Thiếu</span>'}
+        ? '<span class="badge badge-active">✓ Có</span>'
+        : '<span class="badge badge-pending">! Thiếu</span>'}
       </td>
 
       <!-- 🇬🇧 EN -->
-      <td style="cursor:${hasEn?'pointer':'default'}"
-          onclick="${hasEn?`viewTranslation('${p.id}','en')`:''}"
-          class="${hasEn?'hover-highlight':''}">
+      <td style="cursor:${hasEn ? 'pointer' : 'default'}"
+          onclick="${hasEn ? `viewTranslation('${p.id}','en')` : ''}"
+          class="${hasEn ? 'hover-highlight' : ''}">
         ${hasEn
-          ? '<span class="badge badge-active">✓ Có</span>'
-          : '<span class="badge badge-pending">! Thiếu</span>'}
+        ? '<span class="badge badge-active">✓ Có</span>'
+        : '<span class="badge badge-pending">! Thiếu</span>'}
       </td>
 
       <!-- 🇯🇵 JA -->
-      <td style="cursor:${hasJa?'pointer':'default'}"
-          onclick="${hasJa?`viewTranslation('${p.id}','ja')`:''}"
-          class="${hasJa?'hover-highlight':''}">
+      <td style="cursor:${hasJa ? 'pointer' : 'default'}"
+          onclick="${hasJa ? `viewTranslation('${p.id}','ja')` : ''}"
+          class="${hasJa ? 'hover-highlight' : ''}">
         ${hasJa
-          ? '<span class="badge badge-active">✓ Có</span>'
-          : '<span class="badge badge-pending">! Thiếu</span>'}
+        ? '<span class="badge badge-active">✓ Có</span>'
+        : '<span class="badge badge-pending">! Thiếu</span>'}
       </td>
     </tr>
   `;
@@ -528,48 +591,32 @@ function renderTranslations() {
 // QR CODE
 // ════════════════════════════════════════════════════
 function renderQR() {
-  const grid = document.getElementById('qr-grid');
-  grid.innerHTML = poisData.map(p => `
-    <div class="qr-card" id="qr-wrap-${p.id}">
-      <div class="qr-box" id="qr-${p.id}"></div>
-      <div class="qr-poi-name">${p.icon||'📍'} ${p.Name_vi||p.name||'—'}</div>
-      <div class="qr-poi-addr">${p.Address_vi||p.address||''}</div>
-      <div style="display:flex;gap:6px;justify-content:center">
-        <button class="btn btn-outline btn-sm" onclick="downloadQR('${p.id}','${p.name}')">⬇ Tải PNG</button>
-        <button class="btn btn-outline btn-sm" onclick="copyQRLink('${p.id}')">🔗 Copy link</button>
-      </div>
-    </div>
-  `).join('');
-  setTimeout(() => {
-    poisData.forEach(p => {
-      const container = document.getElementById('qr-' + p.id);
-      if (container && container.children.length === 0) {
-        new QRCode(container, {
-          text: 'https://vinh-khanh-cms.web.app/poi.html?id=' + p.id,
-          width: 110, height: 110,
-          colorDark: '#000', colorLight: '#fff',
-          correctLevel: QRCode.CorrectLevel.M
-        });
-      }
+  const mainBox = document.getElementById('main-qr-box');
+  if (mainBox && mainBox.children.length === 0) {
+    new QRCode(mainBox, {
+      text: 'https://vinh-khanh-cms.web.app/list.html',
+      width: 200, height: 200,
+      colorDark: '#000', colorLight: '#fff',
+      correctLevel: QRCode.CorrectLevel.H
     });
-  }, 100);
-}
-
-function downloadQR(id, name) {
-  const container = document.getElementById('qr-' + id);
-  const canvas = container?.querySelector('canvas');
-  if (canvas) {
-    const a = document.createElement('a');
-    a.download = 'qr_' + id + '.png';
-    a.href = canvas.toDataURL();
-    a.click();
-    showToast('Đã tải QR cho "' + name + '"', 'success');
   }
 }
 
-function copyQRLink(id) {
-  navigator.clipboard.writeText('https://vinh-khanh-cms.web.app/poi.html?id=' + id);
-  showToast('Đã copy deep link!', 'success');
+window.downloadMainQR = function () {
+  const container = document.getElementById('main-qr-box');
+  const canvas = container?.querySelector('canvas');
+  if (canvas) {
+    const a = document.createElement('a');
+    a.download = 'qr_vinh_khanh_all.png';
+    a.href = canvas.toDataURL();
+    a.click();
+    showToast('Đã tải QR Tổng', 'success');
+  }
+};
+
+window.copyMainQRLink = function () {
+  navigator.clipboard.writeText('https://vinh-khanh-cms.web.app/list.html');
+  showToast('Đã copy link danh sách!', 'success');
 }
 
 // ════════════════════════════════════════════════════
@@ -580,41 +627,42 @@ function switchPanel(name) {
   document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
   document.getElementById('panel-' + name).classList.add('active');
   const titles = {
-    dashboard:'Dashboard', poi:'Điểm POI', audio:'Quản lý Audio',
-    translations:'Bản dịch', qr:'QR Code', tours:'Tour tham quan',
-    analytics:'Lịch sử & Bản đồ nhiệt', access:'Xem truy cập', settings:'Cài đặt'
+    dashboard: 'Dashboard', poi: 'Điểm POI', audio: 'Quản lý Audio',
+    translations: 'Bản dịch', qr: 'QR Code', tours: 'Tour tham quan',
+    analytics: 'Lịch sử & Bản đồ nhiệt', access: 'Xem truy cập', settings: 'Cài đặt'
   };
   document.getElementById('page-title').textContent = titles[name] || name;
   if (event && event.currentTarget) event.currentTarget.classList.add('active');
 
-  if (name === 'audio')        renderAudio();
+  if (name === 'audio') renderAudio();
   if (name === 'translations') renderTranslations();
-  if (name === 'qr')           renderQR();
-  if (name === 'tours')        renderTours();
+  if (name === 'qr') renderQR();
+  if (name === 'qr-history') initQRHistoryListener();
+  if (name === 'tours') renderTours();
   if (name === 'analytics') {
-    renderHistory(); // Khởi tạo listener lịch sử
+    renderHistory(); // Khởi tạo listener lịch sử chung
   }
   if (name === 'access') {
     initAccessMap();
-    loadAccessLogs(); 
+    loadAccessLogs();
   }
 }
 
 function renderTours() {
   const classic = [
-    {n:'Bún mắm Bà Năm',d:'~5 phút'},{n:'Hủ tiếu Nam Vang',d:'~3 phút'},
-    {n:'Chè bưởi Cô Lan',d:'~4 phút'},{n:'Bánh tráng trộn Hoa',d:'~2 phút'},
-    {n:'Cơm tấm Sài Gòn',d:'~3 phút'},
+    { n: 'Bún mắm Bà Năm', d: '~5 phút' }, { n: 'Hủ tiếu Nam Vang', d: '~3 phút' },
+    { n: 'Chè bưởi Cô Lan', d: '~4 phút' }, { n: 'Bánh tráng trộn Hoa', d: '~2 phút' },
+    { n: 'Cơm tấm Sài Gòn', d: '~3 phút' },
   ];
   const quick = [
-    {n:'Bún mắm Bà Năm',d:'~5 phút'},{n:'Chè bưởi Cô Lan',d:'~4 phút'},
-    {n:'Cà phê vợt cổ truyền',d:'~3 phút'},{n:'Lẩu mắm đặc sản',d:'~5 phút'},
+    { n: 'Bún mắm Bà Năm', d: '~5 phút' }, { n: 'Chè bưởi Cô Lan', d: '~4 phút' },
+    { n: 'Cà phê vợt cổ truyền', d: '~3 phút' }, { n: 'Lẩu mắm đặc sản', d: '~5 phút' },
   ];
-  ['classic','quick'].forEach(key => {
+  ['classic', 'quick'].forEach(key => {
     const stops = key === 'classic' ? classic : quick;
     document.getElementById('tour-' + key).innerHTML = stops.map((s, i) => `
       <div class="tour-stop">
-        <div class="stop-number">${i+1}</div>
+        <div class="stop-number">${i + 1}</div>
         <div class="stop-name">${s.n}</div>
         <div class="stop-dist">${s.d}</div>
         <span style="cursor:grab;color:var(--text3)">⋮⋮</span>
@@ -628,21 +676,21 @@ function switchLangTab(el, group) {
   tabsContainer.querySelectorAll('.lang-tab').forEach(t => t.classList.remove('active'));
   el.classList.add('active');
 
-  ['vi','en','ja'].forEach(lang => {
+  ['vi', 'en', 'ja'].forEach(lang => {
     const wrap = document.getElementById(group + '-' + lang + '-wrap');
     if (wrap) wrap.style.display = (group + '-' + lang === group) ? 'block' : 'none';
   });
 
-  const parts  = group.split('-');
+  const parts = group.split('-');
   const prefix = parts.slice(0, -1).join('-');
   const active = parts[parts.length - 1];
-  ['vi','en','ja'].forEach(lang => {
+  ['vi', 'en', 'ja'].forEach(lang => {
     const wrap = document.getElementById(prefix + '-' + lang + '-wrap');
     if (wrap) wrap.style.display = lang === active ? 'block' : 'none';
   });
 }
 
-function openModal(id)  { document.getElementById(id).classList.add('open'); }
+function openModal(id) { document.getElementById(id).classList.add('open'); }
 function closeModal(id) { document.getElementById(id).classList.remove('open'); }
 
 function showToast(msg, type = 'success') {
@@ -663,7 +711,7 @@ document.querySelectorAll('.modal-overlay').forEach(m => {
 onAuthStateChanged(auth, user => {
   if (user) {
     document.getElementById('login-screen').style.display = 'none';
-    document.getElementById('app-shell').style.display    = 'flex';
+    document.getElementById('app-shell').style.display = 'flex';
     document.querySelector('.sidebar-footer .user-row .avatar').textContent =
       user.email.charAt(0).toUpperCase();
     document.querySelector('.sidebar-footer .user-row div div:first-child').textContent =
@@ -672,34 +720,35 @@ onAuthStateChanged(auth, user => {
       user.email;
     listenPOI();
     listenAudio();
+    loadAccessLogs();
   } else {
     document.getElementById('login-screen').style.display = 'flex';
-    document.getElementById('app-shell').style.display    = 'none';
+    document.getElementById('app-shell').style.display = 'none';
   }
 });
 
 async function login() {
   const email = document.getElementById('login-email').value.trim();
-  const pass  = document.getElementById('login-pass').value;
-  const btn   = document.getElementById('login-btn');
-  const err   = document.getElementById('login-error');
+  const pass = document.getElementById('login-pass').value;
+  const btn = document.getElementById('login-btn');
+  const err = document.getElementById('login-error');
   if (!email || !pass) { err.textContent = 'Vui lòng nhập email và mật khẩu.'; return; }
   btn.textContent = 'Đang đăng nhập...';
-  btn.disabled    = true;
+  btn.disabled = true;
   err.textContent = '';
   try {
     await signInWithEmailAndPassword(auth, email, pass);
   } catch (e) {
     const msgs = {
-      'auth/invalid-credential':    'Email hoặc mật khẩu không đúng.',
-      'auth/user-not-found':        'Tài khoản không tồn tại.',
-      'auth/wrong-password':        'Mật khẩu không đúng.',
-      'auth/too-many-requests':     'Quá nhiều lần thử. Thử lại sau.',
-      'auth/invalid-email':         'Email không hợp lệ.',
+      'auth/invalid-credential': 'Email hoặc mật khẩu không đúng.',
+      'auth/user-not-found': 'Tài khoản không tồn tại.',
+      'auth/wrong-password': 'Mật khẩu không đúng.',
+      'auth/too-many-requests': 'Quá nhiều lần thử. Thử lại sau.',
+      'auth/invalid-email': 'Email không hợp lệ.',
     };
     err.textContent = msgs[e.code] || ('Lỗi: ' + e.message);
     btn.textContent = 'Đăng nhập';
-    btn.disabled    = false;
+    btn.disabled = false;
   }
 }
 
@@ -727,13 +776,13 @@ const langLabels = {
 function selectTranslateLang(lang, label) {
   currentTranslateLang = lang;
   const poiId = document.getElementById('trans-poi-select').value;
-  
+
   if (!poiId) {
     showToast('Vui lòng chọn POI trước!', 'error');
     return;
   }
-  
-  ['en','ja'].forEach(l => {
+
+  ['en', 'ja'].forEach(l => {
     const btn = document.getElementById(`lang-${l}-btn`);
     if (l === lang) {
       btn.classList.add('active');
@@ -745,32 +794,32 @@ function selectTranslateLang(lang, label) {
       btn.style.color = 'var(--text2)';
     }
   });
-  
+
   document.getElementById('selected-lang-display').textContent = `✓ Đã chọn: ${label}`;
-  
+
   loadPOIForTranslate();
 }
 
 function loadPOIForTranslate() {
   const poiId = document.getElementById('trans-poi-select').value;
   const poi = poisData.find(p => p.id === poiId);
-  
+
   if (!poi || !currentTranslateLang) {
     document.getElementById('translate-form').style.display = 'none';
     return;
   }
-  
+
   document.getElementById('trans-name-vi').value = poi.Name_vi || '';
   document.getElementById('trans-addr-vi').value = poi.Address_vi || '';
   document.getElementById('trans-desc-vi').value = poi.Description_vi || '';
   document.getElementById('trans-detail-vi').value = poi.Detail_vi || '';
   document.getElementById('trans-content-vi').value = poi.Content_vi || '';
-  
+
   const langLabel = langLabels[currentTranslateLang];
   document.querySelectorAll('[id^="trans-"][id$="-label"]').forEach(el => {
     el.textContent = el.textContent.split(' —')[0] + ' — ' + langLabel;
   });
-  
+
   const existingTranslation = getExistingTranslation(poiId, currentTranslateLang);
   if (existingTranslation) {
     document.getElementById('trans-name').value = existingTranslation.Name || '';
@@ -785,18 +834,18 @@ function loadPOIForTranslate() {
     document.getElementById('trans-detail').value = '';
     document.getElementById('trans-content').value = '';
   }
-  
+
   document.getElementById('translate-form').style.display = 'block';
 }
 
 function getExistingTranslation(poiId, lang) {
   const poi = poisData.find(p => p.id === poiId);
   if (!poi) return null;
-  
+
   if (poi.translations && poi.translations[lang]) {
     return poi.translations[lang];
   }
-  
+
   if (lang === 'en') {
     return {
       Name: poi.Name_en || '',
@@ -806,7 +855,7 @@ function getExistingTranslation(poiId, lang) {
       Content: poi.Content_en || ''
     };
   }
-  
+
   if (lang === 'ja') {
     return {
       Name: poi.Name_ja || '',
@@ -816,7 +865,7 @@ function getExistingTranslation(poiId, lang) {
       Content: poi.Content_ja || ''
     };
   }
-  
+
   return null;
 }
 
@@ -826,11 +875,11 @@ async function autoTranslateField(sourceId, targetId) {
     showToast('Vui lòng nhập text và chọn ngôn ngữ!', 'error');
     return;
   }
-  
+
   const btn = event.target;
   btn.textContent = '⏳ Dang dich...';
   btn.disabled = true;
-  
+
   try {
     const translated = await autoTranslate(sourceText, currentTranslateLang);
     document.getElementById(targetId).value = translated;
@@ -838,7 +887,7 @@ async function autoTranslateField(sourceId, targetId) {
   } catch (e) {
     showToast('Lỗi dịch: ' + e.message, 'error');
   }
-  
+
   btn.textContent = '🔄 Dịch tự động';
   btn.disabled = false;
 }
@@ -849,7 +898,7 @@ async function saveTranslation() {
     showToast('Vui lòng chọn POI và ngôn ngữ!', 'error');
     return;
   }
-  
+
   const translationData = {
     Name: document.getElementById('trans-name').value,
     Address: document.getElementById('trans-addr').value,
@@ -857,18 +906,18 @@ async function saveTranslation() {
     Detail: document.getElementById('trans-detail').value,
     Content: document.getElementById('trans-content').value
   };
-  
+
   if (!translationData.Name) {
     showToast('Tên ngôn ngữ không được để trống!', 'error');
     return;
   }
-  
+
   try {
     const docRef = doc(db, POIS, poiId);
     const updateData = {};
     updateData[`translations.${currentTranslateLang}`] = translationData;
     updateData[`langs`] = arrayUnion(currentTranslateLang);
-    
+
     await updateDoc(docRef, updateData);
     showToast(`Đã lưu bản dịch ${langLabels[currentTranslateLang]}!`, 'success');
     closeModal('modal-translate');
@@ -882,7 +931,8 @@ let accessUnsubscribe = null;
 
 function loadAccessLogs() {
   const tbody = document.getElementById('access-tbody');
-  if (!tbody) return;
+  // if (!tbody) return; // Bỏ check này để listener luôn chạy và cập nhật Dashboard
+
 
   // Hủy listener cũ nếu có
   if (accessUnsubscribe) accessUnsubscribe();
@@ -893,7 +943,7 @@ function loadAccessLogs() {
       id: doc.id,
       ...doc.data()
     }));
-    
+
     // Sắp xếp theo thời gian mới nhất
     logs.sort((a, b) => {
       const ta = a.LastActive?.toDate?.() || new Date(a.LastActive || 0);
@@ -910,9 +960,12 @@ function loadAccessLogs() {
 
 function renderAccessLogs(data) {
   const tbody = document.getElementById('access-tbody');
-  tbody.innerHTML = '';
+  if (tbody) tbody.innerHTML = '';
+
   // Sử dụng Layer từ window (khởi tạo ở index.html)
-  if (window.accessDeviceLayer) window.accessDeviceLayer.clearLayers();
+  if (window.accessDeviceLayer && typeof window.accessDeviceLayer.clearLayers === 'function') {
+    window.accessDeviceLayer.clearLayers();
+  }
 
   if (data.length === 0) {
     tbody.innerHTML = '<tr><td colspan="5" style="text-align:center;padding:20px;color:var(--text3)">Chưa có dữ liệu truy cập</td></tr>';
@@ -922,10 +975,13 @@ function renderAccessLogs(data) {
   data.forEach(item => {
     let lastDate = item.LastActive?.toDate ? item.LastActive.toDate() : new Date(item.LastActive || Date.now());
     const status = item.Status || 'online';
-    
+
     // Nếu quá 5 phút không có tín hiệu thì coi như Offline (đề phòng tắt app đột ngột)
     const diffMinutes = (new Date() - lastDate) / (1000 * 60);
-    const isOnline = (status === 'online') && (diffMinutes < 5); 
+    const isActive = diffMinutes < 5;
+
+    // Chỉ online khi database là online và còn trong 5 phút
+    const isOnline = (status === 'online') && isActive;
 
     const lat = item.Latitude;
     const lng = item.Longitude;
@@ -955,8 +1011,19 @@ function renderAccessLogs(data) {
         </span>
       </td>
     `;
-    tbody.appendChild(tr);
+    if (tbody) tbody.appendChild(tr);
   });
+
+  // Cập nhật số lượng thiết bị online lên Dashboard
+  const onlineCount = data.filter(item => {
+    let lastDate = item.LastActive?.toDate ? item.LastActive.toDate() : new Date(item.LastActive || Date.now());
+    const status = item.Status || 'online';
+    const diffMinutes = (new Date() - lastDate) / (1000 * 60);
+    return (status === 'online') && (diffMinutes < 5);
+  }).length;
+
+  const onlineStatEl = document.getElementById('stat-online-count');
+  if (onlineStatEl) onlineStatEl.textContent = onlineCount;
 }
 
 let viewingTranslationPOI = null;
@@ -965,9 +1032,9 @@ let viewingTranslationLang = null;
 function viewTranslation(poiId, lang) {
   const poi = poisData.find(p => p.id === poiId);
   if (!poi) return;
-  
+
   let translation = poi.translations?.[lang];
-  
+
   if (lang === 'vi') {
     translation = {
       Name: poi.Name_vi || '',
@@ -997,21 +1064,21 @@ function viewTranslation(poiId, lang) {
       };
     }
   }
-  
+
   if (!translation || !translation.Name) {
     showToast('Không tìm thấy bản dịch!', 'error');
     return;
   }
-  
+
   viewingTranslationPOI = poiId;
   viewingTranslationLang = lang;
-  
+
   const langLabel = langLabels[lang];
   const langEmoji = { 'vi': '🇻🇳', 'en': '🇬🇧', 'ja': '🇯🇵' }[lang] || '🌐';
-  
-  document.getElementById('view-trans-title').textContent = 
+
+  document.getElementById('view-trans-title').textContent =
     `${langEmoji} Bản dịch ${langLabel} — ${poi.Name_vi}`;
-  
+
   const html = `
     <div style="background:var(--surface2);padding:16px;border-radius:10px">
       <div style="margin-bottom:16px">
@@ -1036,39 +1103,39 @@ function viewTranslation(poiId, lang) {
       </div>
     </div>
   `;
-  
+
   document.getElementById('view-trans-content').innerHTML = html;
   openModal('modal-view-translation');
 }
 
-window.switchPanel    = switchPanel;
-window.openAddPOI     = openAddPOI;
-window.editPOI        = editPOI;
-window.savePOI        = savePOI;
-window.deletePOI      = deletePOI;
-window.filterPOI      = filterPOI;
-window.openAddAudio   = openAddAudio;
-window.previewAudio   = previewAudio;
-window.uploadAudio    = uploadAudio;
-window.deleteAudio    = deleteAudio;
-window.renderQR       = renderQR;
-window.downloadQR     = downloadQR;
-window.copyQRLink     = copyQRLink;
-window.switchLangTab  = switchLangTab;
-window.openModal      = openModal;
-window.closeModal     = closeModal;
-window.showToast      = showToast;
+window.switchPanel = switchPanel;
+window.openAddPOI = openAddPOI;
+window.editPOI = editPOI;
+window.savePOI = savePOI;
+window.deletePOI = deletePOI;
+window.filterPOI = filterPOI;
+window.openAddAudio = openAddAudio;
+window.previewAudio = previewAudio;
+window.uploadAudio = uploadAudio;
+window.deleteAudio = deleteAudio;
+window.renderQR = renderQR;
+window.switchLangTab = switchLangTab;
+window.openModal = openModal;
+window.closeModal = closeModal;
+window.showToast = showToast;
 window.filterHistoryByDate = filterHistoryByDate;
-window.login          = login;
-window.logout         = logout;
-window.viewTranslation        = viewTranslation;
-window.initAccessMap         = initAccessMap;
-window.renderHistory         = renderHistory;
-window.initHeatmap           = function() { 
+window.login = login;
+window.logout = logout;
+window.viewTranslation = viewTranslation;
+window.initAccessMap = initAccessMap;
+window.renderHistory = renderHistory;
+window.initQRHistoryListener = initQRHistoryListener;
+window.filterQRHistoryByDate = filterQRHistoryByDate;
+window.initHeatmap = function () {
   if (window._initHeatmapTimer) clearTimeout(window._initHeatmapTimer);
   window._initHeatmapTimer = setTimeout(() => {
     if (typeof window.initHeatmapInternal === 'function') {
-        window.initHeatmapInternal();
+      window.initHeatmapInternal();
     }
   }, 300);
 };
@@ -1088,7 +1155,7 @@ function updateHeatmapFromFirebase(filterType, isManual = false) {
 
     // 1. Truy vấn tối đa 2000 lịch sử tương tác gần nhất
     const q = query(collection(db, HISTORY), orderBy('timestamp', 'desc'), limit(2000));
-    
+
     // Sử dụng onSnapshot thay cho getDocs để TỰ ĐỘNG CẬP NHẬT REAL-TIME
     heatmapUnsubscribe = onSnapshot(q, (snap) => {
       const historyLogs = snap.docs.map(d => d.data());
@@ -1096,7 +1163,7 @@ function updateHeatmapFromFirebase(filterType, isManual = false) {
       // 2. Xác định mốc thời gian dựa theo bộ lọc
       const now = new Date();
       let startDate = new Date();
-      
+
       if (filterType === 'today') {
         startDate.setHours(0, 0, 0, 0); // Từ 00:00 hôm nay
       } else if (filterType === '7days') {
@@ -1125,7 +1192,7 @@ function updateHeatmapFromFirebase(filterType, isManual = false) {
       const counts = Object.values(poiCounts);
       const maxCount = counts.length > 0 ? Math.max(...counts) : 1;
       const heatmapData = [];
-      
+
       for (const [pName, count] of Object.entries(poiCounts)) {
         // Đối chiếu tên POI với poisData để lấy tọa độ
         const poi = poisData.find(p => (p.Name_vi || p.name) === pName);

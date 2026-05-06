@@ -72,10 +72,11 @@ namespace MauiApp1
             IsInternalAction = false;
         }
 
+        
         protected override void OnSleep()
         {
             base.OnSleep();
-
+ 
             // Nếu không phải là hành động mở trình duyệt thì mới set offline
             if (!IsInternalAction)
             {

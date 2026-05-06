@@ -51,6 +51,7 @@ namespace MauiApp1.Platforms.Android.Services
             base.OnDestroy();
         }
 
+
         void CreateNotificationChannel()
         {
             if (Build.VERSION.SdkInt >= BuildVersionCodes.O)

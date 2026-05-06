@@ -111,8 +111,10 @@
       padding: 4px 8px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
     }
+
     .poi-tooltip::before {
-      display: none; /* Bỏ mũi tên mặc định */
+      display: none;
+      /* Bỏ mũi tên mặc định */
     }
 
     .nav-section {
@@ -1122,12 +1124,16 @@
         <div class="nav-item" onclick="switchPanel('qr')">
           <span class="icon">📱</span> QR Code
         </div>
+        <div class="nav-item" onclick="switchPanel('qr-history')">
+          <span class="icon">📜</span> Lịch sử QR
+          <span class="nav-badge" id="qr-history-badge">0</span>
+        </div>
         <div class="nav-item" onclick="switchPanel('tours')">
           <span class="icon">🗺️</span> Tour
         </div>
         <div class="nav-item" onclick="switchPanel('analytics'); initHeatmap();">
           <span class="icon">📊</span> Lịch sử & Bản đồ nhiệt
-          <span class="nav-badge" id="history-badge" style="background:var(--blue);color:#fff">24</span>
+          <span class="nav-badge" id="history-badge" style="background:var(--blue);color:#fff">0</span>
         </div>
         <div class="nav-item" onclick="switchPanel('access'); initAccessMap();">
           <span class="icon">📡</span> Xem truy cập trực tuyến
@@ -1165,30 +1171,24 @@
             ⚠️ <div>Kết nối Firebase: thay thế config trong thẻ <code>&lt;script&gt;</code> cuối file với thông tin
               Firebase project của bạn. Xem hướng dẫn ở panel <b>Cài đặt</b>.</div>
           </div>
-          <div class="stats-grid">
+          <div class="stats-grid" style="grid-template-columns: repeat(3, 1fr);">
             <div class="stat-card" style="--c:var(--accent)">
               <div class="stat-icon">📍</div>
               <div class="stat-label">Điểm POI</div>
-              <div class="stat-value"></div>
-              <div class="stat-sub">3 ngôn ngữ / điểm</div>
-            </div>
-            <div class="stat-card" style="--c:var(--blue)">
-              <div class="stat-icon">🎵</div>
-              <div class="stat-label">File Audio</div>
-              <div class="stat-value"></div>
-              <div class="stat-sub">VI + EN + JA</div>
-            </div>
-            <div class="stat-card" style="--c:var(--teal)">
-              <div class="stat-icon">👥</div>
-              <div class="stat-label">Lượt nghe hôm nay</div>
-              <div class="stat-value"></div>
-              <div class="stat-sub"></div>
+              <div class="stat-value" id="stat-poi-count">0</div>
+              <div class="stat-sub">Tổng số địa điểm</div>
             </div>
             <div class="stat-card" style="--c:var(--purple)">
               <div class="stat-icon">📱</div>
-              <div class="stat-label">Lượt quét QR</div>
-              <div class="stat-value"></div>
-              <div class="stat-sub"></div>
+              <div class="stat-label">Số lượng poi hoạt động</div>
+              <div class="stat-value" id="stat-qr-count">0</div>
+              <div class="stat-sub">đang hoạt động</div>
+            </div>
+            <div class="stat-card" style="--c:var(--blue)">
+              <div class="stat-icon">📡</div>
+              <div class="stat-label">Thiết bị Online</div>
+              <div class="stat-value" id="stat-online-count">0</div>
+              <div class="stat-sub">Đang truy cập trực tuyến</div>
             </div>
           </div>
           <div class="dashboard-grid">
@@ -1334,14 +1334,32 @@
         <!-- QR PANEL -->
         <div class="panel" id="panel-qr">
           <div class="section-header">
-            <div class="section-title">QR Code — Kích hoạt nội dung không cần GPS</div>
-            <button class="btn btn-outline btn-sm" onclick="downloadAllQR()">⬇ Tải tất cả QR</button>
+            <div class="section-title">QR Code Tổng — Cổng vào Phố ẩm thực</div>
           </div>
-          <p style="color:var(--text3);font-size:13px;margin-bottom:16px">
-            Mỗi QR code chứa link <code>poi.html?id={id}</code> — khi quét sẽ mở trang chọn ngôn ngữ và nghe thuyết minh
-            ngay trên trình duyệt.
-          </p>
-          <div class="qr-grid" id="qr-grid"></div>
+
+          <div class="card"
+            style="margin: 20px 0; background:var(--surface2); border:2px dashed var(--accent); padding: 30px">
+            <div style="display:flex; flex-direction:column; align-items:center; text-align:center; gap:20px">
+              <div id="main-qr-box"
+                style="background:#fff; padding:15px; border-radius:12px; display:inline-block; box-shadow: 0 10px 30px rgba(0,0,0,0.5)">
+              </div>
+
+              <div style="max-width: 500px">
+                <h3 style="color:var(--accent); font-size: 20px; margin-bottom:10px">Mã QR Truy cập Duy nhất</h3>
+                <p style="font-size:14px; color:var(--text2); line-height: 1.6; margin-bottom: 24px">
+                  Sử dụng mã QR này để in ấn và dán tại các lối vào hoặc bảng tin của phố ẩm thực.
+                  Khi khách hàng quét mã, họ sẽ thấy danh sách toàn bộ các quán ăn và có thể chọn quán để nghe thuyết
+                  minh tự động.
+                </p>
+                <div style="display:flex; gap:12px; justify-content:center">
+                  <button class="btn btn-primary" style="padding: 12px 24px" onclick="downloadMainQR()">⬇ Tải Mã QR
+                    (PNG)</button>
+                  <button class="btn btn-outline" style="padding: 12px 24px" onclick="copyMainQRLink()">🔗 Sao chép liên
+                    kết</button>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- TOURS PANEL -->
@@ -1374,6 +1392,30 @@
           </div>
         </div>
 
+        <!-- QR HISTORY PANEL -->
+        <div class="panel" id="panel-qr-history">
+          <div class="section-header">
+            <div class="section-title">📜 Lịch sử quét mã QR</div>
+            <div style="display:flex;gap:8px">
+              <input type="date" class="search-input" id="qr-history-date-filter" style="width:160px"
+                onchange="filterQRHistoryByDate()">
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Thời gian</th>
+                  <th>Tên quán</th>
+                  <th>Thiết bị</th>
+                  <th>Mã định danh (ID)</th>
+                </tr>
+              </thead>
+              <tbody id="qr-history-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+
         <!-- ANALYTICS PANEL (Gộp Bản đồ nhiệt & Lịch sử) -->
         <div class="panel" id="panel-analytics">
           <div class="section-header">
@@ -1391,19 +1433,25 @@
           </div>
 
           <!-- Bản đồ nhiệt -->
-          <div style="background:var(--surface2); border:1px solid var(--border); border-radius:var(--radius); padding:10px; margin-bottom:12px; font-size:12px; color:var(--text3); display:flex; align-items:center; gap:10px;">
+          <div
+            style="background:var(--surface2); border:1px solid var(--border); border-radius:var(--radius); padding:10px; margin-bottom:12px; font-size:12px; color:var(--text3); display:flex; align-items:center; gap:10px;">
             <span style="font-weight:bold;">Cường độ:</span>
-            <span style="display:inline-block; width:12px; height:12px; background:blue; border-radius:2px;"></span> Thấp
-            <span style="display:inline-block; width:12px; height:12px; background:lime; border-radius:2px;"></span> Trung bình
+            <span style="display:inline-block; width:12px; height:12px; background:blue; border-radius:2px;"></span>
+            Thấp
+            <span style="display:inline-block; width:12px; height:12px; background:lime; border-radius:2px;"></span>
+            Trung bình
             <span style="display:inline-block; width:12px; height:12px; background:red; border-radius:2px;"></span> Cao
           </div>
-          <div id="heatmap-container" style="width:100%; height:450px; border-radius:var(--radius); border:1px solid var(--border); z-index: 1; margin-bottom:24px;"></div>
+          <div id="heatmap-container"
+            style="width:100%; height:450px; border-radius:var(--radius); border:1px solid var(--border); z-index: 1; margin-bottom:24px;">
+          </div>
 
           <!-- Lịch sử Tracking -->
           <div class="section-header">
             <div class="section-title">📋 Chi tiết lịch sử tracking</div>
             <div style="display:flex;gap:8px">
-              <input type="date" class="search-input" id="history-date-filter" style="width:160px" onchange="filterHistoryByDate()">
+              <input type="date" class="search-input" id="history-date-filter" style="width:160px"
+                onchange="filterHistoryByDate()">
             </div>
           </div>
           <div class="table-wrap">
@@ -1433,7 +1481,9 @@
           </div>
 
           <!-- Bản đồ theo dõi trực tiếp -->
-          <div id="access-map" style="width:100%; height:500px; border-radius:var(--radius); border:1px solid var(--border); margin-bottom:16px; z-index:1; position:relative;"></div>
+          <div id="access-map"
+            style="width:100%; height:500px; border-radius:var(--radius); border:1px solid var(--border); margin-bottom:16px; z-index:1; position:relative;">
+          </div>
 
           <div class="table-wrap">
             <table>
@@ -1877,8 +1927,8 @@
               weight: 2,
               fillColor: '#333333',
               fillOpacity: 0.8
-            }).bindTooltip(p.Name_vi || p.name, { 
-              permanent: false, 
+            }).bindTooltip(p.Name_vi || p.name, {
+              permanent: false,
               direction: 'top',
               className: 'poi-tooltip'
             }).addTo(heatmapPoiLayer);
@@ -1889,92 +1939,92 @@
       // KẾT THÚC THÊM MỚI
     </script>
     <!-- KẾT THÚC THÊM MỚI -->
-  <!-- Thêm logic bản đồ theo dõi trực tuyến -->
-  <script>
-    var accessMap = null;
-    var accessPoiLayer = null;
-    var accessDeviceLayer = null;
+    <!-- Thêm logic bản đồ theo dõi trực tuyến -->
+    <script>
+      var accessMap = null;
+      var accessPoiLayer = null;
+      var accessDeviceLayer = null;
 
-    function toggleAccessPOIs() {
-      if (!accessMap || !accessPoiLayer) return;
-      const btn = document.getElementById('btn-toggle-access-poi');
-      if (accessMap.hasLayer(accessPoiLayer)) {
-        accessMap.removeLayer(accessPoiLayer);
-        btn.classList.replace('btn-primary', 'btn-outline');
-        btn.innerHTML = '📍 Hiện tên quán';
-      } else {
-        accessMap.addLayer(accessPoiLayer);
-        btn.classList.replace('btn-outline', 'btn-primary');
-        btn.innerHTML = '📍 Ẩn tên quán';
-      }
-    }
-    window.toggleAccessPOIs = toggleAccessPOIs;
-
-    function initAccessMap() {
-      if (typeof L === 'undefined') return;
-      if (!accessPoiLayer) accessPoiLayer = L.layerGroup();
-      if (!accessDeviceLayer) accessDeviceLayer = L.layerGroup();
-
-      if (accessMap !== null) {
-        setTimeout(() => accessMap.invalidateSize(), 200);
-        return;
-      }
-
-      setTimeout(() => {
-        const container = document.getElementById('access-map');
-        if (!container) return;
-
-        try {
-          accessMap = L.map(container, {
-            zoomControl: true,
-            attributionControl: false
-          }).setView([10.761819, 106.702132], 16);
-          
-          // Sử dụng bản đồ tông tối (Dark Matter)
-          L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
-            maxZoom: 19
-          }).addTo(accessMap);
-
-          accessPoiLayer.addTo(accessMap);
-          accessDeviceLayer.addTo(accessMap);
-
-          if (window.renderAccessPOIs) window.renderAccessPOIs();
-          setTimeout(() => accessMap.invalidateSize(), 500);
-        } catch (e) {
-          console.error("Map Error:", e);
+      function toggleAccessPOIs() {
+        if (!accessMap || !accessPoiLayer) return;
+        const btn = document.getElementById('btn-toggle-access-poi');
+        if (accessMap.hasLayer(accessPoiLayer)) {
+          accessMap.removeLayer(accessPoiLayer);
+          btn.classList.replace('btn-primary', 'btn-outline');
+          btn.innerHTML = '📍 Hiện tên quán';
+        } else {
+          accessMap.addLayer(accessPoiLayer);
+          btn.classList.replace('btn-outline', 'btn-primary');
+          btn.innerHTML = '📍 Ẩn tên quán';
         }
-      }, 600);
-    }
+      }
+      window.toggleAccessPOIs = toggleAccessPOIs;
 
-    function renderAccessPOIs() {
-      if (!accessPoiLayer || !window.poisData) return;
-      accessPoiLayer.clearLayers();
+      function initAccessMap() {
+        if (typeof L === 'undefined') return;
+        if (!accessPoiLayer) accessPoiLayer = L.layerGroup();
+        if (!accessDeviceLayer) accessDeviceLayer = L.layerGroup();
 
-      window.poisData.forEach(p => {
-        const lat = p.Latitude ?? p.lat;
-        const lng = p.Longitude ?? p.lng;
-        if (lat && lng) {
-          // Marker đồng bộ với Bản đồ nhiệt: nhỏ màu trắng, tooltip tên quán
-          L.circleMarker([lat, lng], {
-            radius: 4,
-            color: '#ffffff',
-            weight: 2,
-            fillColor: '#333333',
-            fillOpacity: 0.8
-          }).bindTooltip(p.Name_vi || p.name, { 
-            permanent: false, 
-            direction: 'top',
-            className: 'poi-tooltip'
-          }).addTo(accessPoiLayer);
+        if (accessMap !== null) {
+          setTimeout(() => accessMap.invalidateSize(), 200);
+          return;
         }
-      });
-    }
 
-    // Gắn vào window để index.js có thể gọi
-    window.initAccessMap = initAccessMap;
-    window.renderAccessPOIs = renderAccessPOIs;
-    window.accessDeviceLayer = accessDeviceLayer;
-  </script>
+        setTimeout(() => {
+          const container = document.getElementById('access-map');
+          if (!container) return;
+
+          try {
+            accessMap = L.map(container, {
+              zoomControl: true,
+              attributionControl: false
+            }).setView([10.761819, 106.702132], 16);
+
+            // Sử dụng bản đồ tông tối (Dark Matter)
+            L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png', {
+              maxZoom: 19
+            }).addTo(accessMap);
+
+            accessPoiLayer.addTo(accessMap);
+            accessDeviceLayer.addTo(accessMap);
+
+            if (window.renderAccessPOIs) window.renderAccessPOIs();
+            setTimeout(() => accessMap.invalidateSize(), 500);
+          } catch (e) {
+            console.error("Map Error:", e);
+          }
+        }, 600);
+      }
+
+      function renderAccessPOIs() {
+        if (!accessPoiLayer || !window.poisData) return;
+        accessPoiLayer.clearLayers();
+
+        window.poisData.forEach(p => {
+          const lat = p.Latitude ?? p.lat;
+          const lng = p.Longitude ?? p.lng;
+          if (lat && lng) {
+            // Marker đồng bộ với Bản đồ nhiệt: nhỏ màu trắng, tooltip tên quán
+            L.circleMarker([lat, lng], {
+              radius: 4,
+              color: '#ffffff',
+              weight: 2,
+              fillColor: '#333333',
+              fillOpacity: 0.8
+            }).bindTooltip(p.Name_vi || p.name, {
+              permanent: false,
+              direction: 'top',
+              className: 'poi-tooltip'
+            }).addTo(accessPoiLayer);
+          }
+        });
+      }
+
+      // Gắn vào window để index.js có thể gọi
+      window.initAccessMap = initAccessMap;
+      window.renderAccessPOIs = renderAccessPOIs;
+      window.accessDeviceLayer = accessDeviceLayer;
+    </script>
 </body>
 
 </html>

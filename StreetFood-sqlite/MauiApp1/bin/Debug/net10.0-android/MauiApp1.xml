@@ -235,7 +235,7 @@
         </member>
         <member name="M:MauiApp1.Services.FirebaseService.LogHistoryAsync(System.String,System.String,System.String,System.String,System.String)">
             <summary>
-            Ghi log khi người dùng nghe thuyết minh (GPS hoặc QR).
+            Ghi log khi người dùng nghe thuyết minh (GPS).
             Fire-and-forget — không await ở caller để không block UI.
             </summary>
         </member>

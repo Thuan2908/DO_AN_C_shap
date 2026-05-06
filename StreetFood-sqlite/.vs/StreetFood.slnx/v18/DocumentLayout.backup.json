@@ -7,6 +7,10 @@
       "RelativeMoniker": "D:0:0:{DBB709D5-80F0-EE7D-A2D1-7D84BC5D452F}|MauiApp1\\MauiApp1.csproj|solutionrelative:mauiapp1\\app.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{DBB709D5-80F0-EE7D-A2D1-7D84BC5D452F}|MauiApp1\\MauiApp1.csproj|d:\\do_an_c#\\streetfood-sqlite\\mauiapp1\\platforms\\android\\services\\gpsforegroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DBB709D5-80F0-EE7D-A2D1-7D84BC5D452F}|MauiApp1\\MauiApp1.csproj|solutionrelative:mauiapp1\\platforms\\android\\services\\gpsforegroundservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{DBB709D5-80F0-EE7D-A2D1-7D84BC5D452F}|MauiApp1\\MauiApp1.csproj|d:\\do_an_c#\\streetfood-sqlite\\mauiapp1\\services\\firebaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{DBB709D5-80F0-EE7D-A2D1-7D84BC5D452F}|MauiApp1\\MauiApp1.csproj|solutionrelative:mauiapp1\\services\\firebaseservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -98,7 +102,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -118,20 +122,33 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "GpsForegroundService.cs",
+              "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Platforms\\Android\\Services\\GpsForegroundService.cs",
+              "RelativeDocumentMoniker": "MauiApp1\\Platforms\\Android\\Services\\GpsForegroundService.cs",
+              "ToolTip": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Platforms\\Android\\Services\\GpsForegroundService.cs",
+              "RelativeToolTip": "MauiApp1\\Platforms\\Android\\Services\\GpsForegroundService.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAYwDYAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-22T16:21:30.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "App.xaml.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\App.xaml.cs",
               "RelativeDocumentMoniker": "MauiApp1\\App.xaml.cs",
               "ToolTip": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\App.xaml.cs",
               "RelativeToolTip": "MauiApp1\\App.xaml.cs",
-              "ViewState": "AgIAAHMAAAAAAAAAAAAwwHkAAABZAAAAAAAAAA==",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAmwGsAAAAzAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-23T15:55:54.807Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "MauiApp1.csproj",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\MauiApp1.csproj",
               "RelativeDocumentMoniker": "MauiApp1\\MauiApp1.csproj",
@@ -143,7 +160,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "MapPage.xaml",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Views\\MapPage.xaml",
               "RelativeDocumentMoniker": "MauiApp1\\Views\\MapPage.xaml",
@@ -155,7 +172,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "MapPage.xaml.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Views\\MapPage.xaml.cs",
               "RelativeDocumentMoniker": "MauiApp1\\Views\\MapPage.xaml.cs",
@@ -167,19 +184,19 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "FirebaseService.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Services\\FirebaseService.cs",
               "RelativeDocumentMoniker": "MauiApp1\\Services\\FirebaseService.cs",
               "ToolTip": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Services\\FirebaseService.cs",
               "RelativeToolTip": "MauiApp1\\Services\\FirebaseService.cs",
-              "ViewState": "AgIAAPMAAAAAAAAAAAAowAkBAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAFoAAAAAAAAAAAAYwG4AAABaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-25T02:07:47.191Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MapViewModel.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\ViewModels\\MapViewModel.cs",
               "RelativeDocumentMoniker": "MauiApp1\\ViewModels\\MapViewModel.cs",
@@ -191,7 +208,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "ScanPage.xaml.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Views\\ScanPage.xaml.cs",
               "RelativeDocumentMoniker": "MauiApp1\\Views\\ScanPage.xaml.cs",
@@ -203,7 +220,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "AppShell.xaml.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\AppShell.xaml.cs",
               "RelativeDocumentMoniker": "MauiApp1\\AppShell.xaml.cs",
@@ -215,7 +232,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "MauiProgram.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\MauiProgram.cs",
               "RelativeDocumentMoniker": "MauiApp1\\MauiProgram.cs",
@@ -227,7 +244,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "MainPage.xaml",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\MainPage.xaml",
               "RelativeDocumentMoniker": "MauiApp1\\MainPage.xaml",
@@ -239,7 +256,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "AndroidManifest.xml",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Platforms\\Android\\AndroidManifest.xml",
               "RelativeDocumentMoniker": "MauiApp1\\Platforms\\Android\\AndroidManifest.xml",
@@ -250,7 +267,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "SettingsPage.xaml.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Views\\SettingsPage.xaml.cs",
               "RelativeDocumentMoniker": "MauiApp1\\Views\\SettingsPage.xaml.cs",
@@ -262,7 +279,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "SettingsService.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Services\\SettingsService.cs",
               "RelativeDocumentMoniker": "MauiApp1\\Services\\SettingsService.cs",
@@ -274,7 +291,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "AudioService.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Services\\AudioService.cs",
               "RelativeDocumentMoniker": "MauiApp1\\Services\\AudioService.cs",
@@ -286,7 +303,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 17,
               "Title": "POIDetailViewModel.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\ViewModels\\POIDetailViewModel.cs",
               "RelativeDocumentMoniker": "MauiApp1\\ViewModels\\POIDetailViewModel.cs",
@@ -298,7 +315,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "GeofenceService.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Services\\GeofenceService.cs",
               "RelativeDocumentMoniker": "MauiApp1\\Services\\GeofenceService.cs",
@@ -310,7 +327,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "PoiRepository.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Services\\PoiRepository.cs",
               "RelativeDocumentMoniker": "MauiApp1\\Services\\PoiRepository.cs",
@@ -322,7 +339,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 18,
               "Title": "GPSService.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Services\\GPSService.cs",
               "RelativeDocumentMoniker": "MauiApp1\\Services\\GPSService.cs",
@@ -334,7 +351,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 19,
               "Title": "MainPage.xaml.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\MainPage.xaml.cs",
               "RelativeDocumentMoniker": "MauiApp1\\MainPage.xaml.cs",
@@ -346,7 +363,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 20,
               "Title": "POIDetailPage.xaml.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Views\\POIDetailPage.xaml.cs",
               "RelativeDocumentMoniker": "MauiApp1\\Views\\POIDetailPage.xaml.cs",
@@ -358,7 +375,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
               "Title": "DatabaseService.cs",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Services\\DatabaseService.cs",
               "RelativeDocumentMoniker": "MauiApp1\\Services\\DatabaseService.cs",
@@ -370,7 +387,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 22,
               "Title": "poi.json",
               "DocumentMoniker": "D:\\DO_AN_C#\\StreetFood-sqlite\\MauiApp1\\Resources\\Raw\\poi.json",
               "RelativeDocumentMoniker": "MauiApp1\\Resources\\Raw\\poi.json",
